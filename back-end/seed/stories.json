@@ -1,17 +1,23 @@
 [
   {
     "username": "A. Einstein",
-    "createdAt": 1502293460904,
+    "createdAt": 12341234143,
+    "tags": "random",
+    "title": "greeting",
     "story": "hello"
   },
   {
-    "username": "A. Einstein",
-    "createdAt": 1502293460904,
+    "username": "Ela Triem",
+    "createdAt": 123512351235,
+    "tags": "magic",
+    "title": "Journey of the hats",
     "story": "Wizard of Trought revisit!"
   },
   {
-    "username": "A. Einstein",
-    "createdAt": 1502293460904,
+    "username": "Ivan Haserig",
+    "createdAt": 123533155,
+    "tags": "Love",
+    "title": "Your hourglass",
     "story": "They found each other's memories in..."
   }
 ]

@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { v4: uuidv4 } = require('uuid');
 const AWS = require('aws-sdk');
 
 const awsConfig = {
@@ -27,7 +26,6 @@ router.post('/stories', (req, res) => {
   const params = {
     TableName: table,
     Item: {
-      id: uuidv4(),
       username: req.body.username,
       createdAt: Date.now(),
       story: req.body.story,

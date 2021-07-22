@@ -5,20 +5,8 @@ AWS.config.update({
 const dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
 const params = {
   TableName: 'Stories',
-  KeySchema: [
-    { AttributeName: 'username', KeyType: 'HASH' },
-    { AttributeName: 'createdAt', KeyType: 'RANGE' },
-  ],
-  AttributeDefinitions: [
-    { AttributeName: 'username', AttributeType: 'S' },
-    { AttributeName: 'createdAt', AttributeType: 'N' },
-  ],
-  ProvisionedThroughput: {
-    ReadCapacityUnits: 10,
-    WriteCapacityUnits: 10,
-  },
 };
-dynamodb.createTable(params, (err, data) => {
+dynamodb.deleteTable(params, (err, data) => {
   if (err) {
     console.error(
       'Unable to create table. Error JSON:',

@@ -4,7 +4,7 @@ import Cards from '../Cards/cards';
 import './read.css';
 import { useStoreContext } from '../../utils/GlobalStore';
 
-export default function Read(props) {
+export default function Read() {
   const [{ data }] = useStoreContext();
 
   return (
@@ -12,7 +12,7 @@ export default function Read(props) {
       <Navbar />
       <div className='cards-container'>
         {data.map((item) => {
-          return <Cards key={item.id} item={item} />;
+          return <Cards key={item.createdAt} item={item} />;
         })}
       </div>
     </>

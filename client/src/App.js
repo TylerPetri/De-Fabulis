@@ -17,7 +17,6 @@ function App() {
     async function fetchData() {
       const res = await fetchJSON('/api/stories');
       dispatch({ type: 'SET_DATA', data: { data: res } });
-      console.log(res);
     }
     fetchData();
   }, []);

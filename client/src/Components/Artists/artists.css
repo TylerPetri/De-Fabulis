@@ -1,0 +1,33 @@
+.artists-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.artists-alphabetical-pagenation {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  color: white;
+}
+
+.artists-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.artists-btn {
+  height: 25px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  margin: 1px;
+  color: white;
+  background-color: rgb(73, 73, 73);
+}
+
+.artists-btn:hover {
+  cursor: pointer;
+  background-color: rgb(111, 111, 111);
+}

@@ -32,7 +32,8 @@
   border-radius: 10px;
   resize: none;
   padding: 10px;
-  background-color: burlywood;
+  color: white;
+  background-color: rgb(121, 80, 28);
 }
 
 .compose-area:focus {

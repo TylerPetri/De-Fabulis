@@ -1,0 +1,45 @@
+.link {
+  text-decoration: none;
+  color: white;
+  height: max-content;
+}
+
+.navbar {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  background-color: black;
+}
+
+.nav-cont {
+  width: max-content;
+  display: flex;
+  justify-content: center;
+}
+
+.wand-pic {
+  height: 70%;
+  margin: 5px;
+}
+
+.wand-pic:hover {
+  cursor: pointer;
+}
+
+.nav-item {
+  display: flex;
+}
+
+.nav-link {
+  height: max-content;
+  margin: 5px 10px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  border-bottom: 2px solid white;
+}

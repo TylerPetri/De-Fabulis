@@ -1,0 +1,46 @@
+.welcome-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.welcome-card {
+  height: 50%;
+  width: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.wBooksCont {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+}
+
+.welcome-img {
+  height: 127px;
+  width: 155px;
+  margin: 0 30px;
+  transition: 1s;
+}
+.welcome-img:hover {
+  height: 165px;
+  width: 240px;
+}
+
+.welcome-img-books {
+  height: 100px;
+  width: 175px;
+  margin: 30px;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.welcome-img-books:hover {
+  height: 135px;
+  width: 250px;
+  cursor: pointer;
+}

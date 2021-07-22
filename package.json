@@ -1,0 +1,25 @@
+{
+  "name": "library-of-stories",
+  "version": "1.0.0",
+  "description": "",
+  "main": "back-end/server.js",
+  "dependencies": {
+    "aws-sdk": "^2.951.0",
+    "concurrently": "^6.2.0",
+    "express": "^4.17.1",
+    "if-env": "^1.0.4",
+    "react-router-dom": "^5.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd back-end && npm start",
+    "start:dev": "concurrently \"cd back-end && npm run watch\" \"cd client && npm start\"",
+    "install": "cd back-end && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

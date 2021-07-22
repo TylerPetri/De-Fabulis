@@ -1,0 +1,34 @@
+.compose-wrapper {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-height: 500px) {
+  .compose-wrapper {
+    height: 80%;
+  }
+}
+
+.compose-card {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.compose-area {
+  height: 90%;
+  width: 90%;
+  border-radius: 10px;
+  resize: none;
+  padding: 10px;
+  background-color: burlywood;
+}
+
+.compose-area:focus {
+  outline: none;
+}

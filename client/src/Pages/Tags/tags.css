@@ -5,32 +5,6 @@
   align-items: center;
 }
 
-.tags-alphabetical-pagenation {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  color: white;
-}
-
-ul {
-  list-style-type: none;
-}
-
-li {
-  height: 30px;
-  width: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 3px;
-}
-
-li:hover {
-  cursor: pointer;
-  background-color: rgb(111, 111, 111);
-  border-radius: 15px;
-}
-
 .tags-cont {
   display: flex;
   flex-direction: column;

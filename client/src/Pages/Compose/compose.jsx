@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Navbar from '../Navbar/navbar';
+import Navbar from '../../Components/Navbar/navbar';
 import fetchJSON from '../../utils/API';
 import './compose.css';
 

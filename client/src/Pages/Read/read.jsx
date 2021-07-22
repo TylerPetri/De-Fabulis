@@ -1,5 +1,5 @@
-import Navbar from '../Navbar/navbar';
-import Cards from '../Cards/cards';
+import Navbar from '../../Components/Navbar/navbar';
+import Cards from '../../Components/Cards/cards';
 
 import './read.css';
 import { useStoreContext } from '../../utils/GlobalStore';

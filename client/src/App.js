@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Welcome from './Components/Welcome/welcome';
-import Compose from './Components/Compose/compose';
-import Read from './Components/Read/read';
-import Tags from './Components/Tags/tags';
-import Artists from './Components/Artists/artists';
+import Welcome from './Pages/Welcome/welcome';
+import Compose from './Pages/Compose/compose';
+import Read from './Pages/Read/read';
+import Tags from './Pages/Tags/tags';
+import Artists from './Pages/Artists/artists';
 
 import fetchJSON from './utils/API';
 import { useStoreContext } from './utils/GlobalStore';

@@ -19,12 +19,16 @@
   justify-content: center;
 }
 
-.wand-pic {
-  height: 70%;
-  margin: 5px;
+.nav-title {
+  height: max-content;
+  margin: 5px 20px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: orange;
+  font-family: 'Festive';
 }
 
-.wand-pic:hover {
+.nav-title:hover {
   cursor: pointer;
 }
 

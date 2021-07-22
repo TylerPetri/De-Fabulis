@@ -8,6 +8,7 @@ import './welcome.css';
 export default function Welcome() {
   return (
     <div className='welcome-wrapper'>
+      <div className='welcome-title'>De Fabulis</div>
       <div className='welcome-card'>
         <div className='wBooksCont'>
           {' '}

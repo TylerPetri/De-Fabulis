@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import wand from '../../assets/wand.png';
 
 import './navbar.css';
 
@@ -7,10 +6,10 @@ export default function Taskbar() {
   return (
     <div className='navbar'>
       <div className='nav-cont'>
-        <Link to='/'>
-          <img src={wand} alt='home-link-wand' className='wand-pic' />
-        </Link>
         <div className='nav-item'>
+          <Link to='/' className='link'>
+            <div className='nav-title'>F</div>
+          </Link>
           <Link to='/compose' className='link'>
             <div className='nav-link'>Compose</div>
           </Link>

@@ -1,5 +1,5 @@
 .compose-wrapper {
-  height: 90%;
+  height: 90vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,13 @@
 
 @media (max-height: 500px) {
   .compose-wrapper {
-    height: 80%;
+    height: 80vh;
+  }
+}
+
+@media (max-height: 300px) {
+  .compose-wrapper {
+    height: 60vh;
   }
 }
 

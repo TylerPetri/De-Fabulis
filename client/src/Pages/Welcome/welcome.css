@@ -42,7 +42,6 @@
   height: 100px;
   width: 175px;
   margin: 30px;
-  border-radius: 10px;
   transition: 1s;
 }
 
@@ -50,4 +49,58 @@
   height: 135px;
   width: 250px;
   cursor: pointer;
+}
+
+@media (max-width: 630px) {
+  .welcome-title {
+    font-size: 5rem;
+  }
+  .welcome-card {
+    width: 400px;
+  }
+  .welcome-img {
+    height: 83px;
+    width: 102px;
+  }
+  .welcome-img:hover {
+    height: 108px;
+    width: 158px;
+  }
+  .welcome-img-books {
+    height: 66px;
+    width: 115px;
+  }
+  .welcome-img-books:hover {
+    height: 89px;
+    width: 165px;
+  }
+}
+@media (max-width: 440px) {
+  .welcome-title {
+    font-size: 5rem;
+  }
+  .welcome-card {
+    width: 300px;
+  }
+  .welcome-img {
+    height: 60px;
+    width: 75px;
+  }
+  .welcome-img:hover {
+    height: 78px;
+    width: 120px;
+  }
+  .welcome-img-books {
+    height: 47px;
+    width: 88px;
+  }
+  .welcome-img-books:hover {
+    height: 66px;
+    width: 122px;
+  }
+}
+@media (max-width: 320px) {
+  .welcome-title {
+    font-size: 3.5rem;
+  }
 }

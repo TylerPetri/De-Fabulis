@@ -1,0 +1,60 @@
+.cover-container {
+  color: white;
+  display: grid;
+  grid-template-columns: max-content auto 30px;
+  grid-template-rows: 40px max-content;
+  width: 100%;
+  margin: 30px 0;
+}
+
+.cover-container h3 {
+  width: max-content;
+  margin: 0;
+}
+
+.cover-label {
+  margin-top: 10px;
+}
+
+.cover-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  margin-left: 10px;
+}
+
+.upload-btn-cover {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alter-size-cover {
+  width: 100%;
+  height: max-content;
+  padding-top: 7px;
+  font-size: 25px;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.alter-size-button:hover {
+  cursor: pointer;
+}
+
+.cover-compose-area {
+  width: 97%;
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.cover-compose-area:focus {
+  outline: none;
+}

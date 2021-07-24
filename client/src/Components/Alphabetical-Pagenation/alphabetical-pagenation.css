@@ -3,13 +3,10 @@
   justify-content: space-between;
   width: 80%;
   color: white;
-}
-
-ul {
   list-style-type: none;
 }
 
-li {
+.alphabetical-pagenation li {
   height: 30px;
   width: 30px;
   display: flex;
@@ -18,7 +15,7 @@ li {
   padding-bottom: 3px;
 }
 
-li:hover {
+.alphabetical-pagenation li:hover {
   cursor: pointer;
   background-color: rgb(111, 111, 111);
   border-radius: 15px;

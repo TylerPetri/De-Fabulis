@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { BsFileText, BsArrowsExpand, BsArrowsCollapse } from 'react-icons/bs';
 
 import './composeCover.css';
 
-export default function AddCover() {
+export default function AddCover(props) {
   const [expand, setExpand] = useState(false);
 
   function toggleExpand() {
@@ -16,11 +16,14 @@ export default function AddCover() {
         <h3>Add cover:</h3>
       </div>
       <div className='cover-file'>
-        <button className='upload-btn-cover'>
-          Choose Cover
-          <BsFileText />
-        </button>
-        <h4>No file selected</h4>
+        <input
+          type='file'
+          ref={props.textFileInput}
+          id='textFile'
+          onChange={(e) =>
+            props.handleFileChosen(e.target.files[0], e.target.id)
+          }
+        />
       </div>
       <div className='alter-size-cover'>
         {!expand ? (

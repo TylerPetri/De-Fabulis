@@ -1,0 +1,79 @@
+.card {
+  height: 315px;
+  width: 250px;
+  border-radius: 10px;
+  margin: 10px;
+  display: grid;
+  grid-template-rows: 85% 15%;
+  position: relative;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.cover {
+  height: 79%;
+  width: 92%;
+  padding: 4%;
+  position: absolute;
+  font-family: 'Libre Franklin';
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  background-color: burlywood;
+}
+
+.story {
+  height: 79%;
+  width: 92%;
+  padding: 4%;
+  position: absolute;
+  opacity: 0;
+  border-radius: 10px 10px 0 0;
+  z-index: 2;
+  font-family: 'Libre Franklin';
+  font-weight: bold;
+}
+
+.story:hover {
+  opacity: 0.9;
+}
+
+.story:hover ~ .cover {
+  opacity: 0;
+}
+
+.title {
+  border-radius: 0 0 10px 10px;
+  background-color: grey;
+  height: 92%;
+  max-width: 92%;
+  padding: 4%;
+  overflow: hidden;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-family: 'Libre Franklin';
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: larger;
+  z-index: 3;
+}
+
+.title:hover ~ .story {
+  color: white;
+  background-color: rgb(0, 0, 0, 0.8);
+  opacity: 0.9;
+}
+
+.title:hover ~ .cover {
+  opacity: 0;
+}
+
+.title:hover {
+  overflow: visible;
+  min-height: 92%;
+  height: max-content;
+}

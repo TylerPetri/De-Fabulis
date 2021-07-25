@@ -4,20 +4,50 @@
     "createdAt": 12341234143,
     "tags": "random",
     "title": "greeting",
-    "story": "hello"
+    "cover": "This is a story about a greetings",
+    "story": "hello",
+    "storySettings": {
+      "font": "white",
+      "textBackground": "RGBA(128, 0, 128)",
+      "background": "RGBA(173, 216, 230, 0.4)"
+    },
+    "coverSettings": {
+      "font": "green",
+      "background": "black"
+    }
   },
   {
     "username": "Ela Triem",
     "createdAt": 123512351235,
     "tags": "magic",
     "title": "Journey of the hats",
-    "story": "Wizard of Trought revisit!"
+    "cover": "This is a story about a wizard",
+    "story": "Wizard of Trought revisit!",
+    "storySettings": {
+      "font": "white",
+      "textBackground": "RGBA(128, 0, 128)",
+      "background": "RGBA(173, 216, 230, 0.4)"
+    },
+    "coverSettings": {
+      "font": "green",
+      "background": "black"
+    }
   },
   {
     "username": "Ivan Haserig",
     "createdAt": 123533155,
     "tags": "Love",
     "title": "Your hourglass",
-    "story": "They found each other's memories in..."
+    "cover": "This is a story about a memory",
+    "story": "They found each other's memories in...",
+    "storySettings": {
+      "font": "white",
+      "textBackground": "RGBA(128, 0, 128)",
+      "background": "RGBA(173, 216, 230, 0.4)"
+    },
+    "coverSettings": {
+      "font": "green",
+      "background": "black"
+    }
   }
 ]

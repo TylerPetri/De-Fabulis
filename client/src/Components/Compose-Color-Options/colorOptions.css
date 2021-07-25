@@ -1,0 +1,31 @@
+.edit-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-color-button {
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  border: none;
+  margin: 5px;
+}
+
+.edit-color-button:hover {
+  cursor: pointer;
+}
+
+.color-dropdown {
+  position: absolute;
+  right: 0;
+  background-color: black;
+  height: max-content;
+  width: max-content;
+  display: grid;
+  grid-template-columns: max-content max-content max-content max-content;
+  grid-template-rows: max-content max-content max-content max-content;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 180px;
+}

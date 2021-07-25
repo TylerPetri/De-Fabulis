@@ -1,9 +1,12 @@
 import { useState, useRef } from 'react';
+import { useStoreContext } from '../../utils/GlobalStore';
 
 import './composeTags.css';
 
-export default function AddTags() {
-  const [tags, setTags] = useState(['Fantasy', 'Horror', 'Scifi']);
+export default function AddTags(props) {
+  const [{ currentStory }, dispatch] = useStoreContext();
+  const [temp, setTemp] = useState([currentStory]);
+  const [tags, setTags] = useState([]);
 
   const tagsInput = useRef();
 
@@ -16,16 +19,23 @@ export default function AddTags() {
   function addTag() {
     setTags([...tags, tagsInput.current.value]);
     tagsInput.current.value = '';
+    setTemp([...temp, (temp[0].tags = tags)]);
   }
 
   function removeTag(idx) {
     const remove = tags.splice(idx, 1);
     const filter = tags.filter((a) => a !== remove);
     setTags(filter);
+    setTemp([...temp, (temp[0].tags = tags)]);
+  }
+
+  function logs() {
+    console.log(tags, temp, currentStory);
   }
 
   return (
     <>
+      <button onClick={logs}>logs</button>
       <div className='compose-tags-container'>
         <h3>Add Tags: </h3>
         <div className='compose-tags-display'>

@@ -15,7 +15,7 @@
   width: 75%;
   border-radius: 10px;
   display: grid;
-  grid-template-rows: 60px auto;
+  grid-template-rows: 60px 100px auto;
 }
 
 .edit-options-cont {
@@ -39,38 +39,7 @@
   width: max-content;
   margin: 0 15px;
   position: relative;
-}
-
-.edit-options {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.edit-color-button {
-  height: 30px;
-  width: 30px;
-  border-radius: 50px;
-  border: none;
-  margin: 5px;
-}
-
-.edit-color-button:hover {
-  cursor: pointer;
-}
-
-.color-dropdown {
-  position: absolute;
-  right: 0;
-  background-color: black;
-  height: max-content;
-  width: max-content;
-  display: grid;
-  grid-template-columns: max-content max-content max-content max-content;
-  grid-template-rows: max-content max-content max-content max-content;
-  border-radius: 5px;
-  padding: 5px;
-  margin-top: 180px;
+  font-family: 'Libre Franklin';
 }
 
 #black {
@@ -103,18 +72,34 @@
   cursor: pointer;
 }
 
+.edit-title-area {
+  height: 94%;
+  width: 94%;
+  padding: 3%;
+  resize: none;
+  color: white;
+  border-bottom: none;
+  background-color: rgb(121, 80, 28);
+  grid-row-start: 2;
+  grid-row-end: 3;
+  text-align: center;
+  font-size: 3em;
+}
+
 .edit-compose-area {
   height: 90%;
   width: 90%;
   border-radius: 0 0 10px 10px;
+  border-top: none;
   resize: none;
   padding: 5%;
   color: white;
   background-color: rgb(121, 80, 28);
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
-.edit-compose-area:focus {
+.edit-compose-area:focus,
+.edit-title-area:focus {
   outline: none;
 }

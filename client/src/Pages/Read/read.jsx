@@ -1,5 +1,6 @@
 import Navbar from '../../Components/Navbar/navbar';
-import Cards from '../../Components/Cards/cards';
+import Cards from '../../Components/Read-Cards/readCards';
+import StoryPopup from '../../Components/Story-Popup/storyPopup';
 
 import './read.css';
 import { useStoreContext } from '../../utils/GlobalStore';
@@ -10,10 +11,15 @@ export default function Read() {
   return (
     <>
       <Navbar />
+      <StoryPopup />
       <div className='cards-container'>
-        {data.map((item) => {
-          return <Cards key={item.createdAt} item={item} />;
-        })}
+        {data.length > 0 ? (
+          data.map((item) => {
+            return <Cards key={item.createdAt} item={item} />;
+          })
+        ) : (
+          <h2>No stories in database</h2>
+        )}
       </div>
     </>
   );

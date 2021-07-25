@@ -4,7 +4,7 @@ import { useStoreContext } from '../../utils/GlobalStore';
 
 import './uploadButtons.css';
 
-export default function UploadButtons() {
+export default function UploadButtons(props) {
   const [_, dispatch] = useStoreContext();
 
   function openEdit() {
@@ -27,7 +27,7 @@ export default function UploadButtons() {
           Preview <BsEye />
         </button>
 
-        <button className='upload-button'>
+        <button className='upload-button' onClick={props.submitForm}>
           Submit <BsUpload />
         </button>
       </div>

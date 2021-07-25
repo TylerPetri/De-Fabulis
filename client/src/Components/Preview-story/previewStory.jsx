@@ -1,11 +1,12 @@
+import { useState } from 'react';
 import { CgCloseR } from 'react-icons/cg';
 
 import { useStoreContext } from '../../utils/GlobalStore';
 
-import './previewStory.css';
-
 export default function PreviewStory() {
-  const [{ openPreview, currentStory }, dispatch] = useStoreContext();
+  const [{ openPreview, currentStorySettings, currentStory }, dispatch] =
+    useStoreContext();
+  const [settings] = useState(currentStorySettings);
 
   function closePreview() {
     dispatch({ type: 'CLOSE_PREVIEW' });
@@ -13,21 +14,45 @@ export default function PreviewStory() {
 
   return (
     <div
-      className='preview-compose-container'
+      className='story-popup-container'
       style={{
         opacity: openPreview ? '1' : '0',
         zIndex: openPreview ? '10' : '-1',
-        backgroundColor: currentStory.settings[2].color,
+        backgroundColor: settings[2].color,
       }}
     >
-      <div className='preview-compose-card'>
-        <div>
-          <CgCloseR className='preview-close-button' onClick={closePreview} />
+      <div className='story-popup-card'>
+        <div className='story-popup-close-button'>
+          <CgCloseR onClick={closePreview} />
         </div>
         <textarea
-          name='preview-compose-area'
-          className='preview-compose-area'
+          className='popup-authors'
           readOnly={true}
+          style={{
+            color: settings[0].color,
+            backgroundColor: settings[1].color,
+          }}
+          value={currentStory.username}
+        />
+        <textarea
+          placeholder='Title'
+          className='story-popup-title'
+          readOnly={true}
+          style={{
+            color: settings[0].color,
+            backgroundColor: settings[1].color,
+          }}
+          value={currentStory.title.length > 0 ? currentStory.title : ''}
+        />
+        <textarea
+          placeholder='Story'
+          className='story-popup-area'
+          readOnly={true}
+          style={{
+            color: settings[0].color,
+            backgroundColor: settings[1].color,
+          }}
+          value={currentStory.story}
         />
       </div>
     </div>

@@ -15,6 +15,9 @@ allUsers.forEach((user) => {
       tags: user.tags,
       title: user.title,
       story: user.story,
+      cover: user.cover,
+      storySettings: user.storySettings,
+      coverSettings: user.coverSettings,
     },
   };
   dynamodb.put(params, (err, data) => {

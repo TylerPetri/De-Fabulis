@@ -1,19 +1,27 @@
-import { useState, useRef } from 'react';
-import { BsFileText, BsArrowsExpand, BsArrowsCollapse } from 'react-icons/bs';
+import { useState } from 'react';
+import { BsArrowsExpand, BsArrowsCollapse } from 'react-icons/bs';
 
 import './composeCover.css';
 
 export default function AddCover(props) {
   const [expand, setExpand] = useState(false);
+  const [characterCount, setCharacterCount] = useState(0);
 
   function toggleExpand() {
     !expand ? setExpand(true) : setExpand(false);
   }
 
+  // update state based on form input changes
+  const handleChange = (event) => {
+    if (event.target.value.length <= 400) {
+      setCharacterCount(event.target.value.length);
+    }
+  };
+
   return (
     <div className='cover-container'>
       <div className='cover-label'>
-        <h3>Add cover:</h3>
+        <h3>Cover:</h3>
       </div>
       <div className='cover-file'>
         <input
@@ -38,10 +46,11 @@ export default function AddCover(props) {
           />
         )}
       </div>
+      <div className='character-count-cover'>{characterCount}/400</div>
       <textarea
-        name='cover-compose-area'
         className='cover-compose-area'
         style={{ height: expand ? '300px' : '125px' }}
+        onChange={handleChange}
       ></textarea>
     </div>
   );

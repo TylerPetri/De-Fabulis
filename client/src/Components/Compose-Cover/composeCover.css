@@ -1,7 +1,7 @@
 .cover-container {
   color: white;
   display: grid;
-  grid-template-columns: max-content auto 30px;
+  grid-template-columns: max-content auto 60px;
   grid-template-rows: 40px max-content;
   width: 100%;
   margin: 30px 0;
@@ -32,6 +32,8 @@
 }
 
 .alter-size-cover {
+  display: flex;
+  justify-content: flex-end;
   width: 100%;
   height: max-content;
   padding-top: 7px;
@@ -45,9 +47,9 @@
 }
 
 .cover-compose-area {
-  width: 97%;
+  width: 96%;
   resize: none;
-  padding: 10px;
+  padding: 2%;
   font-size: 16px;
   grid-column-start: 1;
   grid-column-end: 4;
@@ -57,4 +59,23 @@
 
 .cover-compose-area:focus {
   outline: none;
+}
+
+.character-count-cover {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  z-index: 2;
+  color: grey;
+  height: 95%;
+  width: 85%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 5%;
+}
+
+.character-count-cover:hover {
+  cursor: text;
 }

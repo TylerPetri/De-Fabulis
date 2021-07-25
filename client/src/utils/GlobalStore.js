@@ -45,6 +45,27 @@ const dataReducer = (state, action) => {
       return { ...state, ...action.data };
     case 'SET_STORY_SETTINGS':
       return { ...state, ...action.data };
+    case 'CLEAR_CURRENT_STORY':
+      return {
+        ...state,
+        currentStory: {
+          username: '',
+          createdAt: 0,
+          tags: '',
+          title: '',
+          cover: '',
+          story: '',
+          storySettings: {
+            font: '',
+            textBackground: '',
+            background: '',
+          },
+          coverSettings: {
+            font: '',
+            background: '',
+          },
+        },
+      };
     case 'OPEN_EDIT':
       return { ...state, openEdit: true };
     case 'CLOSE_EDIT':

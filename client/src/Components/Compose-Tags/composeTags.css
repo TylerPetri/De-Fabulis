@@ -1,16 +1,16 @@
-.compose-tags-container {
+.compose-title-tags-container {
   display: grid;
   grid-template-columns: max-content auto;
   width: 100%;
 }
 
-.compose-tags-container h3 {
+.compose-title-tags-container h3 {
   color: white;
   width: max-content;
   margin-bottom: 0;
 }
 
-.compose-tags-display {
+.compose-title-tags-display {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -21,18 +21,24 @@
   grid-column-end: 3;
 }
 
+.add-title-input,
 .add-tags-input {
-  height: 55px;
-  width: 150px;
+  height: 30px;
+  width: 200px;
   color: white;
   background: none;
-  margin-left: 15px;
+  margin: 15px 0 0 15px;
   border: none;
   border-bottom: 1px solid rgb(170, 170, 170);
   font-size: 20px;
   align-self: flex-end;
 }
 
+.add-title-input {
+  width: 90%;
+}
+
+.add-title-input:focus,
 .add-tags-input:focus {
   outline: none;
 }
@@ -40,7 +46,7 @@
 .compose-tags {
   height: max-content;
   width: max-content;
-  padding: 12px 20px;
+  padding: 8px 20px;
   margin: 5px 0 0 10px;
   color: white;
   background-color: rgb(73, 73, 73);

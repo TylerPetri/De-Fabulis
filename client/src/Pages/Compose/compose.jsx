@@ -1,25 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Navbar from '../../Components/Navbar/navbar';
 import CoverContainer from '../../Components/Compose-Cover-Container/composeCoverCont';
-
-import EditStory from '../../Components/Compose-Edit-Story/editStory';
-import FileSelectionButtons from '../../Components/File-selection-buttons/fileSelectionButtons';
-import AddTitle from '../../Components/Compose-Title/addTitle';
-import AddTags from '../../Components/Compose-Tags/composeTags';
+import StoryContainer from '../../Components/Compose-Story-Container/composeStoryContainer';
 import UploadButtons from '../../Components/UploadButtons/uploadButtons';
-import StoryPreview from '../../Components/Preview-story/previewStory';
-import ColorOptions from '../../Components/Compose-Color-Options/colorOptions';
-import fetchJSON from '../../utils/API';
 
 import { useStoreContext } from '../../utils/GlobalStore';
 
 import './compose.css';
 
 export default function Compose() {
-  const [
-    { currentStory, story, username, title, currentStorySettings },
-    dispatch,
-  ] = useStoreContext();
+  const [{ currentStory, currentStorySettings }, dispatch] = useStoreContext();
   const [settings, setSettings] = useState(currentStorySettings);
   const [temp, setTemp] = useState([currentStory]);
 
@@ -97,18 +87,15 @@ export default function Compose() {
           handleFileChosen={handleFileChosen}
           clearFileChosen={clearFileChosen}
         />
-        <FileSelectionButtons
+        <StoryContainer
+          settings={settings}
+          setSettings={setSettings}
           textFileInput={textFileInput}
-          imgFileInput={imgFileInput}
           handleFileChosen={handleFileChosen}
           clearFileChosen={clearFileChosen}
         />
-        <AddTitle temp={temp} setTemp={setTemp} dispatch={dispatch} />
-        <AddTags temp={temp} setTemp={setTemp} />
         <UploadButtons temp={temp} setTemp={setTemp} />
       </div>
-      <StoryPreview username={username} title={title} story={story} />
-      <EditStory settings={settings} setSettings={setSettings} />
     </>
   );
 }

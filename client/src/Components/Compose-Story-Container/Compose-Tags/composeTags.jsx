@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useStoreContext } from '../../utils/GlobalStore';
+import { useStoreContext } from '../../../utils/GlobalStore';
 
 import './composeTags.css';
 

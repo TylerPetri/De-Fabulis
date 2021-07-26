@@ -37,7 +37,7 @@ const initialData = {
   },
   storyFileSelected: false,
   imgFileSelected: false,
-  coverFileSelected: false,
+  textCoverFileSelected: false,
   openCoverEdit: false,
   openStoryEdit: false,
   openPreview: false,

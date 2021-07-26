@@ -4,7 +4,8 @@ import { CgCloseR } from 'react-icons/cg';
 import './storyPopup.css';
 
 export default function StoryPopup() {
-  const [{ openStory, currentStory }, dispatch] = useStoreContext();
+  const [{ openStory, storySettings, username, title, story }, dispatch] =
+    useStoreContext();
 
   function closeStoryPopup() {
     dispatch({ type: 'CLOSE_STORY' });
@@ -17,7 +18,7 @@ export default function StoryPopup() {
         style={{
           opacity: openStory ? '1' : '0',
           zIndex: openStory ? '10' : '-1',
-          backgroundColor: currentStory.storySettings.background,
+          backgroundColor: storySettings.background,
         }}
       >
         <div className='story-popup-card'>
@@ -28,28 +29,28 @@ export default function StoryPopup() {
             className='popup-authors'
             readOnly={true}
             style={{
-              color: currentStory.storySettings.font,
-              backgroundColor: currentStory.storySettings.textBackground,
+              color: storySettings.font,
+              backgroundColor: storySettings.textBackground,
             }}
-            value={currentStory.username}
+            value={username}
           />
           <textarea
             className='story-popup-title'
             readOnly={true}
             style={{
-              color: currentStory.storySettings.font,
-              backgroundColor: currentStory.storySettings.textBackground,
+              color: storySettings.font,
+              backgroundColor: storySettings.textBackground,
             }}
-            value={currentStory.title}
+            value={title}
           />
           <textarea
             className='story-popup-area'
             readOnly={true}
             style={{
-              color: currentStory.storySettings.font,
-              backgroundColor: currentStory.storySettings.textBackground,
+              color: storySettings.font,
+              backgroundColor: storySettings.textBackground,
             }}
-            value={currentStory.story}
+            value={story}
           />
         </div>
       </div>

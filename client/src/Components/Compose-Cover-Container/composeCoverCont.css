@@ -1,13 +1,13 @@
 .compose-cover-container {
   width: max-content;
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: max-content max-content max-content;
   grid-template-rows: 75px max-content;
 }
 
 .cover-edit-title {
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
   text-align: center;

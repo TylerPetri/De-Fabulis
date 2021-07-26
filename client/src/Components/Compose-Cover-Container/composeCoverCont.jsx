@@ -1,6 +1,7 @@
 import TextCover from './Compose-Cover-Uploads/textUpload';
 import CoverEdit from './Compose-Cover-Edit/coverEdit';
 import ImageCover from './Compose-Cover-Uploads/imageUpload';
+import EditIcons from '../Edit-Icons/editIcons';
 
 import { useStoreContext } from '../../utils/GlobalStore';
 import './composeCoverCont.css';
@@ -37,6 +38,7 @@ export default function CoverContainer(props) {
       <div className='cover-edit'>
         <CoverEdit />
       </div>
+      <EditIcons />
     </div>
   );
 }

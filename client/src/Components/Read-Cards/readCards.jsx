@@ -6,7 +6,19 @@ export default function Cards(props) {
   const [_, dispatch] = useStoreContext();
 
   function openStoryPopup() {
-    dispatch({ type: 'SET_CURRENT_STORY', data: { currentStory: props.item } });
+    dispatch({
+      type: 'SET_CURRENT_STORY',
+      data: {
+        username: props.item.username,
+        createdAt: props.item.createdAt,
+        tags: props.item.tags,
+        title: props.item.title,
+        textCover: props.item.cover,
+        story: props.item.story,
+        storySettings: props.item.storySettings,
+        coverSettings: props.item.coverSettings,
+      },
+    });
     dispatch({ type: 'OPEN_STORY' });
   }
 

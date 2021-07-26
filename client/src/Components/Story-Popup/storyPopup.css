@@ -15,7 +15,7 @@
   border-radius: 10px;
   display: grid;
   grid-template-columns: 30px auto 50px;
-  grid-template-rows: 40px 110px auto;
+  grid-template-rows: 50px 110px auto;
 }
 
 .story-popup-close-button {
@@ -23,7 +23,7 @@
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
-  font-size: 2em;
+  font-size: 1.5em;
   z-index: 1;
   margin: 10px 0 0 10px;
 }
@@ -42,6 +42,7 @@
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
+  overflow: hidden;
 }
 
 .story-popup-title {

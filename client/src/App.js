@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Welcome from './Pages/Welcome/welcome';
@@ -19,6 +19,24 @@ function App() {
       dispatch({ type: 'SET_DATA', data: { data: res } });
     }
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      let temp = { width: undefined, height: undefined };
+      temp.width = window.innerWidth;
+      temp.height = window.innerHeight;
+
+      dispatch({
+        type: 'SET_WINDOW_SIZE',
+        data: {
+          windowSize: temp,
+        },
+      });
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (

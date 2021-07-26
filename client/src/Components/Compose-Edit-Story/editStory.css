@@ -15,7 +15,9 @@
   width: 75%;
   border-radius: 10px;
   display: grid;
+  grid-template-columns: 200px auto;
   grid-template-rows: 60px 100px auto;
+  overflow: hidden;
 }
 
 .edit-options-cont {
@@ -27,6 +29,39 @@
   align-items: center;
   border-radius: 10px 10px 0 0;
   background-color: rgb(107, 180, 180);
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.color-options-nav-btn {
+  margin-left: 20px;
+  font-size: 2em;
+}
+
+.color-options-nav-btn:hover {
+  cursor: pointer;
+}
+
+.color-options-sidenav {
+  width: max-content;
+  height: 100%;
+  color: black;
+  background-color: rgb(107, 180, 180);
+  border-radius: 0 0 0 10px;
+  margin-left: -205px;
+  transition: 0.8s;
+  grid-column-start: 1;
+  grid-column-end: auto;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  z-index: 2;
+}
+
+.color-options-sidenav ul {
+  list-style-type: none;
+  padding: 13px;
 }
 
 .edit-options-cont ul {
@@ -80,6 +115,8 @@
   color: white;
   border-bottom: none;
   background-color: rgb(121, 80, 28);
+  grid-column-start: 1;
+  grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
   text-align: center;
@@ -87,7 +124,7 @@
 }
 
 .edit-compose-area {
-  height: 90%;
+  height: auto;
   width: 90%;
   border-radius: 0 0 10px 10px;
   border-top: none;
@@ -95,6 +132,8 @@
   padding: 5%;
   color: white;
   background-color: rgb(121, 80, 28);
+  grid-column-start: 1;
+  grid-column-end: 3;
   grid-row-start: 3;
   grid-row-end: 4;
 }

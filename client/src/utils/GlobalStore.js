@@ -1,6 +1,10 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 const initialData = {
+  windowSize: {
+    width: undefined,
+    height: undefined,
+  },
   data: [],
   currentStorySettings: [
     { option: 'Font', color: 'white', dropdown: false },
@@ -39,6 +43,8 @@ const initialData = {
 
 const dataReducer = (state, action) => {
   switch (action.type) {
+    case 'SET_WINDOW_SIZE':
+      return { ...state, ...action.data };
     case 'SET_DATA':
       return { ...state, ...action.data };
     case 'SET_CURRENT_STORY':

@@ -7,6 +7,7 @@ import AddTags from '../../Components/Compose-Tags/composeTags';
 import AddCover from '../../Components/Compose-Cover/composeCover';
 import UploadButtons from '../../Components/UploadButtons/uploadButtons';
 import StoryPreview from '../../Components/Preview-story/previewStory';
+import ColorOptions from '../../Components/Compose-Color-Options/colorOptions';
 import fetchJSON from '../../utils/API';
 
 import { useStoreContext } from '../../utils/GlobalStore';
@@ -14,9 +15,9 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import './compose.css';
 
 export default function Compose() {
-  const [{ currentStory }, dispatch] = useStoreContext();
+  const [{ currentStory, currentStorySettings }, dispatch] = useStoreContext();
+  const [settings, setSettings] = useState(currentStorySettings);
   const [temp, setTemp] = useState([currentStory]);
-  const [tags, setTags] = useState([]);
 
   const textFileInput = useRef();
   const imgFileInput = useRef();
@@ -70,7 +71,11 @@ export default function Compose() {
           handleFileChosen={handleFileChosen}
         />
         <AddTitle temp={temp} setTemp={setTemp} dispatch={dispatch} />
-        <AddTags tags={tags} setTags={setTags} />
+        <AddTags
+          temp={temp}
+          setTemp={setTemp}
+          handleTempDispatch={handleTempDispatch}
+        />
         <AddCover
           textFileInput={textFileInputCover}
           handleFileChosen={handleFileChosen}
@@ -78,7 +83,7 @@ export default function Compose() {
         <UploadButtons temp={temp} setTemp={setTemp} submitForm={submitForm} />
       </div>
       <StoryPreview />
-      <EditStory />
+      <EditStory settings={settings} setSettings={setSettings} />
     </>
   );
 }

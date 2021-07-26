@@ -7,7 +7,8 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import './editStory.css';
 
 export default function CompTextArea(props) {
-  const [{ openEdit, currentStory, windowSize }, dispatch] = useStoreContext();
+  const [{ openEdit, currentStory, body, windowSize }, dispatch] =
+    useStoreContext();
   const [sidenav, setSidenav] = useState(false);
   const [temp, setTemp] = useState([currentStory]);
 
@@ -89,7 +90,7 @@ export default function CompTextArea(props) {
               backgroundColor: props.settings[1].color,
             }}
             ref={storyInput}
-            value={currentStory.story}
+            value={body}
             onChange={(e) => handleChange(e)}
           />
         </div>

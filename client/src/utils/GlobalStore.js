@@ -19,23 +19,23 @@ const initialData = {
       dropdown: false,
     },
   ],
-  currentStory: {
-    username: '',
-    createdAt: 0,
-    tags: '',
-    title: '',
-    cover: '',
-    story: '',
-    storySettings: {
-      font: '',
-      textBackground: '',
-      background: '',
-    },
-    coverSettings: {
-      font: '',
-      background: '',
-    },
+  cover: '',
+  body: '',
+  currentTags: '',
+
+  username: '',
+  createdAt: 0,
+  title: '',
+  storySettings: {
+    font: '',
+    textBackground: '',
+    background: '',
   },
+  coverSettings: {
+    font: '',
+    background: '',
+  },
+
   openEdit: false,
   openPreview: false,
   openStory: false,
@@ -43,33 +43,35 @@ const initialData = {
 
 const dataReducer = (state, action) => {
   switch (action.type) {
-    case 'SET_WINDOW_SIZE':
+    case 'SET_ONE':
       return { ...state, ...action.data };
-    case 'SET_DATA':
+    case 'SET_WINDOW_SIZE':
       return { ...state, ...action.data };
     case 'SET_CURRENT_STORY':
       return { ...state, ...action.data };
     case 'SET_STORY_SETTINGS':
       return { ...state, ...action.data };
+    case 'CLEAR_COVER':
+      return { ...state, currentCover: '' };
+    case 'CLEAR_STORY':
+      return { ...state, currentBody: '' };
     case 'CLEAR_CURRENT_STORY':
       return {
         ...state,
-        currentStory: {
-          username: '',
-          createdAt: 0,
-          tags: '',
-          title: '',
-          cover: '',
-          story: '',
-          storySettings: {
-            font: '',
-            textBackground: '',
-            background: '',
-          },
-          coverSettings: {
-            font: '',
-            background: '',
-          },
+        username: '',
+        createdAt: 0,
+        tags: '',
+        title: '',
+        cover: '',
+        story: '',
+        storySettings: {
+          font: '',
+          textBackground: '',
+          background: '',
+        },
+        coverSettings: {
+          font: '',
+          background: '',
         },
       };
     case 'OPEN_EDIT':

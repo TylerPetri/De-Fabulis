@@ -3,9 +3,8 @@ import { useStoreContext } from '../../utils/GlobalStore';
 
 import './composeTags.css';
 
-export default function AddTags(props) {
-  const [{ currentStory }, dispatch] = useStoreContext();
-  const [tags, setTags] = useState([]);
+export default function AddTags() {
+  const [{ currentStory, currentTags }, dispatch] = useStoreContext();
   const tagsInput = useRef();
 
   function handleKeyPress(event) {
@@ -15,31 +14,26 @@ export default function AddTags(props) {
   }
 
   function addTag() {
-    let temp = [currentStory];
-
-    setTags([...tags, tagsInput.current.value]);
-
-    temp[0].tags.length > 0
-      ? temp[0].tags.push(tagsInput.current.value)
-      : (temp[0].tags = tagsInput.current.value);
-
+    dispatch({
+      type: 'SET_ONE',
+      data: { currentTags: [...currentTags, tagsInput.current.value] },
+    });
     tagsInput.current.value = '';
-    props.handleTempDispatch();
   }
 
   function removeTag(idx) {
-    let temp = [currentStory];
+    const temp = currentTags;
+    const remove = temp.splice(idx, 1);
+    const filter = temp.filter((a) => a !== remove);
 
-    const remove = tags.splice(idx, 1);
-    const filter = tags.filter((a) => a !== remove);
-    setTags(filter);
-
-    temp[0].tags = filter;
-    props.handleTempDispatch();
+    dispatch({
+      type: 'SET_ONE',
+      data: { currentTags: filter },
+    });
   }
 
   function logs() {
-    console.log(currentStory);
+    console.log(currentTags);
   }
 
   return (
@@ -54,8 +48,8 @@ export default function AddTags(props) {
             ref={tagsInput}
             onKeyPress={(event) => handleKeyPress(event)}
           />
-          {tags.length > 0 &&
-            tags.map((tag, idx) => (
+          {currentTags.length > 0 &&
+            currentTags.map((tag, idx) => (
               <div
                 className='compose-tags'
                 key={idx}

@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       const res = await fetchJSON('/api/stories');
-      dispatch({ type: 'SET_DATA', data: { data: res } });
+      dispatch({ type: 'SET_ONE', data: { data: res } });
     }
     fetchData();
   }, []);

@@ -38,14 +38,12 @@ export default function Compose() {
 
   function handleFileRead() {
     const content = fileReader.result;
-    setTemp([...temp, (temp[0].story = content)]);
-    handleTempDispatch();
+    dispatch({ type: 'SET_ONE', data: { currentBody: content } });
   }
 
   function handleCoverFileRead() {
     const content = fileReader.result;
-    setTemp([...temp, (temp[0].cover = content)]);
-    handleTempDispatch();
+    dispatch({ type: 'SET_ONE', data: { currentCover: content } });
   }
 
   function handleFileChosen(file, id) {
@@ -53,6 +51,12 @@ export default function Compose() {
     if (id === 'textFileStory') fileReader.onloadend = handleFileRead;
     if (id === 'textFile') fileReader.onloadend = handleCoverFileRead;
     fileReader.readAsText(file);
+  }
+
+  function clearFileChosen(file, id) {
+    file.value = '';
+    if (id === 'textFileStory') dispatch({ type: 'CLEAR_STORY' });
+    if (id === 'textFile') dispatch({ type: 'CLEAR_COVER' });
   }
   //------------//
 
@@ -69,6 +73,7 @@ export default function Compose() {
           textFileInput={textFileInput}
           imgFileInput={imgFileInput}
           handleFileChosen={handleFileChosen}
+          clearFileChosen={clearFileChosen}
         />
         <AddTitle temp={temp} setTemp={setTemp} dispatch={dispatch} />
         <AddTags

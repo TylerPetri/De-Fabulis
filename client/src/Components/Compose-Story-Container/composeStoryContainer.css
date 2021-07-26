@@ -1,3 +1,25 @@
+.compose-story-container {
+  width: max-content;
+  display: grid;
+  grid-template-columns: 50px max-content max-content;
+  grid-template-rows: max-content max-content;
+}
+
+.compose-story-title {
+  height: max-content;
+  width: max-content;
+  font-size: 3em;
+  font-weight: bold;
+  transform: rotate(-90deg);
+  color: white;
+  display: flex;
+  margin: 95px -65px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
 .choosefile-story-container {
   height: 100%;
   width: 100%;
@@ -6,7 +28,22 @@
   justify-content: center;
   color: burlywood;
   grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.story-edit {
+  width: max-content;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.edit-icons-story {
+  grid-column-start: 3;
+  grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 3;
 }

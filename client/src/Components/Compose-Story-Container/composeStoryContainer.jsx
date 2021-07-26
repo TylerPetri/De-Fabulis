@@ -7,8 +7,8 @@ import './composeStoryContainer.css';
 
 export default function CoverContainer(props) {
   return (
-    <div className='compose-cover-container'>
-      <div className='cover-edit-title'>Story</div>
+    <div className='compose-story-container'>
+      <div className='compose-story-title'>Story</div>
       <div className='choosefile-story-container'>
         {' '}
         <StoryUpload
@@ -17,11 +17,11 @@ export default function CoverContainer(props) {
           clearFileChosen={props.clearFileChosen}
         />
       </div>
-      <div className='cover-edit'>
+      <div className='story-edit'>
         <SmallPreviewStory settings={props.settings} />
         <StoryEdit settings={props.settings} setSettings={props.setSettings} />
       </div>
-      <EditIcons />
+      <EditIcons className='edit-icons-story' />
     </div>
   );
 }

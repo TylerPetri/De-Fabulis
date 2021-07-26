@@ -38,7 +38,8 @@ export default function CoverContainer(props) {
       <div className='cover-edit'>
         <CoverEdit />
       </div>
-      <EditIcons />
+
+      <EditIcons className='edit-icons-cover' />
     </div>
   );
 }

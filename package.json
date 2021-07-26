@@ -2,7 +2,7 @@
   "name": "library-of-stories",
   "version": "1.0.0",
   "description": "",
-  "main": "back-end/server.js",
+  "main": "server/server.js",
   "dependencies": {
     "aws-sdk": "^2.951.0",
     "concurrently": "^6.2.0",
@@ -14,9 +14,9 @@
   "devDependencies": {},
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "cd back-end && npm start",
-    "start:dev": "concurrently \"cd back-end && npm run watch\" \"cd client && npm start\"",
-    "install": "cd back-end && npm i && cd ../client && npm i",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build"
   },
   "keywords": [],

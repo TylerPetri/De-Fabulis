@@ -1,6 +1,15 @@
+.small-preview-container {
+  height: 227px;
+  width: 325px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 17px 0 0;
+}
+
 .small-preview-card {
-  height: 140px;
-  width: 200px;
+  height: 75%;
+  width: 75%;
   border-radius: 10px;
   margin: 20px;
   display: grid;

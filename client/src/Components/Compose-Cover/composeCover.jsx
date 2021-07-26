@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { BsArrowsExpand, BsArrowsCollapse } from 'react-icons/bs';
 import { MdClose } from 'react-icons/md';
 
@@ -7,17 +7,26 @@ import './composeCover.css';
 export default function AddCover(props) {
   const [expand, setExpand] = useState(false);
   const [characterCount, setCharacterCount] = useState(0);
+  const textArea = useRef();
+
+  useEffect(() => {
+    setCharacterCount(props.cover.length);
+  }, [props.cover]);
 
   function toggleExpand() {
     !expand ? setExpand(true) : setExpand(false);
   }
 
-  // update state based on form input changes
-  const handleChange = (event) => {
-    if (event.target.value.length <= 400) {
-      setCharacterCount(event.target.value.length);
-    }
-  };
+  function handleChange() {
+    props.dispatch({
+      type: 'SET_ONE',
+      data: { cover: textArea.current.value },
+    });
+  }
+
+  function logs() {
+    console.log(textArea.current.value);
+  }
 
   return (
     <div className='cover-container'>
@@ -42,9 +51,11 @@ export default function AddCover(props) {
           style={{
             display: props.coverFileSelected ? 'block' : 'none',
           }}
-          onClick={(event) => props.clearFileChosen(event)}
+          onClick={props.clearFileChosen}
         />
       </div>
+      <button onClick={logs}>logs</button>
+
       <div className='alter-size-cover'>
         {!expand ? (
           <BsArrowsExpand
@@ -58,10 +69,17 @@ export default function AddCover(props) {
           />
         )}
       </div>
-      <div className='character-count-cover'>{characterCount}/400</div>
+      <div
+        className='character-count-cover'
+        style={{ color: characterCount > 400 ? 'red' : 'grey' }}
+      >
+        {characterCount}/400
+      </div>
       <textarea
         className='cover-compose-area'
         style={{ height: expand ? '300px' : '125px' }}
+        value={props.cover}
+        ref={textArea}
         onChange={handleChange}
       ></textarea>
     </div>

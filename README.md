@@ -2,13 +2,19 @@
 
 If you dare peek: jk S3 request limit $$$
 
-x Deselection of upload files
+- Cover chosing: either text or img (blocks other if one selected). Have little preview beside (clicking it expands where can edit).
+- Story upload: bigger container with preview
+- Title chosing is included in story editing, so not under
+- Tags under "choose file" story container (preview on right)
+- Mobile -> vertical buttons for cover -> Vertical story with tags at bottom, right before submit buttons
 
-- Img upload, cover blocked if image selected, fill cover field if cover upload
-- Preview Cover
+- Color settings as clickeable icon until press preview edit
+- Preview button at bottom shows both story and cover (how to design)
+
 - Story popup author cont (overflow hidden, check when logged in)
-- Compose reactive fluid
 - Save button edit
 - Exit button edit ('save?')
 - Cleanup "currentStorySettings"
 - Change all currentStory (no more temp anywhere)
+
+- click window close popups

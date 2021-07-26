@@ -22,7 +22,6 @@ export default function Compose() {
       story,
       username,
       title,
-      image,
       coverFileSelected,
       currentStorySettings,
     },
@@ -73,6 +72,7 @@ export default function Compose() {
 
   function clearFileChosen(event) {
     const id = event.target.parentNode.firstChild.id;
+    const coverId = event.target.previousSibling.id;
     if (id === 'textFileStory') {
       dispatch({ type: 'SET_ONE', data: { story: '' } });
       dispatch({ type: 'SET_ONE', data: { storyFileSelected: false } });
@@ -83,7 +83,7 @@ export default function Compose() {
       dispatch({ type: 'SET_ONE', data: { imgFileSelected: false } });
 
       imgFileInput.current.value = '';
-    } else if (id === 'textFile') {
+    } else if (coverId === 'textFile') {
       dispatch({ type: 'SET_ONE', data: { cover: '' } });
       dispatch({ type: 'SET_ONE', data: { coverFileSelected: false } });
 
@@ -109,6 +109,7 @@ export default function Compose() {
           textFileInput={textFileInputCover}
           handleFileChosen={handleFileChosen}
           coverFileSelected={coverFileSelected}
+          clearFileChosen={clearFileChosen}
           dispatch={dispatch}
         />
         <UploadButtons temp={temp} setTemp={setTemp} />

@@ -6,8 +6,10 @@
   display: grid;
   grid-template-rows: 85% 15%;
   position: relative;
+  font-size: 10px;
+  overflow: hidden;
 }
 
-.card:hover {
-  cursor: pointer;
+.edit-card:hover {
+  cursor: default;
 }

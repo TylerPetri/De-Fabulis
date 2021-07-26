@@ -13,7 +13,7 @@ export default function CoverContainer(props) {
         {' '}
         <StoryUpload
           textFileInput={props.textFileInput}
-          handleFilchosen={props.handleFilchosen}
+          handleFileChosen={props.handleFileChosen}
           clearFileChosen={props.clearFileChosen}
         />
       </div>

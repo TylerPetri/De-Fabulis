@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       const res = await fetchJSON('/api/stories');
-      dispatch({ type: 'SET_ONE', data: { data: res } });
+      dispatch({ type: 'SET', data: { data: res } });
     }
     fetchData();
   }, []);
@@ -28,7 +28,7 @@ function App() {
       temp.height = window.innerHeight;
 
       dispatch({
-        type: 'SET_WINDOW_SIZE',
+        type: 'SET',
         data: {
           windowSize: temp,
         },

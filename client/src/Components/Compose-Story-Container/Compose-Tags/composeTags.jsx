@@ -15,7 +15,7 @@ export default function AddTags() {
 
   function addTag() {
     dispatch({
-      type: 'SET_ONE',
+      type: 'SET',
       data: { currentTags: [...currentTags, tagsInput.current.value] },
     });
     tagsInput.current.value = '';
@@ -27,7 +27,7 @@ export default function AddTags() {
     const filter = temp.filter((a) => a !== remove);
 
     dispatch({
-      type: 'SET_ONE',
+      type: 'SET',
       data: { currentTags: filter },
     });
   }

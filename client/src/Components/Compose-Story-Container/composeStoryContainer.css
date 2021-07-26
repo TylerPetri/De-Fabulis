@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 50px max-content max-content;
   grid-template-rows: max-content max-content;
+  margin-top: 20px;
 }
 
 .compose-story-title {

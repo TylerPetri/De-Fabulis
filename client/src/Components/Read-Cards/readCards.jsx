@@ -7,7 +7,7 @@ export default function Cards(props) {
 
   function openStoryPopup() {
     dispatch({
-      type: 'SET_CURRENT_STORY',
+      type: 'SET',
       data: {
         username: props.item.username,
         createdAt: props.item.createdAt,

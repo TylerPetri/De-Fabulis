@@ -1,16 +1,98 @@
-.cover-upload-container {
+.upload-container,
+.upload-container-story {
   display: flex;
   flex-direction: column;
+  height: 35px;
   transition: 0.5s;
 }
 
-.cover-upload-container h3 {
+.upload-container-story {
+  height: max-content;
+}
+
+.upload-container h3,
+.upload-container-story h3 {
   display: flex;
   align-items: center;
   gap: 10px;
   margin: 10px 0;
 }
 
-.cover-upload-container:hover {
+.label-cont {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 15px;
+}
+
+.upload-label-story h3 {
+  margin: 0;
+}
+
+.upload-label {
+  position: relative;
+}
+
+.upload-label:hover,
+.upload-label-story:hover {
   cursor: pointer;
+}
+
+.upload-label-hidden:hover {
+  cursor: default;
+}
+
+.IoClose-story,
+.IoClose-text,
+.IoClose-img {
+  color: red;
+}
+
+.IoClose-story:hover,
+.IoClose-text:hover,
+.IoClose-img:hover {
+  cursor: pointer;
+}
+
+#textFile:hover,
+#imgFile:hover {
+  cursor: pointer;
+}
+
+#textFile-hidden:hover,
+#imgFile-hidden:hover {
+  cursor: default;
+}
+
+input[type='file'] {
+  opacity: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  position: absolute;
+}
+
+.textFileInput-selected {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 5px 0 -10px;
+}
+
+.imgFileInput-selected:hover,
+.coverFileInput-selected:hover,
+.textFileInput-selected:hover {
+  cursor: default;
+}
+
+.imgFileInput-selected,
+.coverFileInput-selected {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: linear 0.6s;
+  overflow: hidden;
+  position: absolute;
+  margin-top: 40px;
 }

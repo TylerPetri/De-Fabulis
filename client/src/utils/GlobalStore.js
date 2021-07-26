@@ -36,8 +36,11 @@ const initialData = {
     textBackground: '',
   },
   storyFileSelected: false,
+  storyFile: '',
   imgFileSelected: false,
+  imgFile: '',
   textCoverFileSelected: false,
+  textCoverFile: '',
   openCoverEdit: false,
   openStoryEdit: false,
   openPreview: false,
@@ -46,13 +49,7 @@ const initialData = {
 
 const dataReducer = (state, action) => {
   switch (action.type) {
-    case 'SET_ONE':
-      return { ...state, ...action.data };
-    case 'SET_WINDOW_SIZE':
-      return { ...state, ...action.data };
-    case 'SET_CURRENT_STORY':
-      return { ...state, ...action.data };
-    case 'SET_STORY_SETTINGS':
+    case 'SET':
       return { ...state, ...action.data };
     case 'CLEAR_CURRENT_STORY':
       return {

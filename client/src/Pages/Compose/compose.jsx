@@ -9,7 +9,8 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import './compose.css';
 
 export default function Compose() {
-  const [{ currentStory, currentStorySettings }, dispatch] = useStoreContext();
+  const [{ currentStory, currentStorySettings, storyFileSelected }, dispatch] =
+    useStoreContext();
   const [settings, setSettings] = useState(currentStorySettings);
   const [temp, setTemp] = useState([currentStory]);
 
@@ -28,49 +29,68 @@ export default function Compose() {
 
   function handleFileRead() {
     const content = fileReader.result;
-    dispatch({ type: 'SET_ONE', data: { story: content } });
-    dispatch({ type: 'SET_ONE', data: { storyFileSelected: true } });
+    dispatch({
+      type: 'SET',
+      data: { story: content, storyFileSelected: true },
+    });
   }
 
   function handleImageFileRead() {
     const content = fileReader.result;
-    dispatch({ type: 'SET_ONE', data: { image: content } });
-    dispatch({ type: 'SET_ONE', data: { imgFileSelected: true } });
+    dispatch({
+      type: 'SET',
+      data: { image: content, imgFileSelected: true },
+    });
   }
   function handleCoverFileRead() {
     const content = fileReader.result;
-    dispatch({ type: 'SET_ONE', data: { cover: content } });
-    dispatch({ type: 'SET_ONE', data: { textCoverFileSelected: true } });
+    dispatch({
+      type: 'SET',
+      data: { cover: content, textCoverFileSelected: true },
+    });
   }
 
   function handleFileChosen(e, file, id) {
     fileReader = new FileReader();
     if (e.target.value) {
-      if (id === 'textFileStory') fileReader.onloadend = handleFileRead;
-      if (id === 'imgFile') fileReader.onloadend = handleImageFileRead;
-      if (id === 'textFile') fileReader.onloadend = handleCoverFileRead;
+      if (id === 'textFileStory') {
+        fileReader.onloadend = handleFileRead;
+        dispatch({ type: 'SET', data: { storyFile: e.target.value } });
+      }
+      if (id === 'imgFile') {
+        fileReader.onloadend = handleImageFileRead;
+        dispatch({ type: 'SET', data: { imgFile: e.target.value } });
+      }
+      if (id === 'textFile') {
+        fileReader.onloadend = handleCoverFileRead;
+        dispatch({ type: 'SET', data: { textCoverFile: e.target.value } });
+      }
       fileReader.readAsText(file);
     }
   }
 
   function clearFileChosen(event) {
-    const id = event.target.parentNode.firstChild.id;
-    const coverId = event.target.previousSibling.id;
-    if (id === 'textFileStory') {
-      dispatch({ type: 'SET_ONE', data: { story: '' } });
-      dispatch({ type: 'SET_ONE', data: { storyFileSelected: false } });
-
+    const id = event.target.className.baseVal;
+    const target = event.target.nextSibling.className;
+    if (id === 'IoClose-story') {
+      dispatch({
+        type: 'SET',
+        data: { story: '', storyFileSelected: false, storyFile: '' },
+      });
       textFileInput.current.value = '';
-    } else if (id === 'imgFile') {
-      dispatch({ type: 'SET_ONE', data: { image: '' } });
-      dispatch({ type: 'SET_ONE', data: { imgFileSelected: false } });
-
-      imgFileInput.current.value = '';
-    } else if (coverId === 'textFile') {
-      dispatch({ type: 'SET_ONE', data: { cover: '' } });
-      dispatch({ type: 'SET_ONE', data: { coverFileSelected: false } });
-
-      textFileInputCover.current.value = '';
+    } else if (target === 'upload-container') {
+      dispatch({
+        type: 'SET',
+        data: { textCoverFileSelected: false, imgFileSelected: false },
+      });
+      setTimeout(() => {
+        dispatch({
+          type: 'SET',
+          data: { cover: '', textCoverFile: '', img: '', imgFile: '' },
+        });
+        textFileInputCover.current.value = '';
+        imgFileInput.current.value = '';
+      }, 700);
     }
   }
   //------------//
@@ -79,21 +99,24 @@ export default function Compose() {
     <>
       <Navbar />
       <div className='compose-wrapper'>
-        <CoverContainer
-          settings={settings}
-          setSettings={setSettings}
-          imgFileInput={imgFileInput}
-          textFileInputCover={textFileInputCover}
-          handleFileChosen={handleFileChosen}
-          clearFileChosen={clearFileChosen}
-        />
-        <StoryContainer
-          settings={settings}
-          setSettings={setSettings}
-          textFileInput={textFileInput}
-          handleFileChosen={handleFileChosen}
-          clearFileChosen={clearFileChosen}
-        />
+        <div className='compose-cover-story-container'>
+          <StoryContainer
+            settings={settings}
+            setSettings={setSettings}
+            textFileInput={textFileInput}
+            handleFileChosen={handleFileChosen}
+            clearFileChosen={clearFileChosen}
+          />
+          <CoverContainer
+            settings={settings}
+            setSettings={setSettings}
+            imgFileInput={imgFileInput}
+            textFileInputCover={textFileInputCover}
+            handleFileChosen={handleFileChosen}
+            clearFileChosen={clearFileChosen}
+          />
+        </div>
+
         {/* <UploadButtons temp={temp} setTemp={setTemp} /> */}
       </div>
     </>

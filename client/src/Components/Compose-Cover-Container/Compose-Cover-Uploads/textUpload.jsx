@@ -2,11 +2,12 @@ import { BsFileText } from 'react-icons/bs';
 import { useStoreContext } from '../../../utils/GlobalStore';
 
 export default function AddCover(props) {
-  const [{ textCoverFileSelected, imgFileSelected }] = useStoreContext();
+  const [{ textCoverFileSelected, imgFileSelected, textCoverFile }] =
+    useStoreContext();
 
   return (
     <div
-      className='cover-upload-container'
+      className='upload-container'
       style={{
         opacity:
           !textCoverFileSelected && !imgFileSelected
@@ -16,7 +17,16 @@ export default function AddCover(props) {
             : '0',
       }}
     >
-      <label for='textFile'>
+      <label
+        htmlFor='textFile'
+        className={
+          !textCoverFileSelected && !imgFileSelected
+            ? 'upload-label'
+            : textCoverFileSelected
+            ? 'upload-label'
+            : 'upload-label-hidden'
+        }
+      >
         <h3>
           Upload Text
           <BsFileText />
@@ -24,12 +34,26 @@ export default function AddCover(props) {
       </label>{' '}
       <input
         type='file'
-        ref={props.textFileInput}
-        id='textFile'
+        ref={props.textFileInputCover}
+        id={
+          !textCoverFileSelected && !imgFileSelected
+            ? 'textFile'
+            : textCoverFileSelected
+            ? 'textFile'
+            : 'textFile-hidden'
+        }
         onChange={(event) =>
           props.handleFileChosen(event, event.target.files[0], event.target.id)
         }
       />
+      <div
+        className='coverFileInput-selected'
+        style={{
+          height: textCoverFileSelected ? '15px' : '0',
+        }}
+      >
+        {textCoverFile.slice(12)}
+      </div>
     </div>
   );
 }

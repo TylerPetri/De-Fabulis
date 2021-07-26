@@ -2,6 +2,8 @@
 
 If you dare peek: jk S3 request limit $$$
 
+- upload image animation
+
 - Tags under all, above buttons
 - Cover chosing: either text or img (blocks other if one selected). Have little preview beside (clickable options beside).
 - Mobile -> vertical buttons for cover -> Vertical story with tags at bottom, right before submit buttons

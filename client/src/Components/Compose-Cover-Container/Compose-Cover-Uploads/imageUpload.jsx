@@ -1,14 +1,16 @@
 import { BsImage } from 'react-icons/bs';
+import { IoClose } from 'react-icons/io5';
 import { useStoreContext } from '../../../utils/GlobalStore';
 
 import './fileUploads.css';
 
 export default function CoverImage(props) {
-  const [{ textCoverFileSelected, imgFileSelected }] = useStoreContext();
+  const [{ textCoverFileSelected, imgFileSelected, imgFile }] =
+    useStoreContext();
 
   return (
     <div
-      className='cover-upload-container'
+      className='upload-container'
       style={{
         opacity:
           !textCoverFileSelected && !imgFileSelected
@@ -18,7 +20,16 @@ export default function CoverImage(props) {
             : '0',
       }}
     >
-      <label for='imgFile'>
+      <label
+        htmlFor='imgFile'
+        className={
+          !textCoverFileSelected && !imgFileSelected
+            ? 'upload-label'
+            : imgFileSelected
+            ? 'upload-label'
+            : 'upload-label-hidden'
+        }
+      >
         <h3>
           Upload Image
           <BsImage />
@@ -27,11 +38,26 @@ export default function CoverImage(props) {
       <input
         type='file'
         ref={props.imgFileInput}
-        id='imgFile'
+        id={
+          !textCoverFileSelected && !imgFileSelected
+            ? 'imgFile'
+            : imgFileSelected
+            ? 'imgFile'
+            : 'imgFile-hidden'
+        }
         onChange={(event) =>
           props.handleFileChosen(event, event.target.files[0], event.target.id)
         }
       />
+      <div
+        className='imgFileInput-selected'
+        style={{
+          height: imgFileSelected ? '25px' : '0',
+        }}
+      >
+        {imgFile.slice(12)}
+        <IoClose className='IoClose-img' onClick={props.clearFileChosen} />
+      </div>
     </div>
   );
 }

@@ -1,16 +1,25 @@
 import StoryUpload from './Compose-Story-Upload/storyUpload';
-import StoryEdit from './Compose-Story-Edit';
-import './composeCoverCont.css';
+import SmallPreviewStory from './Small-Preview/smallPreview';
+import StoryEdit from './Compose-Story-Edit/editStory';
+
+import './composeStoryContainer.css';
 
 export default function CoverContainer(props) {
   return (
-    <div className='composer-cover-container'>
-      <StoryUpload
-        textFileInput={props.textFileInput}
-        handleFilchosen={props.handleFilchosen}
-        clearFileChosen={props.clearFileChosen}
-      />
-      <StoryEdit settings={props.settings} setSettings={props.setSettings} />
+    <div className='compose-cover-container'>
+      <div className='cover-edit-title'>Story</div>
+      <div className='choosefile-story-container'>
+        {' '}
+        <StoryUpload
+          textFileInput={props.textFileInput}
+          handleFilchosen={props.handleFilchosen}
+          clearFileChosen={props.clearFileChosen}
+        />
+      </div>
+      <div className='cover-edit'>
+        <SmallPreviewStory settings={props.settings} />
+        <StoryEdit settings={props.settings} setSettings={props.setSettings} />
+      </div>
     </div>
   );
 }

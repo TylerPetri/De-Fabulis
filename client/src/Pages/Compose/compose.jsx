@@ -40,7 +40,7 @@ export default function Compose() {
   function handleCoverFileRead() {
     const content = fileReader.result;
     dispatch({ type: 'SET_ONE', data: { cover: content } });
-    dispatch({ type: 'SET_ONE', data: { coverFileSelected: true } });
+    dispatch({ type: 'SET_ONE', data: { textCoverFileSelected: true } });
   }
 
   function handleFileChosen(e, file, id) {
@@ -94,7 +94,7 @@ export default function Compose() {
           handleFileChosen={handleFileChosen}
           clearFileChosen={clearFileChosen}
         />
-        <UploadButtons temp={temp} setTemp={setTemp} />
+        {/* <UploadButtons temp={temp} setTemp={setTemp} /> */}
       </div>
     </>
   );

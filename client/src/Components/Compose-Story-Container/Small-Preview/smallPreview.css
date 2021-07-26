@@ -1,0 +1,58 @@
+.small-preview-card {
+  height: 140px;
+  width: 200px;
+  border-radius: 10px;
+  margin: 20px;
+  display: grid;
+  grid-template-rows: 10px 20px auto;
+}
+
+.small-preview-authors {
+  width: 98%;
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+  padding: 1%;
+  resize: none;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  overflow: hidden;
+}
+
+.small-preview-title {
+  height: 98%;
+  width: 98%;
+  padding: 1%;
+  border-top: none;
+  border-bottom: none;
+  resize: none;
+  color: white;
+  background-color: rgb(121, 80, 28);
+  grid-row-start: 2;
+  grid-row-end: 3;
+  text-align: center;
+}
+
+.small-preview-area {
+  height: 90%;
+  width: 90%;
+  padding: 0 5% 5% 5%;
+  border-radius: 0 0 10px 10px;
+  border-top: none;
+  resize: none;
+  color: white;
+  background-color: rgb(121, 80, 28);
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.small-preview-area:focus,
+.small-preview-title:focus,
+.small-preview-authors:focus {
+  outline: none;
+}
+
+.small-preview-area:hover,
+.small-preview-title:hover,
+.small-preview-authors:hover {
+  cursor: default;
+}

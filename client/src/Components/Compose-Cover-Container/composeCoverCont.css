@@ -1,7 +1,46 @@
-.composer-cover-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.compose-cover-container {
+  width: max-content;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: 75px max-content;
+}
+
+.cover-edit-title {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  text-align: center;
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.choosefile-grid-container {
+  height: 100%;
   width: 100%;
-  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.choosefile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: burlywood;
+  transition: 0.5s;
+}
+
+.cover-edit {
+  width: max-content;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }

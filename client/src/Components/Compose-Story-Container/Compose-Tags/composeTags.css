@@ -1,16 +1,16 @@
-.compose-title-tags-container {
+.compose-tags-container {
   display: grid;
   grid-template-columns: max-content auto;
   width: 100%;
 }
 
-.compose-title-tags-container h3 {
+.compose-tags-container h3 {
   color: white;
   width: max-content;
   margin-bottom: 0;
 }
 
-.compose-title-tags-display {
+.compose-tags-display {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -21,10 +21,9 @@
   grid-column-end: 3;
 }
 
-.add-title-input,
 .add-tags-input {
   height: 30px;
-  width: 200px;
+  width: 125px;
   color: white;
   background: none;
   margin: 15px 0 0 15px;
@@ -34,11 +33,6 @@
   align-self: flex-end;
 }
 
-.add-title-input {
-  width: 90%;
-}
-
-.add-title-input:focus,
 .add-tags-input:focus {
   outline: none;
 }

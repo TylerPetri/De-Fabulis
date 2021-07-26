@@ -1,13 +1,13 @@
 import { useState, useRef } from 'react';
-import ColorOptions from '../Compose-Color-Options/colorOptions';
+import ColorOptions from '../../Compose-Color-Options/colorOptions';
 import { IoIosOptions } from 'react-icons/io';
 
-import { useStoreContext } from '../../utils/GlobalStore';
+import { useStoreContext } from '../../../utils/GlobalStore';
 
 import './editStory.css';
 
 export default function CompTextArea(props) {
-  const [{ openEdit, currentStory, title, story, windowSize }, dispatch] =
+  const [{ openStoryEdit, currentStory, title, story, windowSize }, dispatch] =
     useStoreContext();
   const [sidenav, setSidenav] = useState(false);
   const [temp, setTemp] = useState([currentStory]);
@@ -34,8 +34,8 @@ export default function CompTextArea(props) {
       <div
         className='edit-compose-container'
         style={{
-          opacity: openEdit ? '1' : '0',
-          zIndex: openEdit ? '10' : '-1',
+          opacity: openStoryEdit ? '1' : '0',
+          zIndex: openStoryEdit ? '10' : '-1',
           backgroundColor: props.settings[2].color,
         }}
       >

@@ -34,9 +34,9 @@ export default function AddTags() {
 
   return (
     <>
-      <div className='compose-title-tags-container'>
+      <div className='compose-tags-container'>
         <h3>Tags: </h3>
-        <div className='compose-title-tags-display'>
+        <div className='compose-tags-display'>
           <input
             className='add-tags-input'
             spellCheck='false'

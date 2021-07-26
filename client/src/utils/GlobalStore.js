@@ -33,7 +33,7 @@ const initialData = {
   },
   coverSettings: {
     font: '',
-    background: '',
+    textBackground: '',
   },
   storyFileSelected: false,
   imgFileSelected: false,

@@ -1,0 +1,16 @@
+.cover-upload-container {
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s;
+}
+
+.cover-upload-container h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.cover-upload-container:hover {
+  cursor: pointer;
+}

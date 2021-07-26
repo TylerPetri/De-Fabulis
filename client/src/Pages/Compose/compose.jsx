@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Navbar from '../../Components/Navbar/navbar';
+import CoverContainer from '../../Components/Compose-Cover-Container/composeCoverCont';
+
 import EditStory from '../../Components/Compose-Edit-Story/editStory';
 import FileSelectionButtons from '../../Components/File-selection-buttons/fileSelectionButtons';
 import AddTitle from '../../Components/Compose-Title/addTitle';
 import AddTags from '../../Components/Compose-Tags/composeTags';
-import AddCover from '../../Components/Compose-Cover/composeCover';
 import UploadButtons from '../../Components/UploadButtons/uploadButtons';
 import StoryPreview from '../../Components/Preview-story/previewStory';
 import ColorOptions from '../../Components/Compose-Color-Options/colorOptions';
@@ -16,15 +17,7 @@ import './compose.css';
 
 export default function Compose() {
   const [
-    {
-      currentStory,
-      cover,
-      story,
-      username,
-      title,
-      coverFileSelected,
-      currentStorySettings,
-    },
+    { currentStory, story, username, title, currentStorySettings },
     dispatch,
   ] = useStoreContext();
   const [settings, setSettings] = useState(currentStorySettings);
@@ -96,6 +89,14 @@ export default function Compose() {
     <>
       <Navbar />
       <div className='compose-wrapper'>
+        <CoverContainer
+          settings={settings}
+          setSettings={setSettings}
+          imgFileInput={imgFileInput}
+          textFileInputCover={textFileInputCover}
+          handleFileChosen={handleFileChosen}
+          clearFileChosen={clearFileChosen}
+        />
         <FileSelectionButtons
           textFileInput={textFileInput}
           imgFileInput={imgFileInput}
@@ -104,14 +105,6 @@ export default function Compose() {
         />
         <AddTitle temp={temp} setTemp={setTemp} dispatch={dispatch} />
         <AddTags temp={temp} setTemp={setTemp} />
-        <AddCover
-          cover={cover}
-          textFileInput={textFileInputCover}
-          handleFileChosen={handleFileChosen}
-          coverFileSelected={coverFileSelected}
-          clearFileChosen={clearFileChosen}
-          dispatch={dispatch}
-        />
         <UploadButtons temp={temp} setTemp={setTemp} />
       </div>
       <StoryPreview username={username} title={title} story={story} />

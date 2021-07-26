@@ -3,7 +3,7 @@ import { CgCloseR } from 'react-icons/cg';
 
 import { useStoreContext } from '../../utils/GlobalStore';
 
-export default function PreviewStory() {
+export default function PreviewStory(props) {
   const [{ openPreview, currentStorySettings, currentStory }, dispatch] =
     useStoreContext();
   const [settings] = useState(currentStorySettings);
@@ -32,7 +32,7 @@ export default function PreviewStory() {
             color: settings[0].color,
             backgroundColor: settings[1].color,
           }}
-          value={currentStory.username}
+          value={props.username}
         />
         <textarea
           placeholder='Title'
@@ -42,7 +42,7 @@ export default function PreviewStory() {
             color: settings[0].color,
             backgroundColor: settings[1].color,
           }}
-          value={currentStory.title.length > 0 ? currentStory.title : ''}
+          value={props.title.length > 0 ? props.title : ''}
         />
         <textarea
           placeholder='Story'
@@ -52,7 +52,7 @@ export default function PreviewStory() {
             color: settings[0].color,
             backgroundColor: settings[1].color,
           }}
-          value={currentStory.story}
+          value={props.story}
         />
       </div>
     </div>

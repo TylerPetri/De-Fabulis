@@ -1,10 +1,10 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 import './composeTags.css';
 
 export default function AddTags() {
-  const [{ currentStory, currentTags }, dispatch] = useStoreContext();
+  const [{ currentTags }, dispatch] = useStoreContext();
   const tagsInput = useRef();
 
   function handleKeyPress(event) {
@@ -32,13 +32,8 @@ export default function AddTags() {
     });
   }
 
-  function logs() {
-    console.log(currentTags);
-  }
-
   return (
     <>
-      <button onClick={logs}>logs</button>
       <div className='compose-title-tags-container'>
         <h3>Tags: </h3>
         <div className='compose-title-tags-display'>

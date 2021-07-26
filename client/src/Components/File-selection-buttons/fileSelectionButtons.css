@@ -22,11 +22,26 @@
   gap: 15px;
 }
 
+.input-file-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+
 #textFileStory,
 #imgFile {
   display: flex;
   align-items: center;
-  margin-left: 15px;
+  margin: 0 0 0 15px;
+}
+
+.file-clear-button {
+  color: red;
+}
+
+.file-clear-button:hover {
+  cursor: pointer;
 }
 
 .upload-btns {

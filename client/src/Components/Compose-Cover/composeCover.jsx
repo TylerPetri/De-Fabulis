@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BsArrowsExpand, BsArrowsCollapse } from 'react-icons/bs';
+import { MdClose } from 'react-icons/md';
 
 import './composeCover.css';
 
@@ -28,9 +29,20 @@ export default function AddCover(props) {
           type='file'
           ref={props.textFileInput}
           id='textFile'
-          onChange={(e) =>
-            props.handleFileChosen(e.target.files[0], e.target.id)
+          onChange={(event) =>
+            props.handleFileChosen(
+              event,
+              event.target.files[0],
+              event.target.id
+            )
           }
+        />
+        <MdClose
+          className='file-clear-button'
+          style={{
+            display: props.coverFileSelected ? 'block' : 'none',
+          }}
+          onClick={(event) => props.clearFileChosen(event)}
         />
       </div>
       <div className='alter-size-cover'>

@@ -7,7 +7,7 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import './editStory.css';
 
 export default function CompTextArea(props) {
-  const [{ openEdit, currentStory, body, windowSize }, dispatch] =
+  const [{ openEdit, currentStory, title, story, windowSize }, dispatch] =
     useStoreContext();
   const [sidenav, setSidenav] = useState(false);
   const [temp, setTemp] = useState([currentStory]);
@@ -40,15 +40,18 @@ export default function CompTextArea(props) {
         }}
       >
         <div className='edit-compose-card'>
-          <div
-            className='color-options-sidenav'
-            style={{ marginLeft: sidenav ? '0' : '-205px' }}
-          >
-            <ColorOptions
-              settings={props.settings}
-              setSettings={props.setSettings}
-            />
-          </div>
+          {windowSize.width < 942 && (
+            <div
+              className='color-options-sidenav'
+              style={{ marginLeft: sidenav ? '0' : '-205px' }}
+            >
+              <ColorOptions
+                sidenav={sidenav}
+                settings={props.settings}
+                setSettings={props.setSettings}
+              />
+            </div>
+          )}
           <div className='edit-options-cont'>
             {windowSize.width > 942 ? (
               <ColorOptions
@@ -79,7 +82,7 @@ export default function CompTextArea(props) {
               backgroundColor: props.settings[1].color,
             }}
             ref={titleInput}
-            value={currentStory.title}
+            value={title}
             onChange={(e) => handleChange(e)}
           />
           <textarea
@@ -90,7 +93,7 @@ export default function CompTextArea(props) {
               backgroundColor: props.settings[1].color,
             }}
             ref={storyInput}
-            value={body}
+            value={story}
             onChange={(e) => handleChange(e)}
           />
         </div>

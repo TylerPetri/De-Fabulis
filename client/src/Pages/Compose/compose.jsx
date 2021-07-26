@@ -15,7 +15,19 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import './compose.css';
 
 export default function Compose() {
-  const [{ currentStory, currentStorySettings }, dispatch] = useStoreContext();
+  const [
+    {
+      currentStory,
+      cover,
+      story,
+      username,
+      title,
+      image,
+      coverFileSelected,
+      currentStorySettings,
+    },
+    dispatch,
+  ] = useStoreContext();
   const [settings, setSettings] = useState(currentStorySettings);
   const [temp, setTemp] = useState([currentStory]);
 
@@ -27,10 +39,6 @@ export default function Compose() {
     dispatch({ type: 'CLEAR_CURRENT_STORY' });
   }, []);
 
-  function handleTempDispatch() {
-    dispatch({ type: 'SET_CURRENT_STORY', data: { currentStory: temp[0] } });
-  }
-
   //--------------//
   //  File upload //
   //--------------//
@@ -38,32 +46,51 @@ export default function Compose() {
 
   function handleFileRead() {
     const content = fileReader.result;
-    dispatch({ type: 'SET_ONE', data: { currentBody: content } });
+    dispatch({ type: 'SET_ONE', data: { story: content } });
+    dispatch({ type: 'SET_ONE', data: { storyFileSelected: true } });
   }
 
+  function handleImageFileRead() {
+    const content = fileReader.result;
+    dispatch({ type: 'SET_ONE', data: { image: content } });
+    dispatch({ type: 'SET_ONE', data: { imgFileSelected: true } });
+  }
   function handleCoverFileRead() {
     const content = fileReader.result;
-    dispatch({ type: 'SET_ONE', data: { currentCover: content } });
+    dispatch({ type: 'SET_ONE', data: { cover: content } });
+    dispatch({ type: 'SET_ONE', data: { coverFileSelected: true } });
   }
 
-  function handleFileChosen(file, id) {
+  function handleFileChosen(e, file, id) {
     fileReader = new FileReader();
-    if (id === 'textFileStory') fileReader.onloadend = handleFileRead;
-    if (id === 'textFile') fileReader.onloadend = handleCoverFileRead;
-    fileReader.readAsText(file);
+    if (e.target.value) {
+      if (id === 'textFileStory') fileReader.onloadend = handleFileRead;
+      if (id === 'imgFile') fileReader.onloadend = handleImageFileRead;
+      if (id === 'textFile') fileReader.onloadend = handleCoverFileRead;
+      fileReader.readAsText(file);
+    }
   }
 
-  function clearFileChosen(file, id) {
-    file.value = '';
-    if (id === 'textFileStory') dispatch({ type: 'CLEAR_STORY' });
-    if (id === 'textFile') dispatch({ type: 'CLEAR_COVER' });
+  function clearFileChosen(event) {
+    const id = event.target.parentNode.firstChild.id;
+    if (id === 'textFileStory') {
+      dispatch({ type: 'SET_ONE', data: { story: '' } });
+      dispatch({ type: 'SET_ONE', data: { storyFileSelected: false } });
+
+      textFileInput.current.value = '';
+    } else if (id === 'imgFile') {
+      dispatch({ type: 'SET_ONE', data: { image: '' } });
+      dispatch({ type: 'SET_ONE', data: { imgFileSelected: false } });
+
+      imgFileInput.current.value = '';
+    } else if (id === 'textFile') {
+      dispatch({ type: 'SET_ONE', data: { cover: '' } });
+      dispatch({ type: 'SET_ONE', data: { coverFileSelected: false } });
+
+      textFileInputCover.current.value = '';
+    }
   }
   //------------//
-
-  function submitForm() {
-    handleTempDispatch();
-    console.log(currentStory);
-  }
 
   return (
     <>
@@ -76,18 +103,17 @@ export default function Compose() {
           clearFileChosen={clearFileChosen}
         />
         <AddTitle temp={temp} setTemp={setTemp} dispatch={dispatch} />
-        <AddTags
-          temp={temp}
-          setTemp={setTemp}
-          handleTempDispatch={handleTempDispatch}
-        />
+        <AddTags temp={temp} setTemp={setTemp} />
         <AddCover
+          cover={cover}
           textFileInput={textFileInputCover}
           handleFileChosen={handleFileChosen}
+          coverFileSelected={coverFileSelected}
+          dispatch={dispatch}
         />
-        <UploadButtons temp={temp} setTemp={setTemp} submitForm={submitForm} />
+        <UploadButtons temp={temp} setTemp={setTemp} />
       </div>
-      <StoryPreview />
+      <StoryPreview username={username} title={title} story={story} />
       <EditStory settings={settings} setSettings={setSettings} />
     </>
   );

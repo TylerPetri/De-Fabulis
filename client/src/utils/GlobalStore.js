@@ -19,10 +19,10 @@ const initialData = {
       dropdown: false,
     },
   ],
+  image: '',
   cover: '',
-  body: '',
+  story: '',
   currentTags: '',
-
   username: '',
   createdAt: 0,
   title: '',
@@ -35,7 +35,9 @@ const initialData = {
     font: '',
     background: '',
   },
-
+  storyFileSelected: false,
+  imgFileSelected: false,
+  coverFileSelected: false,
   openEdit: false,
   openPreview: false,
   openStory: false,
@@ -51,10 +53,6 @@ const dataReducer = (state, action) => {
       return { ...state, ...action.data };
     case 'SET_STORY_SETTINGS':
       return { ...state, ...action.data };
-    case 'CLEAR_COVER':
-      return { ...state, currentCover: '' };
-    case 'CLEAR_STORY':
-      return { ...state, currentBody: '' };
     case 'CLEAR_CURRENT_STORY':
       return {
         ...state,

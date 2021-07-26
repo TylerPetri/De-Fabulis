@@ -16,9 +16,10 @@
   cursor: pointer;
 }
 
+.color-dropdown-nav,
 .color-dropdown {
   position: absolute;
-  right: 0;
+  left: 0;
   background-color: black;
   height: max-content;
   width: max-content;
@@ -28,4 +29,8 @@
   border-radius: 5px;
   padding: 5px;
   margin-top: 180px;
+}
+
+.color-dropdown-nav {
+  margin-left: 15%;
 }

@@ -109,7 +109,9 @@ export default function ColorOptions(props) {
               onClick={() => toggleDropdown(idx)}
             ></button>
             <div
-              className='color-dropdown'
+              className={
+                props.sidenav ? 'color-dropdown-nav' : 'color-dropdown'
+              }
               style={{ display: a.dropdown ? 'grid' : 'none' }}
               id={a.option}
             >

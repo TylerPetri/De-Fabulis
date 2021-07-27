@@ -53,10 +53,10 @@ export default function CoverImage(props) {
         className='imgFileInput-selected'
         style={{
           height: imgFileSelected ? '25px' : '0',
+          marginTop: imgFileSelected && '35px',
         }}
       >
         {imgFile.slice(12)}
-        <IoClose className='IoClose-img' onClick={props.clearFileChosen} />
       </div>
     </div>
   );

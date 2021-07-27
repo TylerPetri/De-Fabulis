@@ -55,15 +55,27 @@ export default function Compose() {
     if (e.target.value) {
       if (id === 'textFileStory') {
         fileReader.onloadend = handleFileRead;
-        dispatch({ type: 'SET', data: { storyFile: e.target.value } });
+        dispatch({
+          type: 'SET',
+          data: { storyFile: e.target.value },
+        });
+        setTimeout(() => dispatch({ type: 'XS_ON' }), 500);
       }
       if (id === 'imgFile') {
         fileReader.onloadend = handleImageFileRead;
-        dispatch({ type: 'SET', data: { imgFile: e.target.value } });
+        dispatch({
+          type: 'SET',
+          data: { imgFile: e.target.value },
+        });
+        setTimeout(() => dispatch({ type: 'X_ON' }), 500);
       }
       if (id === 'textFile') {
         fileReader.onloadend = handleCoverFileRead;
-        dispatch({ type: 'SET', data: { textCoverFile: e.target.value } });
+        dispatch({
+          type: 'SET',
+          data: { textCoverFile: e.target.value },
+        });
+        setTimeout(() => dispatch({ type: 'X_ON' }), 500);
       }
       fileReader.readAsText(file);
     }
@@ -71,17 +83,28 @@ export default function Compose() {
 
   function clearFileChosen(event) {
     const id = event.target.className.baseVal;
-    const target = event.target.nextSibling.className;
     if (id === 'IoClose-story') {
       dispatch({
         type: 'SET',
-        data: { story: '', storyFileSelected: false, storyFile: '' },
+        data: {
+          storyFileSelected: false,
+        },
       });
-      textFileInput.current.value = '';
-    } else if (target === 'upload-container') {
+      setTimeout(() => {
+        dispatch({
+          type: 'SET',
+          data: { story: '', storyFile: '', uploadStoryFileX: false },
+        });
+        textFileInput.current.value = '';
+      }, 550);
+    } else {
       dispatch({
         type: 'SET',
-        data: { textCoverFileSelected: false, imgFileSelected: false },
+        data: {
+          textCoverFileSelected: false,
+          imgFileSelected: false,
+          uploadCoverFileX: false,
+        },
       });
       setTimeout(() => {
         dispatch({
@@ -90,7 +113,7 @@ export default function Compose() {
         });
         textFileInputCover.current.value = '';
         imgFileInput.current.value = '';
-      }, 700);
+      }, 650);
     }
   }
   //------------//

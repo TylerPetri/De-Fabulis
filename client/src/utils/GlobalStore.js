@@ -41,6 +41,7 @@ const initialData = {
   imgFile: '',
   textCoverFileSelected: false,
   textCoverFile: '',
+  uploadCoverFileX: false,
   openCoverEdit: false,
   openStoryEdit: false,
   openPreview: false,
@@ -71,6 +72,10 @@ const dataReducer = (state, action) => {
           background: '',
         },
       };
+    case 'X_ON':
+      return { ...state, uploadCoverFileX: true };
+    case 'XS_ON':
+      return { ...state, uploadStoryFileX: true };
     case 'OPEN_EDIT':
       return { ...state, openEdit: true };
     case 'CLOSE_EDIT':

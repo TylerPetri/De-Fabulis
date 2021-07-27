@@ -1,5 +1,4 @@
-.upload-container,
-.upload-container-story {
+.upload-container {
   display: flex;
   flex-direction: column;
   height: 35px;
@@ -8,6 +7,11 @@
 
 .upload-container-story {
   height: max-content;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  transition: 0.5s;
 }
 
 .upload-container h3,
@@ -26,6 +30,7 @@
 }
 
 .upload-label-story h3 {
+  width: max-content;
   margin: 0;
 }
 
@@ -40,18 +45,6 @@
 
 .upload-label-hidden:hover {
   cursor: default;
-}
-
-.IoClose-story,
-.IoClose-text,
-.IoClose-img {
-  color: red;
-}
-
-.IoClose-story:hover,
-.IoClose-text:hover,
-.IoClose-img:hover {
-  cursor: pointer;
 }
 
 #textFile:hover,
@@ -74,10 +67,10 @@ input[type='file'] {
 }
 
 .textFileInput-selected {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin: 5px 0 -10px;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  transition: 0.5s;
+  overflow: hidden;
 }
 
 .imgFileInput-selected:hover,
@@ -95,4 +88,12 @@ input[type='file'] {
   overflow: hidden;
   position: absolute;
   margin-top: 40px;
+}
+
+.IoClose-story {
+  margin: 3px 0 0 5px;
+}
+
+.IoClose-story:hover {
+  cursor: pointer;
 }

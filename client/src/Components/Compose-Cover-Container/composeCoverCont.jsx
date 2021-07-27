@@ -8,30 +8,32 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import './composeCoverCont.css';
 
 export default function CoverContainer(props) {
-  const [{ textCoverFileSelected, imgFileSelected }] = useStoreContext();
+  const [{ textCoverFileSelected, imgFileSelected, uploadCoverFileX }] =
+    useStoreContext();
 
   return (
     <div className='compose-cover-container'>
       <div className='cover-edit-title'>Cover</div>
 
       <div className='choosefile-grid-container'>
+        {' '}
+        <IoClose
+          className='IoClose'
+          onClick={props.clearFileChosen}
+          style={{
+            display: uploadCoverFileX ? 'block' : 'none',
+          }}
+        />
         <div
           className='choosefile-container'
           style={{
             marginTop: textCoverFileSelected
-              ? '50px'
+              ? '25px'
               : imgFileSelected
-              ? '-55px'
+              ? '-45px'
               : '0',
           }}
         >
-          <IoClose
-            onClick={props.clearFileChosen}
-            style={{
-              display:
-                textCoverFileSelected || imgFileSelected ? 'block' : 'none',
-            }}
-          />
           <TextCover
             textFileInputCover={props.textFileInputCover}
             handleFileChosen={props.handleFileChosen}

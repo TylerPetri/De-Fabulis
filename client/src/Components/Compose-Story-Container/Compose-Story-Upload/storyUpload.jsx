@@ -21,13 +21,16 @@ export default function StoryUpload(props) {
           props.handleFileChosen(event, event.target.files[0], event.target.id)
         }
       />
-      <div className='textFileInput-selected'>
-        {storyFile.slice(12)}
-        <IoClose
-          className='IoClose-story'
-          onClick={props.clearFileChosen}
-          style={{ display: storyFileSelected ? 'block' : 'none' }}
-        />
+      <div
+        className='textFileInput-selected'
+        style={{
+          width: storyFileSelected ? '175px' : '0',
+          opacity: storyFileSelected ? '1' : '0',
+          zIndex: storyFileSelected ? '1' : '-1',
+        }}
+      >
+        {storyFile.slice(12).slice(0, 20) + '...'}
+        <IoClose className='IoClose-story' onClick={props.clearFileChosen} />
       </div>
     </div>
   );

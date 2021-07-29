@@ -45,6 +45,7 @@ const initialData = {
   openCoverEdit: false,
   openStoryEdit: false,
   openStoryPreview: false,
+  openStoryColors: false,
   openStory: false,
 };
 

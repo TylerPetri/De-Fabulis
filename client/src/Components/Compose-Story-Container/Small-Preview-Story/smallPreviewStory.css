@@ -18,7 +18,7 @@
 .small-preview-authors {
   width: 98%;
   border-radius: 10px 10px 0 0;
-  border-bottom: none;
+  border: none;
   padding: 1%;
   resize: none;
   grid-row-start: 1;
@@ -30,8 +30,7 @@
   height: 98%;
   width: 98%;
   padding: 1%;
-  border-top: none;
-  border-bottom: none;
+  border: none;
   resize: none;
   color: white;
   background-color: rgb(121, 80, 28);
@@ -46,7 +45,7 @@
   width: 90%;
   padding: 5%;
   border-radius: 0 0 10px 10px;
-  border-top: none;
+  border: none;
   resize: none;
   color: white;
   background-color: rgb(121, 80, 28);

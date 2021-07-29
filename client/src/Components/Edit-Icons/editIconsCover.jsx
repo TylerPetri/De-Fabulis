@@ -6,10 +6,34 @@ import './editIcons.css';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 export default function EditIcons() {
-  const [_, dispatch] = useStoreContext();
+  const [{ openCoverColors }, dispatch] = useStoreContext();
 
   function openCoverEdit() {
-    dispatch({ type: 'SET', data: { openCoverEdit: true } });
+    dispatch({
+      type: 'SET',
+      data: {
+        openCoverEdit: true,
+        openEditColors: false,
+        openStoryColors: false,
+      },
+    });
+  }
+
+  function toggleCoverColors() {
+    openCoverColors
+      ? dispatch({ type: 'SET', data: { openCoverColors: false } })
+      : dispatch({ type: 'SET', data: { openCoverColors: true } });
+  }
+
+  function openSmallPreview() {
+    dispatch({
+      type: 'SET',
+      data: {
+        openCoverPreview: true,
+        openEditColors: false,
+        openStoryColors: false,
+      },
+    });
   }
 
   return (

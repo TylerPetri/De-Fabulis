@@ -52,6 +52,7 @@ export default function CompTextArea(props) {
                 sidenav={sidenav}
                 settings={props.settings}
                 setSettings={props.setSettings}
+                style={{ display: openStoryEdit ? 'block' : 'none' }}
               />
             </div>
           )}
@@ -65,6 +66,7 @@ export default function CompTextArea(props) {
                 <ColorOptions
                   settings={props.settings}
                   setSettings={props.setSettings}
+                  style={{ display: openStoryEdit ? 'block' : 'none' }}
                 />
               ) : (
                 <>

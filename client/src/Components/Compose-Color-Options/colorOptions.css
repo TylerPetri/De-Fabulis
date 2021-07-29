@@ -34,3 +34,7 @@
 .color-dropdown-nav {
   margin-left: 15%;
 }
+
+ul {
+  list-style-type: none;
+}

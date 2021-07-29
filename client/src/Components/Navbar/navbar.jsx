@@ -1,8 +1,29 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { BiSearchAlt } from 'react-icons/bi';
 
 import './navbar.css';
+import { useStoreContext } from '../../utils/GlobalStore';
 
 export default function Taskbar() {
+  const [{ data }] = useStoreContext();
+  const searchAllInput = useRef();
+
+  function search() {
+    console.log('searching');
+  }
+
+  function handleKeyPress(event) {
+    if (event.charCode === 13) {
+      search();
+    }
+  }
+
+  function findRandom() {
+    const index = Math.floor(Math.random() * data.length);
+    console.log(index);
+  }
+
   return (
     <div className='navbar'>
       <div className='nav-cont'>
@@ -13,12 +34,23 @@ export default function Taskbar() {
           <Link to='/compose' className='link'>
             <div className='nav-link'>Compose</div>
           </Link>
+          <input
+            placeholder='Search'
+            className='search-taskbar-input'
+            ref={searchAllInput}
+            onKeyPress={handleKeyPress}
+          />
+          <button className='search-taskbar-btn' onClick={search}>
+            <BiSearchAlt />
+          </button>
           <Link to='/browse' className='link'>
             <div className='nav-link'>Browse</div>
           </Link>
-          <Link to='/random' className='link'>
-            <div className='nav-link'>Random</div>
-          </Link>
+          <div className='link'>
+            <div className='nav-link' onClick={findRandom}>
+              Random
+            </div>
+          </div>
           <Link to='/tags' className='link'>
             <div className='nav-link'>Tags</div>
           </Link>

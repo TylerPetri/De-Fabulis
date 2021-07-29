@@ -4,7 +4,8 @@
     "createdAt": 12341234143,
     "tags": "random",
     "title": "greeting",
-    "cover": "This is a story about a greetings",
+    "textCover": "This is a story about a greetings",
+    "imgCover": "",
     "story": "hello",
     "storySettings": {
       "font": "white",
@@ -21,7 +22,8 @@
     "createdAt": 123512351235,
     "tags": "magic",
     "title": "Journey of the hats",
-    "cover": "This is a story about a wizard",
+    "textCover": "This is a story about a wizard",
+    "imgCover": "",
     "story": "Wizard of Trought revisit!",
     "storySettings": {
       "font": "white",
@@ -38,7 +40,8 @@
     "createdAt": 123533155,
     "tags": "Love",
     "title": "Your hourglass",
-    "cover": "This is a story about a memory",
+    "textCover": "This is a story about a memory",
+    "imgCover": "",
     "story": "They found each other's memories in...",
     "storySettings": {
       "font": "white",

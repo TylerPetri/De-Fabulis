@@ -1,30 +1,24 @@
-import { useStoreContext } from '../../utils/GlobalStore';
-
 import './readCards.css';
 
 export default function Cards(props) {
-  const [_, dispatch] = useStoreContext();
-
-  function openStoryPopup() {
-    dispatch({
-      type: 'SET',
-      data: {
-        username: props.item.username,
-        createdAt: props.item.createdAt,
-        tags: props.item.tags,
-        title: props.item.title,
-        textCover: props.item.cover,
-        story: props.item.story,
-        storySettings: props.item.storySettings,
-        coverSettings: props.item.coverSettings,
-      },
-    });
-    dispatch({ type: 'SET', data: { openStory: true } });
-  }
-
   return (
     <>
-      <div className='card' onClick={openStoryPopup}>
+      <div
+        className='card'
+        onClick={() =>
+          props.openStoryPopup(
+            props.item.username,
+            props.item.createdAt,
+            props.item.tags,
+            props.item.title,
+            props.item.textCover,
+            props.item.imgCover,
+            props.item.story,
+            props.item.storySettings,
+            props.item.coverSettings
+          )
+        }
+      >
         <textarea
           placeholder='Story here'
           className='story'

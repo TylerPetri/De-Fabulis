@@ -74,6 +74,41 @@ const dataReducer = (state, action) => {
   switch (action.type) {
     case 'SET':
       return { ...state, ...action.data };
+    case 'RESET_DEFAULT_SETTINGS':
+      return {
+        ...state,
+        currentStorySettings: [
+          { option: 'Font', color: 'white', dropdown: false },
+          {
+            option: 'Text-background',
+            color: 'rgb(121, 80, 28)',
+            dropdown: false,
+          },
+          {
+            option: 'Background',
+            color: 'rgb(0, 0, 0, 0.6)',
+            dropdown: false,
+          },
+        ],
+        currentCoverSettings: [
+          { option: 'Font', color: 'green', dropdown: false },
+          {
+            option: 'Cover-Background',
+            color: 'black',
+            dropdown: false,
+          },
+          {
+            option: 'Title-Font',
+            color: 'black',
+            dropdown: false,
+          },
+          {
+            option: 'Title-Background',
+            color: 'grey',
+            dropdown: false,
+          },
+        ],
+      };
     case 'CLEAR_CURRENT_STORY':
       return {
         ...state,

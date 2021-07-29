@@ -1,11 +1,10 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 import './composeTags.css';
 
 export default function AddTags() {
   const [{ currentTags }, dispatch] = useStoreContext();
-  const [alert, setAlert] = useState(0);
 
   const tagsInput = useRef();
 

@@ -15,7 +15,7 @@ export default function CoverEdit(props) {
             backgroundColor: props.storySettings[1].color,
           }}
         >
-          {story.length > 0 && `"${story}"`}
+          {story}
         </div>
         <div
           className='cover'

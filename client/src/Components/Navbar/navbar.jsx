@@ -1,14 +1,32 @@
-import { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import ConfirmAlert from './confirmAlert';
 import { BiSearchAlt } from 'react-icons/bi';
+import { useStoreContext } from '../../utils/GlobalStore';
 
 import './navbar.css';
-import { useStoreContext } from '../../utils/GlobalStore';
 
 export default function Taskbar() {
   const [{ data }, dispatch] = useStoreContext();
+  const [alert, setAlert] = useState(false);
+  const [option, setOption] = useState('');
+
   const searchAllInput = useRef();
   const history = useHistory();
+  const location = useLocation();
+
+  function handleKeyPress(event) {
+    if (event.charCode === 13) {
+      pushAlert();
+    }
+  }
+
+  function pushAlert(option) {
+    if (location.pathname === '/compose') {
+      setAlert(true);
+      setOption(option);
+    }
+  }
 
   function search() {
     history.push(
@@ -17,13 +35,8 @@ export default function Taskbar() {
     searchAllInput.current.value = '';
   }
 
-  function handleKeyPress(event) {
-    if (event.charCode === 13) {
-      search();
-    }
-  }
-
   function findRandom() {
+    pushAlert();
     const idx = Math.floor(Math.random() * data.length);
     history.push('/browse');
     dispatch({
@@ -42,44 +55,78 @@ export default function Taskbar() {
     });
   }
 
+  function handleAlert(choice) {
+    if (choice === 'back') setAlert(false);
+    if (choice === 'forward') {
+      if (option === '/') {
+        history.push('/');
+      } else if (option === 'search') {
+        search();
+      } else if (option === 'browse') {
+        history.push('/browse');
+      } else if (option === 'random') {
+        findRandom();
+      } else if (option === 'tags') {
+        history.push('/tags');
+      } else if (option === 'authors') {
+        history.push('/authors');
+      }
+    }
+    setAlert(false);
+  }
+
   return (
-    <div className='navbar'>
-      <div className='nav-cont'>
-        <div className='nav-item'>
-          <Link to='/' className='link'>
-            <div className='nav-title'>F</div>
-          </Link>
-          <input
-            placeholder='Search'
-            className='search-taskbar-input'
-            ref={searchAllInput}
-            onKeyPress={handleKeyPress}
-          />
-          <button className='search-taskbar-btn' onClick={search}>
-            <BiSearchAlt />
-          </button>
-          <Link to='/browse' className='link'>
-            <div className='nav-link'>Browse</div>
-          </Link>
-          <div className='link'>
-            <div className='nav-link' onClick={findRandom}>
-              Random
+    <>
+      <div className='navbar'>
+        <div className='nav-cont'>
+          <div className='nav-item'>
+            <div className='link'>
+              <div className='nav-title' onClick={() => pushAlert('/')}>
+                F
+              </div>
+            </div>
+            <input
+              placeholder='Search'
+              className='search-taskbar-input'
+              ref={searchAllInput}
+              onKeyPress={handleKeyPress}
+            />
+            <button
+              className='search-taskbar-btn'
+              onClick={() => pushAlert('search')}
+            >
+              <BiSearchAlt />
+            </button>
+            <div className='link'>
+              <div className='nav-link' onClick={() => pushAlert('browse')}>
+                Browse
+              </div>
+            </div>
+            <div className='link'>
+              <div className='nav-link' onClick={() => pushAlert('random')}>
+                Random
+              </div>
+            </div>
+            <div className='link'>
+              <div className='nav-link' onClick={() => pushAlert('tags')}>
+                Tags
+              </div>
+            </div>
+            <div className='link'>
+              <div className='nav-link' onClick={() => pushAlert('authors')}>
+                Authors
+              </div>
             </div>
           </div>
-          <Link to='/tags' className='link'>
-            <div className='nav-link'>Tags</div>
-          </Link>
-          <Link to='/authors' className='link'>
-            <div className='nav-link'>Authors</div>
-          </Link>
+        </div>
+        <div className='nav-cont'>
+          <div className='nav-item'>
+            <button className='login-nav'>Login</button>
+            <button className='register-nav'>Register</button>
+          </div>
         </div>
       </div>
-      <div className='nav-cont'>
-        <div className='nav-item'>
-          <button className='login-nav'>Login</button>
-          <button className='register-nav'>Register</button>
-        </div>
-      </div>
-    </div>
+      <ConfirmAlert alert={alert} handleAlert={handleAlert} />
+    </>
   );
 }

@@ -23,6 +23,7 @@ export default function Compose() {
     textFileInput.current.value = '';
     textFileInputCover.current.value = '';
     imgFileInput.current.value = '';
+    dispatch({ type: 'RESET_DEFAULT_SETTINGS' });
     dispatch({ type: 'CLEAR_CURRENT_STORY' });
   }, []);
 

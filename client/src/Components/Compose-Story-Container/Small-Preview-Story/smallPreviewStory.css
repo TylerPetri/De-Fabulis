@@ -24,6 +24,7 @@
   grid-row-start: 1;
   grid-row-end: 2;
   overflow: hidden;
+  font-size: 5px;
 }
 
 .small-preview-title {

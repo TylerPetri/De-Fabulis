@@ -15,7 +15,7 @@ allUsers.forEach((user) => {
       tags: user.tags,
       title: user.title,
       story: user.story,
-      textCover: user.ctextCover,
+      textCover: user.textCover,
       imgCover: user.imgCover,
       storySettings: user.storySettings,
       coverSettings: user.coverSettings,

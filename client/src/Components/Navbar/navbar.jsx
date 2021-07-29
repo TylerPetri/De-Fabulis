@@ -6,7 +6,7 @@ import './navbar.css';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 export default function Taskbar() {
-  const [{ data }] = useStoreContext();
+  const [{ data }, dispatch] = useStoreContext();
   const searchAllInput = useRef();
 
   function search() {
@@ -20,8 +20,21 @@ export default function Taskbar() {
   }
 
   function findRandom() {
-    const index = Math.floor(Math.random() * data.length);
-    console.log(index);
+    const idx = Math.floor(Math.random() * data.length);
+    dispatch({
+      type: 'SET',
+      data: {
+        username: data[idx].username,
+        createdAt: data[idx].createdAt,
+        tags: data[idx].tags,
+        title: data[idx].title,
+        textCover: data[idx].cover,
+        story: data[idx].story,
+        storySettings: data[idx].storySettings,
+        coverSettings: data[idx].coverSettings,
+        openStory: true,
+      },
+    });
   }
 
   return (

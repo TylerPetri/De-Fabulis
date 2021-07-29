@@ -17,7 +17,8 @@
 }
 
 .color-dropdown-nav,
-.color-dropdown {
+.color-dropdown,
+.color-dropdown-cover {
   position: absolute;
   left: 0;
   background-color: black;
@@ -31,10 +32,16 @@
   margin-top: 180px;
 }
 
+.color-dropdown-cover {
+  left: 50%;
+  transform: translateX(-140%);
+}
+
 .color-dropdown-nav {
   margin-left: 15%;
 }
 
 ul {
   list-style-type: none;
+  padding: 0;
 }

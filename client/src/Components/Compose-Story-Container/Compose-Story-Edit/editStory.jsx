@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import ColorOptions from '../../Compose-Color-Options/colorOptions';
+import ColorOptions from '../../Compose-Color-Options/colorOptionsStory';
 import { IoColorPalette } from 'react-icons/io5';
 import { CgCloseR } from 'react-icons/cg';
 

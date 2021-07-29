@@ -19,6 +19,24 @@ const initialData = {
       dropdown: false,
     },
   ],
+  currentCoverSettings: [
+    { option: 'Font', color: 'green', dropdown: false },
+    {
+      option: 'Cover-Background',
+      color: 'black',
+      dropdown: false,
+    },
+    {
+      option: 'Title-Font',
+      color: 'black',
+      dropdown: false,
+    },
+    {
+      option: 'Title-Background',
+      color: 'grey',
+      dropdown: false,
+    },
+  ],
   imageCover: '',
   textCover: '',
   story: '',
@@ -43,6 +61,8 @@ const initialData = {
   textCoverFile: '',
   uploadCoverFileX: false,
   openCoverEdit: false,
+  openCoverColors: false,
+  openCoverPreview: false,
   openStoryEdit: false,
   openStoryPreview: false,
   openStoryColors: false,

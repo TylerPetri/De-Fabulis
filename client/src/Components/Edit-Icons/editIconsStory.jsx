@@ -19,6 +19,12 @@ export default function EditIcons() {
     });
   }
 
+  function toggleStoryColors() {
+    openStoryColors
+      ? dispatch({ type: 'SET', data: { openStoryColors: false } })
+      : dispatch({ type: 'SET', data: { openStoryColors: true } });
+  }
+
   function openStoryPreview() {
     dispatch({
       type: 'SET',
@@ -28,12 +34,6 @@ export default function EditIcons() {
         openEditColors: false,
       },
     });
-  }
-
-  function toggleStoryColors() {
-    openStoryColors
-      ? dispatch({ type: 'SET', data: { openStoryColors: false } })
-      : dispatch({ type: 'SET', data: { openStoryColors: true } });
   }
 
   return (

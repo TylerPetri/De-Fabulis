@@ -2,7 +2,7 @@ import { useStoreContext } from '../../../utils/GlobalStore';
 
 import './smallPreviewCover.css';
 
-export default function CoverEdit() {
+export default function CoverEdit(props) {
   const [
     { title, imageCover, textCover, story, coverSettings, storySettings },
     dispatch,
@@ -14,8 +14,8 @@ export default function CoverEdit() {
         <div
           className='story'
           style={{
-            color: `${storySettings.font}`,
-            backgroundColor: `${storySettings.textBackground}`,
+            color: props.storySettings[0].color,
+            backgroundColor: props.storySettings[1].color,
           }}
         >
           "{story}"
@@ -23,8 +23,8 @@ export default function CoverEdit() {
         <div
           className='cover'
           style={{
-            color: `${coverSettings.font}`,
-            backgroundColor: `${coverSettings.textBackground}`,
+            color: props.coverSettings[0].color,
+            backgroundColor: props.coverSettings[1].color,
           }}
         >
           {imageCover.length > 0

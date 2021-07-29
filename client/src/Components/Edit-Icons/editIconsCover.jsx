@@ -40,8 +40,8 @@ export default function EditIcons() {
     <div className='edit-icons-container'>
       <TiEdit className='edit-icons' onClick={openCoverEdit} />
 
-      <IoColorPalette className='edit-icons' />
-      <FaEye className='edit-icons' />
+      <IoColorPalette className='edit-icons' onClick={toggleCoverColors} />
+      <FaEye className='edit-icons' onClick={openSmallPreview} />
     </div>
   );
 }

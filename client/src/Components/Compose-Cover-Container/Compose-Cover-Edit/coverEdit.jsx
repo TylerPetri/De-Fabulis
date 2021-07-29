@@ -1,30 +1,17 @@
 import { useState, useRef } from 'react';
-import ColorOptions from '../../Compose-Color-Options/colorOptions';
-import { IoIosOptions } from 'react-icons/io';
+import ColorOptions from '../../Compose-Color-Options/colorOptionsCover';
+import { FcCheckmark } from 'react-icons/fc';
 
 import { useStoreContext } from '../../../utils/GlobalStore';
 
 import './coverEdit.css';
 
 export default function CompCoverEdit(props) {
-  const [
-    {
-      openCoverEdit,
-      currentStory,
-      title,
-      story,
-      windowSize,
-      storySettings,
-      coverSettings,
-      imageCover,
-      textCover,
-    },
-    dispatch,
-  ] = useStoreContext();
+  const [{ openCoverEdit, title, imageCover, textCover }, dispatch] =
+    useStoreContext();
   const [sidenav, setSidenav] = useState(false);
-  const [temp, setTemp] = useState([currentStory]);
 
-  const storyInput = useRef();
+  const coverInput = useRef();
   const titleInput = useRef();
 
   function closeEdit() {
@@ -32,13 +19,12 @@ export default function CompCoverEdit(props) {
   }
 
   function handleChange(e) {
-    e.target.className === 'edit-title-area'
-      ? setTemp([...temp, (temp[0].title = titleInput.current.value)])
-      : setTemp([...temp, (temp[0].story = storyInput.current.value)]);
-  }
-
-  function toggleSidenav() {
-    !sidenav ? setSidenav(true) : setSidenav(false);
+    e.target.className === 'edit-cover-title'
+      ? dispatch({ type: 'SET', data: { title: titleInput.current.value } })
+      : dispatch({
+          type: 'SET',
+          data: { textCover: coverInput.current.value },
+        });
   }
 
   return (
@@ -48,35 +34,45 @@ export default function CompCoverEdit(props) {
         style={{
           opacity: openCoverEdit ? '1' : '0',
           zIndex: openCoverEdit ? '10' : '-1',
-          backgroundColor: props.settings[2].color,
+          backgroundColor: 'rgb(0,0,0,0.9)',
         }}
       >
-        <div className='cover-edit-tabs'>
-          <h3>Cover</h3>
-          <h3>Story</h3>
-        </div>
-        <div className='card'>
-          <div
-            className='story'
-            style={{
-              color: `${storySettings.font}`,
-              backgroundColor: `${storySettings.textBackground}`,
-            }}
-          >
-            "{story}"
+        <div className='edit-cover-container'>
+          <div className='card'>
+            <textarea
+              placeholder='Cover here'
+              className='edit-cover'
+              style={{
+                color: props.coverSettings[0].color,
+                backgroundColor: props.coverSettings[1].color,
+              }}
+              value={
+                imageCover.length > 0
+                  ? `${imageCover}`
+                  : `${textCover.slice(0, 150)}`
+              }
+              ref={coverInput}
+              onChange={handleChange}
+            />
+            <textarea
+              placeholder='Title here'
+              className='edit-cover-title'
+              style={{
+                color: props.coverSettings[2].color,
+                backgroundColor: props.coverSettings[3].color,
+              }}
+              ref={titleInput}
+              value={title}
+              onChange={(e) => handleChange(e)}
+            />
           </div>
-          <div
-            className='cover'
-            style={{
-              color: `${coverSettings.font}`,
-              backgroundColor: `${coverSettings.textBackground}`,
-            }}
-          >
-            {imageCover.length > 0
-              ? `${imageCover}`
-              : `"${textCover.slice(0, 150)}"`}
+          <div className='cover-edit-colors-cont'>
+            <ColorOptions
+              settings={props.coverSettings}
+              setSettings={props.setCoverSettings}
+            />
+            <FcCheckmark className='fc-cover-edit' onClick={closeEdit} />
           </div>
-          <div className='title'>{title}</div>
         </div>
       </div>
     </>

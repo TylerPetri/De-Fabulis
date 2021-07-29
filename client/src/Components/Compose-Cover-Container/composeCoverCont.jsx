@@ -46,8 +46,16 @@ export default function CoverContainer(props) {
         </div>
       </div>
       <div className='cover-edit'>
-        <SmallPreviewCover />
-        <CoverEdit settings={props.settings} setSettings={props.setSettings} />
+        <SmallPreviewCover
+          storySettings={props.storySettings}
+          coverSettings={props.coverSettings}
+        />
+        <CoverEdit
+          storySettings={props.storySettings}
+          setStorySettings={props.setStorySettings}
+          coverSettings={props.coverSettings}
+          setCoverSettings={props.setCoverSettings}
+        />
         <div className='edit-icons-cover'>
           <EditIcons />
         </div>

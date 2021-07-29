@@ -25,25 +25,33 @@ export default function Cards(props) {
   return (
     <>
       <div className='card' onClick={openStoryPopup}>
-        <div
+        <textarea
+          placeholder='Story here'
           className='story'
+          readOnly={true}
           style={{
             color: `${props.item.storySettings.font}`,
             backgroundColor: `${props.item.storySettings.textBackground}`,
           }}
-        >
-          "{props.item.story}"
-        </div>
-        <div
+          value={props.item.story}
+        />
+
+        <textarea
+          placeholder='Cover here'
           className='cover'
           style={{
             color: `${props.item.coverSettings.font}`,
             backgroundColor: `${props.item.coverSettings.background}`,
           }}
-        >
-          "{props.item.cover}"
-        </div>
-        <div className='title'>"{props.item.title}"</div>
+          readOnly={true}
+          value={props.item.cover}
+        />
+
+        <textarea
+          placeholder='Title here'
+          className='title'
+          value={props.item.title}
+        />
       </div>
     </>
   );

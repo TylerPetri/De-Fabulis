@@ -9,8 +9,10 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import './compose.css';
 
 export default function Compose() {
-  const [{ currentStorySettings }, dispatch] = useStoreContext();
-  const [settings, setSettings] = useState(currentStorySettings);
+  const [{ currentStorySettings, currentCoverSettings }, dispatch] =
+    useStoreContext();
+  const [storySettings, setStorySettings] = useState(currentStorySettings);
+  const [coverSettings, setCoverSettings] = useState(currentCoverSettings);
 
   const textFileInput = useRef();
   const imgFileInput = useRef();
@@ -130,15 +132,17 @@ export default function Compose() {
       <div className='compose-wrapper'>
         <div className='compose-cover-story-container'>
           <StoryContainer
-            settings={settings}
-            setSettings={setSettings}
+            settings={storySettings}
+            setSettings={setStorySettings}
             textFileInput={textFileInput}
             handleFileChosen={handleFileChosen}
             clearFileChosen={clearFileChosen}
           />
           <CoverContainer
-            settings={settings}
-            setSettings={setSettings}
+            storySettings={storySettings}
+            setStorySettings={setStorySettings}
+            coverSettings={coverSettings}
+            setCoverSettings={setCoverSettings}
             imgFileInput={imgFileInput}
             textFileInputCover={textFileInputCover}
             handleFileChosen={handleFileChosen}

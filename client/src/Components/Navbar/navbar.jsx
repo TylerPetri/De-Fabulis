@@ -25,6 +25,14 @@ export default function Taskbar() {
     if (location.pathname === '/compose') {
       setAlert(true);
       setOption(option);
+    } else {
+      if (option === 'search') {
+        search();
+      } else if (option === 'random') {
+        findRandom();
+      } else {
+        history.push(option);
+      }
     }
   }
 
@@ -62,13 +70,13 @@ export default function Taskbar() {
         history.push('/');
       } else if (option === 'search') {
         search();
-      } else if (option === 'browse') {
+      } else if (option === '/browse') {
         history.push('/browse');
       } else if (option === 'random') {
         findRandom();
-      } else if (option === 'tags') {
+      } else if (option === '/tags') {
         history.push('/tags');
-      } else if (option === 'authors') {
+      } else if (option === '/authors') {
         history.push('/authors');
       }
     }
@@ -98,7 +106,7 @@ export default function Taskbar() {
               <BiSearchAlt />
             </button>
             <div className='link'>
-              <div className='nav-link' onClick={() => pushAlert('browse')}>
+              <div className='nav-link' onClick={() => pushAlert('/browse')}>
                 Browse
               </div>
             </div>
@@ -108,12 +116,12 @@ export default function Taskbar() {
               </div>
             </div>
             <div className='link'>
-              <div className='nav-link' onClick={() => pushAlert('tags')}>
+              <div className='nav-link' onClick={() => pushAlert('/tags')}>
                 Tags
               </div>
             </div>
             <div className='link'>
-              <div className='nav-link' onClick={() => pushAlert('authors')}>
+              <div className='nav-link' onClick={() => pushAlert('/authors')}>
                 Authors
               </div>
             </div>

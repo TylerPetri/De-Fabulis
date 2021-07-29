@@ -28,7 +28,7 @@ export default function PreviewStory(props) {
             color: props.settings[0].color,
             backgroundColor: props.settings[1].color,
           }}
-          value={title.length > 0 ? title : ''}
+          value={title}
         />
         <textarea
           placeholder='Story'

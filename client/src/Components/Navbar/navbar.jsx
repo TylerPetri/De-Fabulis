@@ -25,6 +25,7 @@ export default function Taskbar() {
 
   function findRandom() {
     const idx = Math.floor(Math.random() * data.length);
+    history.push('/browse');
     dispatch({
       type: 'SET',
       data: {
@@ -32,7 +33,7 @@ export default function Taskbar() {
         createdAt: data[idx].createdAt,
         tags: data[idx].tags,
         title: data[idx].title,
-        textCover: data[idx].cover,
+        textCover: data[idx].textCover,
         story: data[idx].story,
         storySettings: data[idx].storySettings,
         coverSettings: data[idx].coverSettings,

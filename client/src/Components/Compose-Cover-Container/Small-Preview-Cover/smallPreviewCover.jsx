@@ -3,10 +3,7 @@ import { useStoreContext } from '../../../utils/GlobalStore';
 import './smallPreviewCover.css';
 
 export default function CoverEdit(props) {
-  const [
-    { title, imageCover, textCover, story, coverSettings, storySettings },
-    dispatch,
-  ] = useStoreContext();
+  const [{ title, imageCover, textCover, story }] = useStoreContext();
 
   return (
     <>
@@ -18,7 +15,7 @@ export default function CoverEdit(props) {
             backgroundColor: props.storySettings[1].color,
           }}
         >
-          "{story}"
+          {story.length > 0 && `"${story}"`}
         </div>
         <div
           className='cover'
@@ -29,9 +26,17 @@ export default function CoverEdit(props) {
         >
           {imageCover.length > 0
             ? `${imageCover}`
-            : `"${textCover.slice(0, 150)}"`}
+            : textCover.length > 0 && `"${textCover.slice(0, 150)}"`}
         </div>
-        <div className='title'>{title}</div>
+        <div
+          className='title'
+          style={{
+            color: props.coverSettings[2].color,
+            backgroundColor: props.coverSettings[3].color,
+          }}
+        >
+          {title}
+        </div>
       </div>
     </>
   );

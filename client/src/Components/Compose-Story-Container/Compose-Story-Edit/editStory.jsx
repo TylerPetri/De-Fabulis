@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import ColorOptions from '../../Compose-Color-Options/colorOptionsStory';
 import { IoColorPalette } from 'react-icons/io5';
-import { CgCloseR } from 'react-icons/cg';
+import { FcCheckmark } from 'react-icons/fc';
 
 import { useStoreContext } from '../../../utils/GlobalStore';
 
@@ -78,7 +78,7 @@ export default function CompTextArea(props) {
               )}
             </div>
             <div className='story-edit-close-button'>
-              <CgCloseR onClick={closeEdit} />
+              <FcCheckmark className='fc-story-edit' onClick={closeEdit} />
             </div>
           </div>
 

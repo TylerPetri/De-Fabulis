@@ -13,8 +13,11 @@ export default function Taskbar() {
           <Link to='/compose' className='link'>
             <div className='nav-link'>Compose</div>
           </Link>
-          <Link to='/stories' className='link'>
-            <div className='nav-link'>Stories</div>
+          <Link to='/browse' className='link'>
+            <div className='nav-link'>Browse</div>
+          </Link>
+          <Link to='/random' className='link'>
+            <div className='nav-link'>Random</div>
           </Link>
           <Link to='/tags' className='link'>
             <div className='nav-link'>Tags</div>
@@ -26,8 +29,8 @@ export default function Taskbar() {
       </div>
       <div className='nav-cont'>
         <div className='nav-item'>
-          <button>Login</button>
-          <button>Register</button>
+          <button className='login-nav'>Login</button>
+          <button className='register-nav'>Register</button>
         </div>
       </div>
     </div>

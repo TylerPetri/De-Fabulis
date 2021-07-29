@@ -1,12 +1,7 @@
-.upload-buttons-container {
+.upload-button-container {
   display: flex;
   flex-direction: column;
   margin-top: 25px;
-}
-
-.edit-preview-cont {
-  display: flex;
-  justify-content: center;
 }
 
 .submit-cont {
@@ -14,23 +9,23 @@
   justify-content: center;
 }
 
-.upload-button,
-.edit-upload-button {
-  display: flex;
-  align-items: center;
+.upload-button {
   width: max-content;
   height: max-content;
+  display: flex;
+  align-items: center;
   gap: 12px;
+  color: rgb(165, 101, 42);
+  background-color: burlywood;
+  border: none;
+  border-radius: 10px;
   font-size: 2.5em;
   margin: 10px;
   padding: 10px 15px;
 }
 
-.edit-upload-button {
-  font-size: 25px;
-}
-
-.upload-button:hover,
-.edit-upload-button:hover {
+.upload-button:hover {
   cursor: pointer;
+  color: burlywood;
+  background-color: rgb(165, 101, 42);
 }

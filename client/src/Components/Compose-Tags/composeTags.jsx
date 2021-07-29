@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useStoreContext } from '../../../utils/GlobalStore';
+import { useStoreContext } from '../../utils/GlobalStore';
 
 import './composeTags.css';
 
@@ -43,16 +43,18 @@ export default function AddTags() {
             ref={tagsInput}
             onKeyPress={(event) => handleKeyPress(event)}
           />
-          {currentTags.length > 0 &&
-            currentTags.map((tag, idx) => (
-              <div
-                className='compose-tags'
-                key={idx}
-                onClick={() => removeTag(idx)}
-              >
-                {tag}
-              </div>
-            ))}
+          <div className='compose-tags-box'>
+            {currentTags.length > 0 &&
+              currentTags.map((tag, idx) => (
+                <div
+                  className='compose-tags'
+                  key={idx}
+                  onClick={() => removeTag(idx)}
+                >
+                  {tag}
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </>

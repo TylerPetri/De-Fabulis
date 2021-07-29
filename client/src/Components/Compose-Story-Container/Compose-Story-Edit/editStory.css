@@ -96,6 +96,10 @@
   margin-right: 15px;
 }
 
+.fc-story-edit {
+  font-size: 1.5em;
+}
+
 .story-edit-close-button:hover {
   cursor: pointer;
 }

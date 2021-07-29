@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Navbar from '../../Components/Navbar/navbar';
 import CoverContainer from '../../Components/Compose-Cover-Container/composeCoverCont';
 import StoryContainer from '../../Components/Compose-Story-Container/composeStoryContainer';
+import AddTags from '../../Components/Compose-Tags/composeTags';
 import UploadButtons from '../../Components/UploadButtons/uploadButtons';
 
 import { useStoreContext } from '../../utils/GlobalStore';
@@ -149,8 +150,10 @@ export default function Compose() {
             clearFileChosen={clearFileChosen}
           />
         </div>
-
-        {/* <UploadButtons temp={temp} setTemp={setTemp} /> */}
+        <div>
+          <AddTags />
+        </div>
+        <UploadButtons />
       </div>
     </>
   );

@@ -43,7 +43,7 @@ function App() {
     <Router>
       <Route exact path='/' component={Welcome} />
       <Route exact path='/compose' component={Compose} />
-      <Route exact path='/stories' component={Read} />
+      <Route exact path='/browse' component={Read} />
       <Route exact path='/tags' component={Tags} />
       <Route exact path='/artists' component={Artists} />
     </Router>

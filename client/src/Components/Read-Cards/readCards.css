@@ -6,6 +6,7 @@
   display: grid;
   grid-template-rows: 85% 15%;
   position: relative;
+  transition: 0.8s;
 }
 
 .card:hover {

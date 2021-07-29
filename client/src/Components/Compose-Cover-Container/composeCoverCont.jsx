@@ -1,7 +1,8 @@
 import TextCover from './Compose-Cover-Uploads/textUpload';
+import SmallPreviewCover from './Small-Preview-Cover/smallPreviewCover';
 import CoverEdit from './Compose-Cover-Edit/coverEdit';
 import ImageCover from './Compose-Cover-Uploads/imageUpload';
-import EditIcons from '../Edit-Icons/editIcons';
+import EditIcons from '../Edit-Icons/editIconsCover';
 import { IoClose } from 'react-icons/io5';
 
 import { useStoreContext } from '../../utils/GlobalStore';
@@ -45,10 +46,11 @@ export default function CoverContainer(props) {
         </div>
       </div>
       <div className='cover-edit'>
-        <CoverEdit />
-      </div>
-      <div className='edit-icons-cover'>
-        <EditIcons />
+        <SmallPreviewCover />
+        <CoverEdit settings={props.settings} setSettings={props.setSettings} />
+        <div className='edit-icons-cover'>
+          <EditIcons />
+        </div>
       </div>
     </div>
   );

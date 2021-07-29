@@ -1,6 +1,6 @@
 import { useStoreContext } from '../../../utils/GlobalStore';
 
-import './smallPreview.css';
+import './smallPreviewStory.css';
 
 export default function PreviewStory(props) {
   const [{ username, title, story }] = useStoreContext();

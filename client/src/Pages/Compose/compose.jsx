@@ -9,16 +9,17 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import './compose.css';
 
 export default function Compose() {
-  const [{ currentStory, currentStorySettings, storyFileSelected }, dispatch] =
-    useStoreContext();
+  const [{ currentStorySettings }, dispatch] = useStoreContext();
   const [settings, setSettings] = useState(currentStorySettings);
-  const [temp, setTemp] = useState([currentStory]);
 
   const textFileInput = useRef();
   const imgFileInput = useRef();
   const textFileInputCover = useRef();
 
   useEffect(() => {
+    textFileInput.current.value = '';
+    textFileInputCover.current.value = '';
+    imgFileInput.current.value = '';
     dispatch({ type: 'CLEAR_CURRENT_STORY' });
   }, []);
 
@@ -39,14 +40,14 @@ export default function Compose() {
     const content = fileReader.result;
     dispatch({
       type: 'SET',
-      data: { image: content, imgFileSelected: true },
+      data: { imageCover: content, imgFileSelected: true },
     });
   }
   function handleCoverFileRead() {
     const content = fileReader.result;
     dispatch({
       type: 'SET',
-      data: { cover: content, textCoverFileSelected: true },
+      data: { textCover: content, textCoverFileSelected: true },
     });
   }
 
@@ -65,7 +66,7 @@ export default function Compose() {
         fileReader.onloadend = handleImageFileRead;
         dispatch({
           type: 'SET',
-          data: { imgFile: e.target.value },
+          // data: { imgFile: e.target.value },
         });
         setTimeout(() => dispatch({ type: 'X_ON' }), 500);
       }
@@ -109,7 +110,12 @@ export default function Compose() {
       setTimeout(() => {
         dispatch({
           type: 'SET',
-          data: { cover: '', textCoverFile: '', img: '', imgFile: '' },
+          data: {
+            textCover: '',
+            textCoverFile: '',
+            imageCover: '',
+            imgFile: '',
+          },
         });
         textFileInputCover.current.value = '';
         imgFileInput.current.value = '';

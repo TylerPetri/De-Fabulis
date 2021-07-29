@@ -44,7 +44,7 @@ const initialData = {
   uploadCoverFileX: false,
   openCoverEdit: false,
   openStoryEdit: false,
-  openPreview: false,
+  openStoryPreview: false,
   openStory: false,
 };
 
@@ -72,22 +72,18 @@ const dataReducer = (state, action) => {
           background: '',
         },
       };
+    case 'CLEAR_SELECTED_FILES':
+      return {
+        ...state,
+        storyFileSelected: false,
+        imgFileSelected: false,
+        textCoverFileSelected: false,
+        uploadCoverFileX: false,
+      };
     case 'X_ON':
       return { ...state, uploadCoverFileX: true };
     case 'XS_ON':
       return { ...state, uploadStoryFileX: true };
-    case 'OPEN_EDIT':
-      return { ...state, openEdit: true };
-    case 'CLOSE_EDIT':
-      return { ...state, openEdit: false };
-    case 'OPEN_PREVIEW':
-      return { ...state, openPreview: true };
-    case 'CLOSE_PREVIEW':
-      return { ...state, openPreview: false };
-    case 'OPEN_STORY':
-      return { ...state, openStory: true };
-    case 'CLOSE_STORY':
-      return { ...state, openStory: false };
     default:
       console.log(`Invalid action type: ${action.type}`);
       return state;

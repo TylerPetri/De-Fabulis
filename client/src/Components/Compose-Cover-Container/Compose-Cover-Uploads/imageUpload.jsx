@@ -53,6 +53,7 @@ export default function CoverImage(props) {
         className='imgFileInput-selected'
         style={{
           height: imgFileSelected ? '25px' : '0',
+          opacity: imgFileSelected ? '1' : '0',
           marginTop: imgFileSelected && '35px',
         }}
       >

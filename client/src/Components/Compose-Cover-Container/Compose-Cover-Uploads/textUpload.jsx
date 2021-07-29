@@ -50,6 +50,7 @@ export default function AddCover(props) {
         className='coverFileInput-selected'
         style={{
           height: textCoverFileSelected ? '15px' : '0',
+          opacity: textCoverFileSelected ? '1' : '0',
         }}
       >
         {textCoverFile.slice(12)}

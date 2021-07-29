@@ -4,19 +4,22 @@ import { CgCloseR } from 'react-icons/cg';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 export default function PreviewStory(props) {
-  const [{ openPreview, currentStorySettings }, dispatch] = useStoreContext();
+  const [
+    { username, title, story, openStoryPreview, currentStorySettings },
+    dispatch,
+  ] = useStoreContext();
   const [settings] = useState(currentStorySettings);
 
   function closePreview() {
-    dispatch({ type: 'CLOSE_PREVIEW' });
+    dispatch({ type: 'SET', data: { openStoryPreview: false } });
   }
 
   return (
     <div
       className='story-popup-container'
       style={{
-        opacity: openPreview ? '1' : '0',
-        zIndex: openPreview ? '10' : '-1',
+        opacity: openStoryPreview ? '1' : '0',
+        zIndex: openStoryPreview ? '10' : '-1',
         backgroundColor: settings[2].color,
       }}
     >
@@ -31,7 +34,7 @@ export default function PreviewStory(props) {
             color: settings[0].color,
             backgroundColor: settings[1].color,
           }}
-          value={props.username}
+          value={username}
         />
         <textarea
           placeholder='Title'
@@ -41,7 +44,7 @@ export default function PreviewStory(props) {
             color: settings[0].color,
             backgroundColor: settings[1].color,
           }}
-          value={props.title.length > 0 ? props.title : ''}
+          value={title.length > 0 ? title : ''}
         />
         <textarea
           placeholder='Story'
@@ -51,7 +54,7 @@ export default function PreviewStory(props) {
             color: settings[0].color,
             backgroundColor: settings[1].color,
           }}
-          value={props.story}
+          value={story}
         />
       </div>
     </div>

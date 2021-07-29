@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navbar from '../../Components/Navbar/navbar';
 import { useStoreContext } from '../../utils/GlobalStore';
 import AlphabeticalPagenation from '../../Components/Alphabetical-Pagenation/alphabetical-pagenation';
@@ -5,7 +6,9 @@ import AlphabeticalPagenation from '../../Components/Alphabetical-Pagenation/alp
 import './tags.css';
 
 export default function Tags() {
-  const [{ data }] = useStoreContext();
+  const [{ data }, dispatch] = useStoreContext();
+
+  useEffect(() => dispatch({ type: 'CLEAR_SELECTED_FILES' }), []);
 
   return (
     <>

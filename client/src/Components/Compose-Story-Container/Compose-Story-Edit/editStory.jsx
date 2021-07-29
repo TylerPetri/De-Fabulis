@@ -7,8 +7,18 @@ import { useStoreContext } from '../../../utils/GlobalStore';
 import './editStory.css';
 
 export default function CompTextArea(props) {
-  const [{ openStoryEdit, currentStory, title, story, windowSize }, dispatch] =
-    useStoreContext();
+  const [
+    {
+      openStoryEdit,
+      currentStory,
+      title,
+      story,
+      windowSize,
+      storySettings,
+      username,
+    },
+    dispatch,
+  ] = useStoreContext();
   const [sidenav, setSidenav] = useState(false);
   const [temp, setTemp] = useState([currentStory]);
 
@@ -16,7 +26,7 @@ export default function CompTextArea(props) {
   const titleInput = useRef();
 
   function closeEdit() {
-    dispatch({ type: 'CLOSE_EDIT' });
+    dispatch({ type: 'SET', data: { openStoryEdit: false } });
   }
 
   function handleChange(e) {
@@ -39,7 +49,12 @@ export default function CompTextArea(props) {
           backgroundColor: props.settings[2].color,
         }}
       >
-        <div className='edit-compose-card'>
+        <div
+          className='edit-compose-card'
+          style={{
+            transform: openStoryEdit ? 'translateY(0)' : 'translateY(-30%)',
+          }}
+        >
           {windowSize.width < 942 && (
             <div
               className='color-options-sidenav'
@@ -74,6 +89,15 @@ export default function CompTextArea(props) {
               </div>
             </div>
           </div>
+          <textarea
+            className='edit-popup-authors'
+            readOnly={true}
+            style={{
+              color: props.settings[0].color,
+              backgroundColor: props.settings[1].color,
+            }}
+            value={username}
+          />
           <textarea
             placeholder='Title here'
             className='edit-title-area'

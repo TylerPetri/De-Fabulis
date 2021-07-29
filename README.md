@@ -7,3 +7,8 @@ If you dare peek: jk S3 request limit $$$
 - color button
 - tags
 - preview/submit buttons
+
+- animation: slight slide down, fade in, size of reading
+- choose default colors
+
+End: revisit "settings" cleanup

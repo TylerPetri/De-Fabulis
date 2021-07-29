@@ -1,11 +1,18 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import write from '../../assets/animated-book.gif';
 import read from '../../assets/read-animated.gif';
 
+import { useStoreContext } from '../../utils/GlobalStore';
+
 import './welcome.css';
 
 export default function Welcome() {
+  const [_, dispatch] = useStoreContext();
+
+  useEffect(() => dispatch({ type: 'CLEAR_SELECTED_FILES' }), []);
+
   return (
     <div className='welcome-wrapper'>
       <div className='welcome-title'>De Fabulis</div>

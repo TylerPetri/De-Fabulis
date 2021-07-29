@@ -7,17 +7,19 @@
   position: absolute;
   top: 0;
   left: 0;
-  transition: 1s;
+  transition: 0.8s;
 }
 
 .edit-compose-card {
   height: 75%;
   width: 75%;
+  max-width: 1100px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: 200px auto;
-  grid-template-rows: 60px 100px auto;
+  grid-template-rows: 60px 50px 110px auto;
   overflow: hidden;
+  transition: 0.8s;
 }
 
 .edit-options-cont {
@@ -55,7 +57,7 @@
   grid-column-start: 1;
   grid-column-end: auto;
   grid-row-start: 2;
-  grid-row-end: 4;
+  grid-row-end: 5;
   z-index: 2;
 }
 
@@ -107,6 +109,19 @@
   cursor: pointer;
 }
 
+.edit-popup-authors {
+  width: 98%;
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+  padding: 1%;
+  resize: none;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  overflow: hidden;
+}
+
 .edit-title-area {
   height: 94%;
   width: 94%;
@@ -114,11 +129,12 @@
   resize: none;
   color: white;
   border-bottom: none;
+  border-top: none;
   background-color: rgb(121, 80, 28);
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
   text-align: center;
   font-size: 3em;
 }
@@ -134,8 +150,8 @@
   background-color: rgb(121, 80, 28);
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
 }
 
 .edit-compose-area:focus,

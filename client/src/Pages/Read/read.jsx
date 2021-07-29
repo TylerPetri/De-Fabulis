@@ -4,9 +4,12 @@ import StoryPopup from '../../Components/Story-Popup/storyPopup';
 
 import './read.css';
 import { useStoreContext } from '../../utils/GlobalStore';
+import { useEffect } from 'react';
 
 export default function Read() {
-  const [{ data }] = useStoreContext();
+  const [{ data }, dispatch] = useStoreContext();
+
+  useEffect(() => dispatch({ type: 'CLEAR_SELECTED_FILES' }), []);
 
   return (
     <>

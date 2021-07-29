@@ -61,15 +61,10 @@
 
 .cover-edit {
   width: max-content;
+  display: flex;
+  flex-wrap: nowrap;
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 3;
-}
-
-.edit-icons-cover {
-  grid-column-start: 3;
-  grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 3;
 }

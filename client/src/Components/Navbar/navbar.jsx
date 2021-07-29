@@ -67,8 +67,8 @@ export default function Taskbar() {
           <Link to='/tags' className='link'>
             <div className='nav-link'>Tags</div>
           </Link>
-          <Link to='/artists' className='link'>
-            <div className='nav-link'>Artists</div>
+          <Link to='/authors' className='link'>
+            <div className='nav-link'>Authors</div>
           </Link>
         </div>
       </div>

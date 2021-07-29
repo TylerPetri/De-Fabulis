@@ -10,6 +10,11 @@ export default function Tags() {
 
   useEffect(() => dispatch({ type: 'CLEAR_SELECTED_FILES' }), []);
 
+  function selectTag() {
+    // dispatch({type: 'SET', data: {selectedTag:  }})
+    console.log('selecting');
+  }
+
   return (
     <>
       <Navbar />
@@ -18,7 +23,11 @@ export default function Tags() {
         <div className='tags-cont'>
           {data.map((item) => {
             return (
-              <button className='tags-btn' key={item.username}>
+              <button
+                className='tags-btn'
+                key={item.username}
+                onClick={selectTag}
+              >
                 {item.tags}
               </button>
             );

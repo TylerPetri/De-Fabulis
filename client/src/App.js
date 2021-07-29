@@ -5,7 +5,7 @@ import Welcome from './Pages/Welcome/welcome';
 import Compose from './Pages/Compose/compose';
 import Read from './Pages/Read/read';
 import Tags from './Pages/Tags/tags';
-import Artists from './Pages/Artists/artists';
+import Authors from './Pages/Authors/authors';
 
 import fetchJSON from './utils/API';
 import { useStoreContext } from './utils/GlobalStore';
@@ -44,8 +44,9 @@ function App() {
       <Route exact path='/' component={Welcome} />
       <Route exact path='/compose' component={Compose} />
       <Route exact path='/browse' component={Read} />
+      <Route exact path='/browse/:author' component={Read} />
       <Route exact path='/tags' component={Tags} />
-      <Route exact path='/artists' component={Artists} />
+      <Route exact path='/authors' component={Authors} />
     </Router>
   );
 }

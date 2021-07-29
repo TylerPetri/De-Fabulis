@@ -1,16 +1,16 @@
-.artists-wrapper {
+.authors-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.artists-cont {
+.authors-cont {
   display: flex;
   flex-direction: column;
 }
 
-.artists-btn {
+.authors-btn {
   height: 25px;
   width: 100px;
   border-radius: 5px;
@@ -20,7 +20,7 @@
   background-color: rgb(73, 73, 73);
 }
 
-.artists-btn:hover {
+.authors-btn:hover {
   cursor: pointer;
   background-color: rgb(111, 111, 111);
 }

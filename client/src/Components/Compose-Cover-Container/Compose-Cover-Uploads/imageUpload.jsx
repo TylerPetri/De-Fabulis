@@ -1,5 +1,4 @@
 import { BsImage } from 'react-icons/bs';
-import { IoClose } from 'react-icons/io5';
 import { useStoreContext } from '../../../utils/GlobalStore';
 
 import './fileUploads.css';

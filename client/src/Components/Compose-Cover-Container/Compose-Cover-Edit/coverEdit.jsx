@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import ColorOptions from '../../Compose-Color-Options/colorOptionsCover';
 import { FcCheckmark } from 'react-icons/fc';
 
@@ -9,7 +9,6 @@ import './coverEdit.css';
 export default function CompCoverEdit(props) {
   const [{ openCoverEdit, title, imageCover, textCover }, dispatch] =
     useStoreContext();
-  const [sidenav, setSidenav] = useState(false);
 
   const coverInput = useRef();
   const titleInput = useRef();

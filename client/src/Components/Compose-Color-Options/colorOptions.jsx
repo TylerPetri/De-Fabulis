@@ -41,7 +41,7 @@ export default function ColorOptions(props) {
     let selectedColor = '';
     let bg = 1;
 
-    mode === 'Background' ? (bg = 0.4) : (bg = 1);
+    mode === 'Background' ? (bg = 0.6) : (bg = 1);
 
     switch (color) {
       case 'rgb(185, 0, 0)':
@@ -120,7 +120,10 @@ export default function ColorOptions(props) {
                   key={b}
                   className='edit-color-button'
                   id={b}
-                  style={{ backgroundColor: b }}
+                  style={{
+                    backgroundColor: b,
+                    opacity: a.option === 'Background' ? '0.6' : '1',
+                  }}
                   onClick={(ele) => chooseColor(ele)}
                 ></button>
               ))}

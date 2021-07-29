@@ -55,12 +55,7 @@ export default function CompCoverEdit(props) {
           <h3>Cover</h3>
           <h3>Story</h3>
         </div>
-        <div
-          className='card'
-          style={{
-            transform: openCoverEdit ? 'translateY(-20%)' : 'translateY(-80%)',
-          }}
-        >
+        <div className='card'>
           <div
             className='story'
             style={{

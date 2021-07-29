@@ -15,7 +15,7 @@ const initialData = {
     },
     {
       option: 'Background',
-      color: 'rgb(0, 0, 0, 0.4)',
+      color: 'rgb(0, 0, 0, 0.6)',
       dropdown: false,
     },
   ],

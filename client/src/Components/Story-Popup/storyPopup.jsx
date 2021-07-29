@@ -8,7 +8,7 @@ export default function StoryPopup() {
     useStoreContext();
 
   function closeStoryPopup() {
-    dispatch({ type: 'CLOSE_STORY' });
+    dispatch({ type: 'SET', data: { openStory: false } });
   }
 
   return (

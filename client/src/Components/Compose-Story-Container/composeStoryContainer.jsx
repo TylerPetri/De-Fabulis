@@ -1,7 +1,7 @@
 import StoryUpload from './Compose-Story-Upload/storyUpload';
 import SmallPreviewStory from './Small-Preview-Story/smallPreviewStory';
 import StoryEdit from './Compose-Story-Edit/editStory';
-import StoryPreview from '../Preview-story/previewStory';
+import StoryPreview from './Preview-story/previewStory';
 import EditIcons from '../Edit-Icons/editIconsStory';
 import ColorOptions from '../Compose-Color-Options/colorOptionsStory';
 

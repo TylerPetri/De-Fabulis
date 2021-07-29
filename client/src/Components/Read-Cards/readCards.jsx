@@ -19,7 +19,7 @@ export default function Cards(props) {
         coverSettings: props.item.coverSettings,
       },
     });
-    dispatch({ type: 'OPEN_STORY' });
+    dispatch({ type: 'SET', data: { openStory: true } });
   }
 
   return (
@@ -51,6 +51,7 @@ export default function Cards(props) {
           placeholder='Title here'
           className='title'
           value={props.item.title}
+          readOnly={true}
         />
       </div>
     </>

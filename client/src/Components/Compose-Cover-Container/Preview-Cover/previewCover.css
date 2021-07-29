@@ -1,0 +1,10 @@
+.cover-preview-close-btn {
+  color: grey;
+  transform: translateY(-800%);
+  font-size: 1.5em;
+}
+
+.cover-preview-close-btn:hover {
+  cursor: pointer;
+  color: rgb(189, 189, 189);
+}

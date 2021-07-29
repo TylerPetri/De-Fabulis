@@ -25,7 +25,7 @@ export default function EditIcons() {
       : dispatch({ type: 'SET', data: { openCoverColors: true } });
   }
 
-  function openSmallPreview() {
+  function openCoverPreview() {
     dispatch({
       type: 'SET',
       data: {
@@ -41,7 +41,7 @@ export default function EditIcons() {
       <TiEdit className='edit-icons' onClick={openCoverEdit} />
 
       <IoColorPalette className='edit-icons' onClick={toggleCoverColors} />
-      <FaEye className='edit-icons' onClick={openSmallPreview} />
+      <FaEye className='edit-icons' onClick={openCoverPreview} />
     </div>
   );
 }

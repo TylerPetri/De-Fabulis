@@ -1,16 +1,24 @@
 import TextCover from './Compose-Cover-Uploads/textUpload';
 import SmallPreviewCover from './Small-Preview-Cover/smallPreviewCover';
 import CoverEdit from './Compose-Cover-Edit/coverEdit';
+import CoverPreview from './Preview-Cover/previewCover';
 import ImageCover from './Compose-Cover-Uploads/imageUpload';
 import EditIcons from '../Edit-Icons/editIconsCover';
+import ColorOptions from '../Compose-Color-Options/colorOptionsCover';
 import { IoClose } from 'react-icons/io5';
 
 import { useStoreContext } from '../../utils/GlobalStore';
 import './composeCoverCont.css';
 
 export default function CoverContainer(props) {
-  const [{ textCoverFileSelected, imgFileSelected, uploadCoverFileX }] =
-    useStoreContext();
+  const [
+    {
+      textCoverFileSelected,
+      imgFileSelected,
+      uploadCoverFileX,
+      openCoverColors,
+    },
+  ] = useStoreContext();
 
   return (
     <div className='compose-cover-container'>
@@ -56,8 +64,22 @@ export default function CoverContainer(props) {
           coverSettings={props.coverSettings}
           setCoverSettings={props.setCoverSettings}
         />
+        <CoverPreview />
         <div className='edit-icons-cover'>
           <EditIcons />
+        </div>
+        <div
+          className='edit-color-story-cont'
+          style={{
+            opacity: openCoverColors ? '1' : '0',
+            zIndex: openCoverColors ? '1' : '-1',
+            transform: openCoverColors ? 'translateX(-50%)' : 'translateX(0%)',
+          }}
+        >
+          <ColorOptions
+            settings={props.coverSettings}
+            setSettings={props.setCoverSettings}
+          />
         </div>
       </div>
     </div>

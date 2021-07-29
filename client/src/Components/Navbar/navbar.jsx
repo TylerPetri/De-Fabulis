@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { BiSearchAlt } from 'react-icons/bi';
 
 import './navbar.css';
@@ -8,9 +8,13 @@ import { useStoreContext } from '../../utils/GlobalStore';
 export default function Taskbar() {
   const [{ data }, dispatch] = useStoreContext();
   const searchAllInput = useRef();
+  const history = useHistory();
 
   function search() {
-    console.log('searching');
+    history.push(
+      `/browse?search=${searchAllInput.current.value.toLowerCase().trim()}`
+    );
+    searchAllInput.current.value = '';
   }
 
   function handleKeyPress(event) {
@@ -43,9 +47,6 @@ export default function Taskbar() {
         <div className='nav-item'>
           <Link to='/' className='link'>
             <div className='nav-title'>F</div>
-          </Link>
-          <Link to='/compose' className='link'>
-            <div className='nav-link'>Compose</div>
           </Link>
           <input
             placeholder='Search'

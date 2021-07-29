@@ -6,6 +6,7 @@ const initialData = {
     height: undefined,
   },
   data: [],
+  filteredList: [],
   currentStorySettings: [
     { option: 'Font', color: 'white', dropdown: false },
     {

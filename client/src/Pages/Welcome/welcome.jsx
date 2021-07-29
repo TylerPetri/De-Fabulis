@@ -25,7 +25,7 @@ export default function Welcome() {
         </div>
         <div className='wBooksCont'>
           {' '}
-          <Link to='/stories'>
+          <Link to='/browse'>
             <img
               src={read}
               alt='link-read-page'

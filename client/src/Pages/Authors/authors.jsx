@@ -1,5 +1,4 @@
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useStoreContext } from '../../utils/GlobalStore';
 import Navbar from '../../Components/Navbar/navbar';
 import AlphabeticalPagenation from '../../Components/Alphabetical-Pagenation/alphabetical-pagenation';
@@ -7,8 +6,12 @@ import AlphabeticalPagenation from '../../Components/Alphabetical-Pagenation/alp
 import './authors.css';
 
 export default function Authors() {
-  const [{ data }, dispatch] = useStoreContext();
+  const [{ data }] = useStoreContext();
   const history = useHistory();
+
+  function setAuthor(username) {
+    history.push(`/browse?author=${username}`);
+  }
 
   return (
     <>
@@ -16,18 +19,15 @@ export default function Authors() {
       <div className='authors-wrapper'>
         <AlphabeticalPagenation />
         <div className='authors-cont'>
-          {data.map((item) => {
-            return (
-              <Link to={`/browse/${item.username}`} key={item.username}>
-                <button
-                  className='authors-btn'
-                  // onClick={selectAuthor}
-                >
-                  {item.username}
-                </button>
-              </Link>
-            );
-          })}
+          {data.map((item) => (
+            <button
+              className='authors-btn'
+              key={item.username}
+              onClick={() => setAuthor(item.username)}
+            >
+              {item.username}
+            </button>
+          ))}
         </div>
       </div>
     </>

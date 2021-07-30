@@ -1,21 +1,51 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useStoreContext } from '../../utils/GlobalStore';
+import FormControl from '@material-ui/core/FormControl';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import { makeStyles } from '@material-ui/core/styles';
 
 import './composeTags.css';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    color: 'orange',
+  },
+  label: {
+    color: 'orange',
+  },
+}));
+
+const useOutlinedInputStyles = makeStyles((theme) => ({
+  root: {
+    '& $notchedOutline': {
+      borderColor: 'grey',
+    },
+    '&:hover $notchedOutline': {
+      borderColor: '#651fff',
+    },
+    '&$focused $Outline': {
+      borderColor: '#11cb5f',
+    },
+  },
+  focused: {},
+  notchedOutline: {},
+}));
+
 export default function AddTags() {
   const [{ currentTags }, dispatch] = useStoreContext();
-
-  const tagsInput = useRef();
+  const classes = useStyles();
+  const outlinedInputClasses = useOutlinedInputStyles();
 
   function handleKeyPress(event) {
     if (event.charCode === 13) {
-      addTag(event);
+      addTag(event.target.value, event);
     }
   }
 
-  function addTag(event) {
-    let tag = tagsInput.current.value;
+  function addTag(tag, event) {
     let result = tag.charAt(0).toUpperCase() + tag.slice(1);
 
     if (!currentTags.includes(result)) {
@@ -25,9 +55,10 @@ export default function AddTags() {
           currentTags: [...currentTags, result],
         },
       });
-      tagsInput.current.value = '';
+      event.target.value = '';
     } else {
-      let children = event.target.nextSibling.children;
+      let children =
+        event.target.parentNode.parentNode.parentNode.children[1].children;
 
       for (let i = 0; i < children.length; i++) {
         if (children[i].outerText === result) children[i].id = 'alert';
@@ -50,13 +81,22 @@ export default function AddTags() {
   return (
     <>
       <div className='compose-tags-container'>
-        <h3>Tags: </h3>
-        <input
-          className='add-tags-input'
-          spellCheck='false'
-          ref={tagsInput}
-          onKeyPress={(event) => handleKeyPress(event)}
-        />
+        <FormControl variant='outlined' id='add-tags-input'>
+          <InputLabel
+            htmlFor='outlined-adornment-input'
+            className={classes.root}
+          >
+            Tags
+          </InputLabel>
+          <OutlinedInput
+            color='secondary'
+            classes={outlinedInputClasses}
+            spellCheck='false'
+            id='outlined-adornment-input'
+            onKeyPress={(event) => handleKeyPress(event)}
+            labelWidth={35}
+          />{' '}
+        </FormControl>
         <div className='compose-tags-box'>
           {currentTags.length > 0 &&
             currentTags.map((tag, idx) => (

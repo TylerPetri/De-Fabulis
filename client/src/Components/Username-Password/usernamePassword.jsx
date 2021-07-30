@@ -21,7 +21,7 @@ export default function UsernamePassword(props) {
     <>
       <FormControl variant='outlined'>
         <InputLabel
-          htmlFor='outlined-adornment-username'
+          htmlFor='outlined-adornment-input'
           className={props.classes.root}
         >
           Username
@@ -29,15 +29,15 @@ export default function UsernamePassword(props) {
         <OutlinedInput
           color='secondary'
           classes={props.outlinedInputClasses}
-          id='outlined-adornment-username'
+          id='outlined-adornment-input'
           value={props.values.username}
           onChange={props.handleChange('username')}
-          labelWidth={70}
+          labelWidth={75}
         />{' '}
       </FormControl>
       <FormControl variant='outlined'>
         <InputLabel
-          htmlFor='outlined-adornment-password'
+          htmlFor='outlined-adornment-input'
           className={props.classes.root}
         >
           Password
@@ -45,7 +45,7 @@ export default function UsernamePassword(props) {
         <OutlinedInput
           color='secondary'
           classes={props.outlinedInputClasses}
-          id='outlined-adornment-password'
+          id='outlined-adornment-input'
           type={props.values.showPassword ? 'text' : 'password'}
           value={props.values.password}
           onChange={props.handleChange('password')}
@@ -65,7 +65,7 @@ export default function UsernamePassword(props) {
               </IconButton>
             </InputAdornment>
           }
-          labelWidth={70}
+          labelWidth={72}
         />{' '}
       </FormControl>
     </>

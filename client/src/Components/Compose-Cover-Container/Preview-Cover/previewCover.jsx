@@ -54,7 +54,7 @@ export default function PreviewCover() {
             value={
               imageCover.length > 0
                 ? `${imageCover}`
-                : `"${textCover.slice(0, 150)}"`
+                : `${textCover.slice(0, 150)}`
             }
           />
 

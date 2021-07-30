@@ -5,6 +5,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: black;
+  font-family: 'Amatic SC';
+  font-weight: bold;
 }
 
 .nav-cont {
@@ -32,9 +34,8 @@
 
 .nav-link {
   color: rgb(146, 146, 146);
-
   height: 45px;
-  font-size: 20px;
+  font-size: 25px;
   display: flex;
   align-items: center;
   padding: 0 10px 5px;
@@ -54,6 +55,8 @@
   background-color: rgb(25, 25, 25);
   padding-left: 15px;
   margin-top: 3px;
+  font-size: 25px;
+  font-family: 'Amatic SC';
 }
 
 .search-taskbar-input:focus {
@@ -82,7 +85,9 @@
 .register-nav {
   height: 50px;
   border: none;
-  font-size: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Amatic SC';
 }
 
 .login-nav {
@@ -119,6 +124,7 @@
   display: flex;
   justify-content: center;
   background-color: rgb(0, 0, 0, 0.7);
+  font-family: 'Source Sans Pro';
 }
 
 .alert-container {

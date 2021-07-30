@@ -20,7 +20,7 @@ export default function SecurityQuestion(props) {
     <>
       <FormControl variant='outlined'>
         <InputLabel
-          htmlFor='outlined-adornment-securityQuestion'
+          htmlFor='outlined-adornment-input'
           className={props.classes.root}
         >
           Security Question
@@ -28,15 +28,15 @@ export default function SecurityQuestion(props) {
         <OutlinedInput
           color='secondary'
           classes={props.outlinedInputClasses}
-          id='outlined-adornment-securityQuestion'
+          id='outlined-adornment-input'
           value={props.values.securityQuestion}
           onChange={props.handleChange('securityQuestion')}
-          labelWidth={70}
+          labelWidth={130}
         />{' '}
       </FormControl>
       <FormControl variant='outlined'>
         <InputLabel
-          htmlFor='outlined-adornment-securityAnswer'
+          htmlFor='outlined-adornment-input'
           className={props.classes.root}
         >
           Answer
@@ -44,7 +44,7 @@ export default function SecurityQuestion(props) {
         <OutlinedInput
           color='secondary'
           classes={props.outlinedInputClasses}
-          id='outlined-adornment-securityAnswer'
+          id='outlined-adornment-input'
           type={props.values.showSecurityAnswer ? 'text' : 'securityAnswer'}
           value={props.values.securityAnswer}
           onChange={props.handleChange('securityAnswer')}
@@ -64,7 +64,7 @@ export default function SecurityQuestion(props) {
               </IconButton>
             </InputAdornment>
           }
-          labelWidth={70}
+          labelWidth={54}
         />{' '}
       </FormControl>
     </>

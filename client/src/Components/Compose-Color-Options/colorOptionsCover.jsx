@@ -4,14 +4,14 @@ import './colorOptions.css';
 
 export default function ColorOptions(props) {
   const [colors] = useState([
-    'rgb(185, 0, 0)',
-    'orange',
-    'yellow',
-    'green',
-    'lightBlue',
-    'rgb(0, 0, 160)',
-    'purple',
-    'pink',
+    'rgb(244,67,54)',
+    'rgb(255,152,0)',
+    'rgb(255, 235, 59)',
+    'rgb(0,230,118)',
+    'rgb(0,176,255)',
+    'rgb(41,121,255)',
+    'rgb(156,39,176)',
+    'rgb(216, 22, 138)',
     'rgb(121, 80, 28)',
     'black',
     'grey',
@@ -42,29 +42,29 @@ export default function ColorOptions(props) {
     let bg = 1;
 
     switch (color) {
-      case 'rgb(185, 0, 0)':
-        selectedColor = `RGBA(185, 0, 0, ${bg})`;
+      case 'rgb(244,67,54)':
+        selectedColor = `RGBA(244,67,54, ${bg})`;
         break;
-      case 'orange':
-        selectedColor = `RGBA(255, 165, 0, ${bg})`;
+      case 'rgb(255,152,0)':
+        selectedColor = `RGBA(255,152,0, ${bg})`;
         break;
-      case 'yellow':
-        selectedColor = `RGBA(255, 255, 0, ${bg})`;
+      case 'rgb(255, 235, 59)':
+        selectedColor = `RGBA(255, 235, 59, ${bg})`;
         break;
-      case 'green':
-        selectedColor = `RGBA(0, 185, 0, ${bg})`;
+      case 'rgb(0,230,118)':
+        selectedColor = `RGBA(0,230,118, ${bg})`;
         break;
-      case 'lightBlue':
-        selectedColor = `RGBA(173, 216, 230, ${bg})`;
+      case 'rgb(0,176,255)':
+        selectedColor = `RGBA(0,176,255, ${bg})`;
         break;
-      case 'rgb(0, 0, 160)':
-        selectedColor = `RGBA(0, 0, 160, ${bg})`;
+      case 'rgb(41,121,255)':
+        selectedColor = `RGBA(41,121,255, ${bg})`;
         break;
-      case 'purple':
-        selectedColor = `RGBA(128, 0, 128, ${bg})`;
+      case 'rgb(156,39,176)':
+        selectedColor = `RGBA(156,39,176, ${bg})`;
         break;
-      case 'pink':
-        selectedColor = `RGBA(255, 192, 203, ${bg})`;
+      case 'rgb(216, 22, 138)':
+        selectedColor = `RGBA(216, 22, 138, ${bg})`;
         break;
       case 'rgb(121, 80, 28)':
         selectedColor = `RGBA(121, 80, 28, ${bg})`;

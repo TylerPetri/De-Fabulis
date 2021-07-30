@@ -78,6 +78,10 @@ export default function Taskbar() {
         history.push('/tags');
       } else if (option === '/authors') {
         history.push('/authors');
+      } else if (option === '/login') {
+        history.push('/login');
+      } else if (option === '/register') {
+        history.push('/register');
       }
     }
     setAlert(false);

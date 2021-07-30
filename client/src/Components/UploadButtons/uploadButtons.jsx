@@ -1,4 +1,5 @@
-import { BsUpload } from 'react-icons/bs';
+import Button from '@material-ui/core/Button';
+
 import { useStoreContext } from '../../utils/GlobalStore';
 
 import './uploadButtons.css';
@@ -8,9 +9,9 @@ export default function UploadButtons() {
 
   return (
     <div className='upload-button-container'>
-      <button className='upload-button'>
-        Publish <BsUpload />
-      </button>
+      <Button variant='contained' color='secondary'>
+        <div className='submit-compose-btn'>Publish</div>
+      </Button>
     </div>
   );
 }

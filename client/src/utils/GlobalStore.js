@@ -11,7 +11,7 @@ const initialData = {
     { option: 'Font', color: 'white', dropdown: false },
     {
       option: 'Text-background',
-      color: 'rgb(121, 80, 28)',
+      color: 'rgb(156,39,176)',
       dropdown: false,
     },
     {
@@ -21,7 +21,7 @@ const initialData = {
     },
   ],
   currentCoverSettings: [
-    { option: 'Font', color: 'green', dropdown: false },
+    { option: 'Font', color: 'rgb(0,230,118)', dropdown: false },
     {
       option: 'Cover-Background',
       color: 'black',

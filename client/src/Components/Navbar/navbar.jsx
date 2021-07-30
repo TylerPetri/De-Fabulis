@@ -88,10 +88,8 @@ export default function Taskbar() {
       <div className='navbar'>
         <div className='nav-cont'>
           <div className='nav-item'>
-            <div className='link'>
-              <div className='nav-title' onClick={() => pushAlert('/')}>
-                F
-              </div>
+            <div className='nav-title' onClick={() => pushAlert('/')}>
+              F
             </div>
             <input
               placeholder='Search'
@@ -105,25 +103,19 @@ export default function Taskbar() {
             >
               <BiSearchAlt />
             </button>
-            <div className='link'>
-              <div className='nav-link' onClick={() => pushAlert('/browse')}>
-                Browse
-              </div>
+            <div className='nav-link' onClick={() => pushAlert('/browse')}>
+              Browse
             </div>
-            <div className='link'>
-              <div className='nav-link' onClick={() => pushAlert('random')}>
-                Random
-              </div>
+            <div className='nav-link' onClick={() => pushAlert('random')}>
+              Random
             </div>
-            <div className='link'>
-              <div className='nav-link' onClick={() => pushAlert('/tags')}>
-                Tags
-              </div>
+
+            <div className='nav-link' onClick={() => pushAlert('/tags')}>
+              Tags
             </div>
-            <div className='link'>
-              <div className='nav-link' onClick={() => pushAlert('/authors')}>
-                Authors
-              </div>
+
+            <div className='nav-link' onClick={() => pushAlert('/authors')}>
+              Authors
             </div>
           </div>
         </div>

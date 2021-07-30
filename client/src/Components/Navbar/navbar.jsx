@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import ConfirmAlert from './confirmAlert';
 import { BiSearchAlt } from 'react-icons/bi';
 import { useStoreContext } from '../../utils/GlobalStore';
@@ -129,7 +129,9 @@ export default function Taskbar() {
         </div>
         <div className='nav-cont'>
           <div className='nav-item'>
-            <button className='login-nav'>Login</button>
+            <button className='login-nav' onClick={() => pushAlert('/login')}>
+              Login
+            </button>
             <button className='register-nav'>Register</button>
           </div>
         </div>

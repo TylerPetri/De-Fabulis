@@ -6,6 +6,7 @@ import Compose from './Pages/Compose/compose';
 import Read from './Pages/Read/read';
 import Tags from './Pages/Tags/tags';
 import Authors from './Pages/Authors/authors';
+import Login from './Pages/Login/login';
 
 import fetchJSON from './utils/API';
 import { useStoreContext } from './utils/GlobalStore';
@@ -46,6 +47,7 @@ function App() {
       <Route path='/browse' component={Read} />
       <Route exact path='/tags' component={Tags} />
       <Route exact path='/authors' component={Authors} />
+      <Route exact path='/login' component={Login} />
     </Router>
   );
 }

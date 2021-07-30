@@ -4,10 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* flex-direction: column; */
 }
 
-.login-message {
+.login-register-message {
   height: max-content;
   width: 40%;
   display: flex;
@@ -19,23 +18,23 @@
 }
 
 @media (max-width: 1237px) {
-  .login-message {
+  .login-register-message {
     font-size: 4em;
   }
 }
 
 @media (max-width: 995px) {
-  .login-message {
+  .login-register-message {
     font-size: 3em;
   }
 }
 @media (max-width: 685px) {
-  .login-message {
+  .login-register-message {
     font-size: 2em;
   }
 }
 
-.login-box {
+.login-register-box {
   height: 50%;
   width: 40%;
   display: flex;

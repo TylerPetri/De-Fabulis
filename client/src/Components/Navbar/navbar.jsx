@@ -132,7 +132,12 @@ export default function Taskbar() {
             <button className='login-nav' onClick={() => pushAlert('/login')}>
               Login
             </button>
-            <button className='register-nav'>Register</button>
+            <button
+              className='register-nav '
+              onClick={() => pushAlert('/register')}
+            >
+              Register
+            </button>
           </div>
         </div>
       </div>

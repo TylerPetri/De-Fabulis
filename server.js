@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
-const storiesRoutes = require('./routes/stories');
-const usersRoutes = require('./routes/users');
-const tagsRoutes = require('./routes/tags');
-const imageRoutes = require('./routes/image-upload');
+const storiesRoutes = require('./server/routes/stories');
+const usersRoutes = require('./server/routes/users');
+const tagsRoutes = require('./server/routes/tags');
+const imageRoutes = require('./server/routes/image-upload');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 3001;
-const storiesRoutes = require('./server/routes/stories');
-// const usersRoutes = require('./server/routes/users');
-// const tagsRoutes = require('./server/routes/tags');
-// const imageRoutes = require('./server/routes/image-upload');
+const storiesRoutes = require('./app/routes/stories');
+// const usersRoutes = require('./app/routes/users');
+// const tagsRoutes = require('./app/routes/tags');
+// const imageRoutes = require('./app/routes/image-upload');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

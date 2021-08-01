@@ -2,11 +2,9 @@ import { CgCloseR } from 'react-icons/cg';
 
 import { useStoreContext } from '../../../utils/GlobalStore';
 
-export default function PreviewStory() {
-  const [
-    { username, title, story, openStoryPreview, currentStorySettings },
-    dispatch,
-  ] = useStoreContext();
+export default function PreviewStory(props) {
+  const [{ username, title, story, openStoryPreview }, dispatch] =
+    useStoreContext();
 
   function closePreview() {
     dispatch({ type: 'SET', data: { openStoryPreview: false } });
@@ -18,7 +16,7 @@ export default function PreviewStory() {
       style={{
         opacity: openStoryPreview ? '1' : '0',
         zIndex: openStoryPreview ? '10' : '-1',
-        backgroundColor: currentStorySettings[2].color,
+        backgroundColor: props.settings[2].color,
       }}
     >
       <div className='story-popup-card'>
@@ -29,8 +27,8 @@ export default function PreviewStory() {
           className='popup-authors'
           readOnly={true}
           style={{
-            color: currentStorySettings[0].color,
-            backgroundColor: currentStorySettings[1].color,
+            color: props.settings[0].color,
+            backgroundColor: props.settings[1].color,
           }}
           value={username}
         />
@@ -39,8 +37,8 @@ export default function PreviewStory() {
           className='story-popup-title'
           readOnly={true}
           style={{
-            color: currentStorySettings[0].color,
-            backgroundColor: currentStorySettings[1].color,
+            color: props.settings[0].color,
+            backgroundColor: props.settings[1].color,
           }}
           value={title.length > 0 ? title : ''}
         />
@@ -49,8 +47,8 @@ export default function PreviewStory() {
           className='story-popup-area'
           readOnly={true}
           style={{
-            color: currentStorySettings[0].color,
-            backgroundColor: currentStorySettings[1].color,
+            color: props.settings[0].color,
+            backgroundColor: props.settings[1].color,
           }}
           value={story}
         />

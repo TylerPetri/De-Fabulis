@@ -14,6 +14,9 @@ export default function CompCoverEdit(props) {
   const titleInput = useRef();
 
   function closeEdit() {
+    for (let i = 0; i < props.settings.length; i++) {
+      props.settings[i].dropdown = false;
+    }
     dispatch({ type: 'SET', data: { openCoverEdit: false } });
   }
 

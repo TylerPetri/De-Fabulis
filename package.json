@@ -5,11 +5,13 @@
   "main": "server.js",
   "dependencies": {
     "aws-sdk": "^2.951.0",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "react-router-dom": "^5.2.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.11"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",

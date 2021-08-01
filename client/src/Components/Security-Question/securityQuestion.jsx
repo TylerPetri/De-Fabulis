@@ -45,7 +45,7 @@ export default function SecurityQuestion(props) {
           color='secondary'
           classes={props.outlinedInputClasses}
           id='outlined-adornment-input'
-          type={props.values.showSecurityAnswer ? 'text' : 'securityAnswer'}
+          type={props.values.showSecurityAnswer ? 'text' : 'password'}
           value={props.values.securityAnswer}
           onChange={props.handleChange('securityAnswer')}
           endAdornment={

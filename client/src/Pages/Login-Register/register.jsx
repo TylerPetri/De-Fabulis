@@ -5,6 +5,7 @@ import SecurityQuestion from '../../Components/Security-Question/securityQuestio
 import Button from '@material-ui/core/Button';
 
 import Navbar from '../../Components/Navbar/navbar';
+import fetchJSON from '../../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +34,7 @@ const useOutlinedInputStyles = makeStyles((theme) => ({
   notchedOutline: {},
 }));
 
-export default function Login() {
+export default function Register() {
   const classes = useStyles();
   const outlinedInputClasses = useOutlinedInputStyles();
   const [values, setValues] = useState({
@@ -51,6 +52,16 @@ export default function Login() {
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
+
+  function handleRegister() {
+    const data = {
+      username: values.username.toLowerCase().trim(),
+      password: values.password,
+      securityQuestion: values.securityQuestion,
+      securityAnswer: values.securityAnswer,
+    };
+    fetchJSON('/api/users', 'POST', data);
+  }
 
   return (
     <>
@@ -77,7 +88,11 @@ export default function Login() {
             handleChange={handleChange}
           />
 
-          <Button variant='contained' color='secondary'>
+          <Button
+            variant='contained'
+            color='secondary'
+            onClick={handleRegister}
+          >
             <div className='login-btn-text'>ENTER</div>
           </Button>
         </div>

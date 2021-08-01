@@ -6,11 +6,11 @@ const awsConfig = {
 };
 AWS.config.update(awsConfig);
 const dynamodb = new AWS.DynamoDB.DocumentClient();
-const table = 'Stories';
+const TABLE_NAME = 'Stories';
 
 router.get('/stories', (req, res) => {
   const params = {
-    TableName: table,
+    TableName: TABLE_NAME,
   };
   dynamodb.scan(params, (err, data) => {
     if (err) {
@@ -23,12 +23,17 @@ router.get('/stories', (req, res) => {
 
 router.post('/stories', (req, res) => {
   const params = {
-    TableName: table,
+    TableName: TABLE_NAME,
     Item: {
       username: req.body.username,
       createdAt: Date.now(),
+      textCover: req.body.textCover,
+      imgCover: req.body.image,
+      title: req.body.title,
       story: req.body.story,
-      image: req.body.image,
+      tags: req.body.tags,
+      storySettings: req.body.storySettings,
+      coverSettings: req.body.coverSettings,
     },
   };
   dynamodb.put(params, (err, data) => {

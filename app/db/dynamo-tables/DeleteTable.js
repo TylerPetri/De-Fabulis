@@ -4,7 +4,7 @@ AWS.config.update({
 });
 const dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
 const params = {
-  TableName: 'Stories',
+  TableName: 'Stories-Users',
 };
 dynamodb.deleteTable(params, (err, data) => {
   if (err) {

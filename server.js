@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 3001;
 const storiesRoutes = require('./app/routes/stories');
-// const usersRoutes = require('./app/routes/users');
+const usersRoutes = require('./app/routes/users');
 // const tagsRoutes = require('./app/routes/tags');
 // const imageRoutes = require('./app/routes/image-upload');
 
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api/', storiesRoutes);
-// app.use('/api/', usersRoutes);
+app.use('/api/', usersRoutes);
 // app.use('/api/', tagsRoutes);
 // app.use('/api/', imageRoutes);
 

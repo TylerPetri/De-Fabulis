@@ -1,11 +1,11 @@
-function fetchJSON(url, method = 'get', data = {}) {
+function fetchJSON(url, method = 'GET', data = {}) {
   const fetchOptions = {
     method,
     headers: {
       'Content-Type': 'application/json',
     },
   };
-  if (method === 'post' || method === 'put') {
+  if (method === 'POST' || method === 'PUT') {
     fetchOptions.body = JSON.stringify(data);
   }
 

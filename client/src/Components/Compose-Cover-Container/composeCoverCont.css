@@ -1,3 +1,11 @@
+.fill-background-color {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 1s;
+}
+
 .compose-cover-container {
   height: max-content;
   width: max-content;

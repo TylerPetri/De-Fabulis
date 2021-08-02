@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Welcome from './Pages/Welcome/welcome';
@@ -13,7 +13,8 @@ import fetchJSON from './utils/API';
 import { useStoreContext } from './utils/GlobalStore';
 
 function App() {
-  const [{ submitted }, dispatch] = useStoreContext();
+  const [{ submitted, scrollHeight }, dispatch] = useStoreContext();
+  const scrollHeightDiv = useRef();
 
   useEffect(() => {
     async function fetchData() {
@@ -47,14 +48,15 @@ function App() {
 
   useEffect(() => {
     function handleResize() {
-      let temp = { width: undefined, height: undefined };
-      temp.width = window.innerWidth;
-      temp.height = window.innerHeight;
+      let tempWindow = { width: undefined, height: undefined };
+      tempWindow.width = window.innerWidth;
+      tempWindow.height = window.innerHeight;
 
       dispatch({
         type: 'SET',
         data: {
-          windowSize: temp,
+          windowSize: tempWindow,
+          scrollHeight: scrollHeightDiv.current.scrollHeight,
         },
       });
     }
@@ -64,15 +66,17 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Route exact path='/' component={Welcome} />
-      <Route exact path='/compose' component={Compose} />
-      <Route path='/browse' component={Read} />
-      {/* <Route exact path='/tags' component={Tags} /> */}
-      <Route exact path='/authors' component={Authors} />
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/register' component={Register} />
-    </Router>
+    <div ref={scrollHeightDiv}>
+      <Router>
+        <Route exact path='/' component={Welcome} />
+        <Route exact path='/compose' component={Compose} />
+        <Route path='/browse' component={Read} />
+        {/* <Route exact path='/tags' component={Tags} /> */}
+        <Route exact path='/authors' component={Authors} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
+      </Router>
+    </div>
   );
 }
 

@@ -72,7 +72,7 @@ export default function CoverContainer(props) {
           className='edit-color-story-cont'
           style={{
             opacity: openCoverColors ? '1' : '0',
-            zIndex: openCoverColors ? '1' : '-1',
+            zIndex: openCoverColors ? '5' : '-1',
             transform: openCoverColors ? 'translateX(-50%)' : 'translateX(0%)',
           }}
         >

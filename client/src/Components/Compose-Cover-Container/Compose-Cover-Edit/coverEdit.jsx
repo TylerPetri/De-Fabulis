@@ -7,8 +7,10 @@ import { useStoreContext } from '../../../utils/GlobalStore';
 import './coverEdit.css';
 
 export default function CompCoverEdit(props) {
-  const [{ openCoverEdit, title, imageCover, textCover }, dispatch] =
-    useStoreContext();
+  const [
+    { openCoverEdit, title, imageCover, textCover, scrollHeight },
+    dispatch,
+  ] = useStoreContext();
 
   const coverInput = useRef();
   const titleInput = useRef();
@@ -32,11 +34,19 @@ export default function CompCoverEdit(props) {
   return (
     <>
       <div
+        className='fill-background-color'
+        style={{
+          height: scrollHeight,
+          opacity: openCoverEdit ? '1' : '0',
+          zIndex: openCoverEdit ? '10' : '-1',
+          backgroundColor: 'rgb(0,0,0,0.9)',
+        }}
+      ></div>
+      <div
         className='edit-compose-container'
         style={{
           opacity: openCoverEdit ? '1' : '0',
           zIndex: openCoverEdit ? '10' : '-1',
-          backgroundColor: 'rgb(0,0,0,0.9)',
         }}
       >
         <div className='edit-cover-container'>

@@ -4,8 +4,10 @@ import { CgCloseR } from 'react-icons/cg';
 import './storyPopup.css';
 
 export default function StoryPopup() {
-  const [{ openStory, storySettings, username, title, story }, dispatch] =
-    useStoreContext();
+  const [
+    { openStory, storySettings, username, title, story, scrollHeight },
+    dispatch,
+  ] = useStoreContext();
 
   function closeStoryPopup() {
     dispatch({ type: 'SET', data: { openStory: false } });
@@ -14,11 +16,19 @@ export default function StoryPopup() {
   return (
     <>
       <div
+        className='fill-background-color'
+        style={{
+          height: scrollHeight,
+          opacity: openStory ? '1' : '0',
+          zIndex: openStory ? '10' : '-1',
+          backgroundColor: storySettings.background,
+        }}
+      ></div>
+      <div
         className='fill-background'
         style={{
           opacity: openStory ? '1' : '0',
           zIndex: openStory ? '10' : '-1',
-          backgroundColor: storySettings.background,
         }}
       ></div>
       <div

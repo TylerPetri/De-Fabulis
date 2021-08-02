@@ -14,7 +14,7 @@ export default function EditIcons() {
       data: {
         openCoverEdit: true,
         openEditColors: false,
-        openStoryColors: false,
+        openCoverColors: false,
       },
     });
   }
@@ -31,7 +31,7 @@ export default function EditIcons() {
       data: {
         openCoverPreview: true,
         openEditColors: false,
-        openStoryColors: false,
+        openCoverColors: false,
       },
     });
   }
@@ -39,7 +39,6 @@ export default function EditIcons() {
   return (
     <div className='edit-icons-container'>
       <TiEdit className='edit-icons' onClick={openCoverEdit} />
-
       <IoColorPalette className='edit-icons' onClick={toggleCoverColors} />
       <FaEye className='edit-icons' onClick={openCoverPreview} />
     </div>

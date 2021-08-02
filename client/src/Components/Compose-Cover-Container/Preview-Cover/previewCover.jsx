@@ -13,6 +13,7 @@ export default function PreviewCover() {
       textCover,
       currentCoverSettings,
       currentStorySettings,
+      scrollHeight,
     },
     dispatch,
   ] = useStoreContext();
@@ -24,11 +25,19 @@ export default function PreviewCover() {
   return (
     <>
       <div
+        className='fill-background-color'
+        style={{
+          height: scrollHeight,
+          opacity: openCoverPreview ? '1' : '0',
+          zIndex: openCoverPreview ? '10' : '-1',
+          backgroundColor: 'rgb(0,0,0,0.9)',
+        }}
+      ></div>
+      <div
         className='edit-compose-container'
         style={{
           opacity: openCoverPreview ? '1' : '0',
           zIndex: openCoverPreview ? '10' : '-1',
-          backgroundColor: 'rgb(0,0,0,0.9)',
         }}
       >
         <div className='card'>

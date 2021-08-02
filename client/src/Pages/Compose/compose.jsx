@@ -22,6 +22,7 @@ export default function Compose() {
   const textFileInput = useRef();
   // const imgFileInput = useRef();
   const textFileInputCover = useRef();
+  const composeWrapper = useRef();
   const history = useHistory();
 
   useEffect(() => {
@@ -159,7 +160,7 @@ export default function Compose() {
   return (
     <>
       <Navbar />
-      <div className='compose-wrapper'>
+      <div className='compose-wrapper' ref={composeWrapper}>
         <div className='compose-cover-story-container'>
           <StoryContainer
             settings={storySettings}

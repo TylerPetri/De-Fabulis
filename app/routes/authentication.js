@@ -1,13 +1,7 @@
 const router = require('express').Router();
 const AWS = require('aws-sdk');
-const bcrypt = require('bcrypt');
-const { v4: uuidv4 } = require('uuid');
 
-const {
-  createSession,
-  deactivateSession,
-  getSession,
-} = require('../session-manager');
+const { deactivateSession, getSession } = require('../session-manager');
 
 const awsConfig = {
   region: 'us-east-2',

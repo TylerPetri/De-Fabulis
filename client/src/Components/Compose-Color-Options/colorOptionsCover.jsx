@@ -12,19 +12,19 @@ export default function ColorOptions(props) {
 
     if (mode === 'Font') {
       setColor(0, switchCase(mode, color), props);
-      toggleDropdown(0);
+      toggleDropdown(0, props.settings, props.setSettings);
     }
     if (mode === 'Cover-Background') {
       setColor(1, switchCase(mode, color), props);
-      toggleDropdown(1);
+      toggleDropdown(1, props.settings, props.setSettings);
     }
     if (mode === 'Title-Font') {
       setColor(2, switchCase(mode, color), props);
-      toggleDropdown(2);
+      toggleDropdown(2, props.settings, props.setSettings);
     }
     if (mode === 'Title-Background') {
       setColor(3, switchCase(mode, color), props);
-      toggleDropdown(3);
+      toggleDropdown(3, props.settings, props.setSettings);
     }
   }
 

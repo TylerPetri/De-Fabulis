@@ -11,16 +11,16 @@ export default function ColorOptions(props) {
     const color = ele.target.id;
 
     if (mode === 'Font') {
-      setColor(0, switchCase(mode, color), props);
-      toggleDropdown(0);
+      setColor(0, switchCase(mode, color), props.settings, props.setSettings);
+      toggleDropdown(0, props.settings, props.setSettings);
     }
     if (mode === 'Text-background') {
-      setColor(1, switchCase(mode, color), props);
-      toggleDropdown(1);
+      setColor(1, switchCase(mode, color), props.settings, props.setSettings);
+      toggleDropdown(1, props.settings, props.setSettings);
     }
     if (mode === 'Background') {
-      setColor(2, switchCase(mode, color), props);
-      toggleDropdown(2);
+      setColor(2, switchCase(mode, color), props.settings, props.setSettings);
+      toggleDropdown(2, props.settings, props.setSettings);
     }
   }
 
@@ -33,7 +33,9 @@ export default function ColorOptions(props) {
             <button
               className='edit-color-button'
               style={{ backgroundColor: a.color }}
-              onClick={() => toggleDropdown(idx, props)}
+              onClick={() =>
+                toggleDropdown(idx, props.settings, props.setSettings)
+              }
             ></button>
             <div
               className={

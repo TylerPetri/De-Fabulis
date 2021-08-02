@@ -47,21 +47,15 @@ const switchCase = (mode, color) => {
   return selectedColor;
 };
 
-const setColor = (id, color, props) => {
-  props.setSettings([...props.settings, (props.settings[id].color = color)]);
+const setColor = (id, color, settings, setSettings) => {
+  setSettings([...settings, (settings[id].color = color)]);
 };
 
-const toggleDropdown = (id, props) => {
-  !props.settings[id].dropdown
-    ? props.setSettings([
-        ...props.settings,
-        (props.settings[id].dropdown = true),
-      ])
-    : props.setSettings([
-        ...props.settings,
-        (props.settings[id].dropdown = false),
-      ]);
-  props.setSettings(props.settings.filter((a) => a !== true || false));
+const toggleDropdown = (id, settings, setSettings) => {
+  !settings[id].dropdown
+    ? setSettings([...settings, (settings[id].dropdown = true)])
+    : setSettings([...settings, (settings[id].dropdown = false)]);
+  setSettings(settings.filter((a) => a !== true || false));
 };
 
 module.exports = { switchCase, setColor, toggleDropdown };

@@ -24,7 +24,7 @@ const createSession = (user) => {
     sessionId: sessionId,
     username: user.username,
     sessionStartTimestamp: currentTime,
-    isActive: true,
+    isActive: false,
     expires: currentTime + 1000 * 60 * 60 * 24 * 14,
     userInfo: { id: user.id, username: user.username },
   };

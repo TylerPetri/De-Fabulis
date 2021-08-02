@@ -54,8 +54,6 @@
   padding: 1%;
   border: none;
   resize: none;
-  color: white;
-  background-color: rgb(121, 80, 28);
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 2;
@@ -71,8 +69,6 @@
   border-radius: 0 0 10px 10px;
   border: none;
   resize: none;
-  color: white;
-  background-color: rgb(121, 80, 28);
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 3;

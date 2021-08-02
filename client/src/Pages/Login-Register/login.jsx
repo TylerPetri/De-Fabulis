@@ -81,7 +81,7 @@ export default function Login() {
       {' '}
       <Navbar />
       <div className='login-wrapper'>
-        <div className='login-register-message'>
+        <div className='login-message'>
           <span>Welcome to</span>
           <span>Library of Stories</span>
         </div>

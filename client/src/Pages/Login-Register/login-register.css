@@ -6,7 +6,8 @@
   align-items: center;
 }
 
-.login-register-message {
+.register-message,
+.login-message {
   height: max-content;
   width: 40%;
   display: flex;
@@ -18,18 +19,22 @@
 }
 
 @media (max-width: 1237px) {
-  .login-register-message {
+  .register-message,
+  .login-message {
     font-size: 4em;
   }
 }
 
 @media (max-width: 995px) {
-  .login-register-message {
+  .register-message,
+  .login-message {
     font-size: 3em;
   }
 }
+
 @media (max-width: 685px) {
-  .login-register-message {
+  .register-message,
+  .login-message {
     font-size: 2em;
   }
 }
@@ -75,4 +80,31 @@
   font-size: 2em;
   font-weight: bold;
   color: #11cb5f;
+}
+
+@media (max-width: 900px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+  .register-message,
+  .login-message {
+    width: 80%;
+  }
+  .register-message {
+    transform: translateY(-20%);
+  }
+  @media (max-height: 700px) {
+    .register-message {
+      transform: translateY(-50%);
+      font-size: 2em;
+    }
+  }
+  @media (max-height: 500px) {
+    .register-message {
+      display: none;
+    }
+  }
+  .login-register-box {
+    width: 80%;
+  }
 }

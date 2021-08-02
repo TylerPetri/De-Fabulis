@@ -109,10 +109,8 @@
   width: 94%;
   padding: 3%;
   resize: none;
-  color: white;
   border: none;
   border-top: none;
-  background-color: rgb(121, 80, 28);
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 2;
@@ -129,8 +127,6 @@
   border: none;
   resize: none;
   padding: 5%;
-  color: white;
-  background-color: rgb(121, 80, 28);
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 3;

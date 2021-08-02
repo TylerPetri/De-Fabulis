@@ -107,8 +107,8 @@ export default function NewPassword() {
   const handleNewPassword = async () => {
     if (
       values.password === values.reEnterPassword &&
-      values.password.length > 1 &&
-      values.reEnterPassword.length > 1
+      values.password.length > 0 &&
+      values.reEnterPassword.length > 0
     ) {
       const data = {
         username: user,

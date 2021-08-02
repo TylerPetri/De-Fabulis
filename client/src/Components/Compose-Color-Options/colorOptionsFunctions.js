@@ -58,4 +58,4 @@ const toggleDropdown = (id, settings, setSettings) => {
   setSettings(settings.filter((a) => a !== true || false));
 };
 
-module.exports = { switchCase, setColor, toggleDropdown };
+export { switchCase, setColor, toggleDropdown };

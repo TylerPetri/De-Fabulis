@@ -29,13 +29,13 @@ export default function Welcome() {
     gsap.to('.welcome-img-books', { delay: 2, opacity: 1, ease: 'power1.out' });
   }, []);
 
-  function killGSAP() {
+  function skipGSAP() {
     gsap.to('.welcome-img', { opacity: 1 });
     gsap.to('.welcome-img-books', { opacity: 1 });
   }
 
   return (
-    <div className='welcome-wrapper' onClick={killGSAP}>
+    <div className='welcome-wrapper' onClick={skipGSAP}>
       <div className='welcome-title'>
         <span className='welcome-to-span'>Welcome to</span>
         <span className='library-of-stories-span'>Library of Stories</span>

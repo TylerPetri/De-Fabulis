@@ -100,7 +100,7 @@ const dataReducer = (state, action) => {
           { option: 'Font', color: 'white', dropdown: false },
           {
             option: 'Text-background',
-            color: 'rgb(121, 80, 28)',
+            color: 'rgb(156,39,176)',
             dropdown: false,
           },
           {

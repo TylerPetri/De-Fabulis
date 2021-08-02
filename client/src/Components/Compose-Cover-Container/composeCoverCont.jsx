@@ -17,6 +17,7 @@ export default function CoverContainer(props) {
       imgFileSelected,
       uploadCoverFileX,
       openCoverColors,
+      windowSize,
     },
   ] = useStoreContext();
 
@@ -73,7 +74,11 @@ export default function CoverContainer(props) {
           style={{
             opacity: openCoverColors ? '1' : '0',
             zIndex: openCoverColors ? '5' : '-1',
-            transform: openCoverColors ? 'translateX(-50%)' : 'translateX(0%)',
+            transform: openCoverColors
+              ? windowSize.width < 600
+                ? 'translateY(-115%)'
+                : 'translateX(-50%)'
+              : 'translateX(0%)',
           }}
         >
           <ColorOptions

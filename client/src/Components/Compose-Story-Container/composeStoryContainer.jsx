@@ -36,8 +36,12 @@ export default function CoverContainer(props) {
           transform: openStoryColors
             ? windowSize.width > 1160
               ? 'translateX(0%)'
-              : 'translateX(30%)'
-            : 'translateX(100%)',
+              : windowSize.width < 1161 && windowSize.width > 600
+              ? 'translate(20%, -30%)'
+              : windowSize.width < 600
+              ? 'translate(30%, -30%)'
+              : 'translat(30%, -30%)'
+            : 'translate(70%, -30%)',
         }}
       >
         <ColorOptions

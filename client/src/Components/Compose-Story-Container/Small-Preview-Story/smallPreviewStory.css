@@ -62,3 +62,12 @@
 .small-preview-authors:hover {
   cursor: default;
 }
+
+@media (max-width: 580px) {
+  .small-preview-container {
+    height: 174px;
+    width: 250px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

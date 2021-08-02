@@ -2,4 +2,4 @@
 
 Live link: library-of-stories.herokuapp.com
 
-Work in progress, but here's the general idea
+- Cleaning up code tomorrow and completing readme

@@ -1,6 +1,6 @@
 .compose-tags-container {
   display: grid;
-  grid-template-columns: 50px 500px 50px;
+  grid-template-columns: 50px max-content 50px;
   grid-template-rows: 60px max-content;
   width: 100%;
   margin: 30px 0;
@@ -9,7 +9,6 @@
 #add-tags-input {
   height: 30px;
   width: 500px;
-
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -23,6 +22,7 @@
 .compose-tags-box {
   max-width: 500px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -49,4 +49,21 @@
 
 #alert {
   background-color: crimson;
+}
+
+@media (max-width: 580px) {
+  #add-tags-input {
+    width: 300px;
+  }
+  .compose-tags-box {
+    width: 300px;
+  }
+}
+@media (max-width: 450px) {
+  #add-tags-input {
+    width: 225px;
+  }
+  .compose-tags-box {
+    width: 225px;
+  }
 }

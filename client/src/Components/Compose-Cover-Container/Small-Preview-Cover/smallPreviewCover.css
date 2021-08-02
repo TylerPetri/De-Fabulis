@@ -15,3 +15,10 @@
 .edit-card:hover {
   cursor: default;
 }
+
+@media (max-width: 580px) {
+  .preview-card {
+    height: 100px;
+    width: 79px;
+  }
+}

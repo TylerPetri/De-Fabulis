@@ -15,8 +15,8 @@
   margin: 0 10px;
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .cover-edit-colors-cont ul {
@@ -32,4 +32,12 @@
 
 .fc-cover-edit:hover {
   cursor: pointer;
+}
+
+@media (max-width: 580px) {
+  .edit-cover-container {
+    grid-template-columns: max-content;
+    grid-template-rows: max-content max-content;
+    transform: translateY(15%);
+  }
 }

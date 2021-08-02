@@ -8,6 +8,8 @@ import Tags from './Pages/Tags/tags';
 import Authors from './Pages/Authors/authors';
 import Login from './Pages/Login-Register/login';
 import Register from './Pages/Login-Register/register';
+import PasswordRecovery from './Pages/Password-Recovery/questionAuth';
+import NewPassword from './Pages/Password-Recovery/newPassword';
 
 import fetchJSON from './utils/API';
 import { useStoreContext } from './utils/GlobalStore';
@@ -75,6 +77,8 @@ function App() {
         <Route exact path='/authors' component={Authors} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
+        <Route exact path='/security-question' component={PasswordRecovery} />
+        <Route exact path='/new-password' component={NewPassword} />
       </Router>
     </div>
   );

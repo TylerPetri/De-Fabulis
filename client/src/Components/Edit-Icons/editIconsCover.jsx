@@ -37,7 +37,7 @@ export default function EditIcons() {
   }
 
   return (
-    <div className='edit-icons-container'>
+    <div className='edit-icons-container-cover'>
       <TiEdit className='edit-icons' onClick={openCoverEdit} />
       <IoColorPalette className='edit-icons' onClick={toggleCoverColors} />
       <FaEye className='edit-icons' onClick={openCoverPreview} />

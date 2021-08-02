@@ -1,4 +1,5 @@
-.edit-icons-container {
+.edit-icons-container-cover,
+.edit-icons-container-story {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,4 +16,19 @@
 .edit-icons:hover {
   cursor: pointer;
   color: rgb(184, 184, 184);
+}
+
+@media (max-width: 580px) {
+  .edit-icons-container-story {
+    flex-direction: row;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+  .edit-icons-container-cover {
+    flex-direction: row;
+    transform: translateX(-65%);
+    font-size: 5em;
+  }
 }

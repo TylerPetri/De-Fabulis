@@ -63,3 +63,13 @@
   border-radius: 25px;
   padding: 0 20px;
 }
+
+@media (max-width: 580px) {
+  .compose-story-container {
+    grid-template-columns: max-content;
+    grid-template-rows: max-content max-content max-content;
+  }
+  .compose-story-title {
+    display: none;
+  }
+}

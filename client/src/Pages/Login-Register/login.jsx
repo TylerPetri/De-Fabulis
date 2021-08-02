@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import UsernamePassword from '../../Components/Username-Password/usernamePassword';
 import Button from '@material-ui/core/Button';
@@ -60,6 +60,7 @@ export default function Login() {
     const data = {
       username: values.username.toLowerCase().trim(),
       password: values.password,
+      type: 'auth-password',
     };
     const res = await fetchJSON('/api/login', 'POST', data);
     if (res.message === 'Auth successful') {
@@ -96,6 +97,11 @@ export default function Login() {
           >
             Wrong username or password
           </h3>
+          <div className='login-header'>
+            <Link to='/security-question' className='forgot-password-link'>
+              Forgot password
+            </Link>
+          </div>
           <UsernamePassword
             classes={classes}
             outlinedInputClasses={outlinedInputClasses}

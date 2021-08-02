@@ -37,7 +37,7 @@ export default function EditIcons() {
   }
 
   return (
-    <div className='edit-icons-container'>
+    <div className='edit-icons-container-story'>
       <TiEdit className='edit-icons' onClick={openStoryEdit} />
       <IoColorPalette className='edit-icons' onClick={toggleStoryColors} />
       <FaEye className='edit-icons' onClick={openStoryPreview} />

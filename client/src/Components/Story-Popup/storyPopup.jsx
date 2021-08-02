@@ -14,11 +14,18 @@ export default function StoryPopup() {
   return (
     <>
       <div
-        className='story-popup-container'
+        className='fill-background'
         style={{
           opacity: openStory ? '1' : '0',
           zIndex: openStory ? '10' : '-1',
           backgroundColor: storySettings.background,
+        }}
+      ></div>
+      <div
+        className='story-popup-container'
+        style={{
+          opacity: openStory ? '1' : '0',
+          zIndex: openStory ? '10' : '-1',
         }}
       >
         <div className='story-popup-card'>

@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react';
 import { useStoreContext } from '../../utils/GlobalStore';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';

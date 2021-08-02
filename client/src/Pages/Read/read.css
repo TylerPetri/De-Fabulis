@@ -3,5 +3,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 40px 0;
 }

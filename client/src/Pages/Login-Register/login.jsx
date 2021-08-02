@@ -5,6 +5,7 @@ import UsernamePassword from '../../Components/Username-Password/usernamePasswor
 import Button from '@material-ui/core/Button';
 import Navbar from '../../Components/Navbar/navbar';
 
+import { useStoreContext } from '../../utils/GlobalStore';
 import fetchJSON from '../../utils/API';
 
 import './login-register.css';
@@ -39,6 +40,7 @@ const useOutlinedInputStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
   const outlinedInputClasses = useOutlinedInputStyles();
+  const [_, dispatch] = useStoreContext();
   const [wrongUsernameOrPassword, setWrongUsernameOrPassword] = useState(false);
   const [values, setValues] = useState({
     username: '',
@@ -61,18 +63,16 @@ export default function Login() {
     };
     const res = await fetchJSON('/api/login', 'POST', data);
     if (res.message === 'Auth successful') {
-      setValues({
-        username: '',
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
+      sessionStorage.libraryOfStories_user = res.username;
+      sessionStorage.libraryOfStories_session = res.session;
+      dispatch({
+        type: 'SET',
+        data: { userLoggedIn: true, user: res.username },
       });
       history.push('/browse');
     } else {
       setWrongUsernameOrPassword(true);
-      setTimeout(() => setWrongUsernameOrPassword(false), 2000);
+      setTimeout(() => setWrongUsernameOrPassword(false), 4500);
     }
   }
 

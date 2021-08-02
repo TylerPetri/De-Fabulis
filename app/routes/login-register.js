@@ -44,15 +44,59 @@ router.post('/login', (req, res) => {
           req.body.password,
           data.Items[0].password,
           (err, result) => {
-            if (err) {
+            if (result) {
+              const generatedHash = bcrypt.hashSync(
+                `${Date.now()}${req.body.username}${Math.floor(
+                  Math.random() * 100000
+                )}`,
+                10
+              );
+              const parameters = {
+                TableName: TABLE_NAME,
+                Key: {
+                  username: data.Items[0].username,
+                },
+                UpdateExpression: 'set tempId = :tempId',
+                ExpressionAttributeValues: {
+                  ':tempId': generatedHash,
+                },
+              };
+              dynamodb.update(parameters, (err, data) => {
+                if (err) {
+                  return res.status(500).json();
+                } else {
+                  dynamodb.update(
+                    {
+                      TableName: 'UserSessions',
+                      Key: { username: req.body.username },
+                      UpdateExpression:
+                        'SET isActive = :isActive, expires = :expires',
+                      ExpressionAttributeValues: {
+                        ':isActive': true,
+                        ':expires': Date.now() + 1000 * 60 * 60 * 24 * 14,
+                      },
+                    },
+                    (err, data) => {
+                      if (err) {
+                        console.error(
+                          'Unable to update. Error:',
+                          JSON.stringify(err, null, 2)
+                        );
+                      } else {
+                        console.log('Update succeeded.');
+                      }
+                    }
+                  );
+                  return res.status(200).json({
+                    message: 'Auth successful',
+                    username: req.body.username,
+                    session: generatedHash,
+                  });
+                }
+              });
+            } else {
               return res.status(401).json({
                 message: 'Wrong password',
-              });
-            }
-            if (result) {
-              return res.status(200).json({
-                message: 'Auth successful',
-                username: req.body.username,
               });
             }
           }
@@ -98,7 +142,7 @@ router.post('/register', (req, res) => {
                 );
                 res.status(500).json(err);
               } else {
-                createSession(data);
+                createSession(params.Item);
                 console.log('Added item:', JSON.stringify(data, null, 2));
                 res.json({ message: 'Added item' });
               }
@@ -109,5 +153,4 @@ router.post('/register', (req, res) => {
     });
   }
 });
-
 module.exports = router;

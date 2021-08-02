@@ -21,14 +21,14 @@ router.get('/stories', (req, res) => {
   });
 });
 
-router.post('/stories', (req, res) => {
+router.post('/publish', (req, res) => {
   const params = {
     TableName: TABLE_NAME,
     Item: {
       username: req.body.username,
       createdAt: Date.now(),
       textCover: req.body.textCover,
-      imgCover: req.body.image,
+      imgCover: req.body.imgCover,
       title: req.body.title,
       story: req.body.story,
       tags: req.body.tags,

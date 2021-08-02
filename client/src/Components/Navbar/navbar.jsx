@@ -1,13 +1,19 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import ConfirmAlert from './confirmAlert';
+import Sidenav from './sidenav';
+import { ImPencil } from 'react-icons/im';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { BiSearchAlt } from 'react-icons/bi';
 import { useStoreContext } from '../../utils/GlobalStore';
+
+import fetchJSON from '../../utils/API';
 
 import './navbar.css';
 
 export default function Taskbar() {
-  const [{ data }, dispatch] = useStoreContext();
+  const [{ data, userLoggedIn, windowSize, mainSidenav }, dispatch] =
+    useStoreContext();
   const [alert, setAlert] = useState(false);
   const [option, setOption] = useState('');
 
@@ -15,10 +21,24 @@ export default function Taskbar() {
   const history = useHistory();
   const location = useLocation();
 
+  useEffect(() => {
+    if (
+      !sessionStorage.libraryOfStories_user ||
+      sessionStorage.libraryOfStories_user === ''
+    ) {
+      dispatch({ type: 'SET', data: { userLoggedIn: false } });
+    }
+  }, []);
+
   function handleKeyPress(event) {
     if (event.charCode === 13) {
       pushAlert();
+      dispatch({ type: 'SET', data: { mainSidenav: false } });
     }
+  }
+
+  function toggleSidenav() {
+    dispatch({ type: 'SET', data: { mainSidenav: !mainSidenav } });
   }
 
   function pushAlert(option) {
@@ -82,9 +102,23 @@ export default function Taskbar() {
         history.push('/login');
       } else if (option === '/register') {
         history.push('/register');
+      } else if (option === '/compose') {
+        history.push('/compose');
       }
     }
     setAlert(false);
+  }
+
+  async function logout() {
+    let username = sessionStorage.libraryOfStories_user;
+    let session = sessionStorage.libraryOfStories_session;
+    await fetchJSON('/api/authentication', 'POST', {
+      username: username,
+      session: session,
+      type: 'logout',
+    });
+    sessionStorage.clear();
+    dispatch({ type: 'SET', data: { userLoggedIn: false, user: '' } });
   }
 
   return (
@@ -92,48 +126,84 @@ export default function Taskbar() {
       <div className='navbar'>
         <div className='nav-cont'>
           <div className='nav-item'>
-            <div className='nav-title' onClick={() => pushAlert('/')}>
-              F
-            </div>
-            <input
-              placeholder='Search'
-              className='search-taskbar-input'
-              ref={searchAllInput}
-              onKeyPress={handleKeyPress}
-            />
-            <button
-              className='search-taskbar-btn'
-              onClick={() => pushAlert('search')}
-            >
-              <BiSearchAlt />
-            </button>
-            <div className='nav-link' onClick={() => pushAlert('/browse')}>
-              Browse
-            </div>
-            <div className='nav-link' onClick={() => pushAlert('random')}>
-              Random
-            </div>
-
-            <div className='nav-link' onClick={() => pushAlert('/tags')}>
+            {windowSize.width < 800 ? (
+              <>
+                <div className='nav-link' onClick={toggleSidenav}>
+                  <GiHamburgerMenu />
+                </div>
+                <Sidenav
+                  searchAllInput={searchAllInput}
+                  handleKeyPress={handleKeyPress}
+                  pushAlert={pushAlert}
+                  BiSearchAlt={BiSearchAlt}
+                  toggleSidenav={toggleSidenav}
+                  mainSidenav={mainSidenav}
+                />
+              </>
+            ) : (
+              <>
+                <div className='nav-title' onClick={() => pushAlert('/')}>
+                  F
+                </div>
+                <input
+                  placeholder='Search title'
+                  className='search-taskbar-input'
+                  ref={searchAllInput}
+                  onKeyPress={handleKeyPress}
+                />
+                <button
+                  className='search-taskbar-btn'
+                  onClick={() => pushAlert('search')}
+                >
+                  <BiSearchAlt />
+                </button>
+                <div className='nav-link' onClick={() => pushAlert('/browse')}>
+                  Browse
+                </div>
+                <div className='nav-link' onClick={() => pushAlert('random')}>
+                  Random
+                </div>
+                {/* <div className='nav-link' onClick={() => pushAlert('/tags')}>
               Tags
-            </div>
-
-            <div className='nav-link' onClick={() => pushAlert('/authors')}>
-              Authors
-            </div>
+            </div> */}
+                <div className='nav-link' onClick={() => pushAlert('/authors')}>
+                  Authors
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div className='nav-cont'>
           <div className='nav-item'>
-            <button className='login-nav' onClick={() => pushAlert('/login')}>
-              Login
-            </button>
-            <button
-              className='register-nav '
-              onClick={() => pushAlert('/register')}
-            >
-              Register
-            </button>
+            {userLoggedIn ? (
+              <>
+                <button
+                  className='compose-nav'
+                  onClick={() => pushAlert('/compose')}
+                >
+                  Compose
+                  <ImPencil />
+                </button>
+                <button className='login-nav' onClick={logout}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className='login-nav'
+                  onClick={() => pushAlert('/login')}
+                >
+                  Login
+                </button>
+                <button
+                  className='register-nav '
+                  onClick={() => pushAlert('/register')}
+                >
+                  Register
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

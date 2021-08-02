@@ -5,8 +5,8 @@ AWS.config.update({
 const dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
 const params = {
   TableName: 'UserSessions',
-  KeySchema: [{ AttributeName: 'sessionId', KeyType: 'HASH' }],
-  AttributeDefinitions: [{ AttributeName: 'sessionId', AttributeType: 'S' }],
+  KeySchema: [{ AttributeName: 'username', KeyType: 'HASH' }],
+  AttributeDefinitions: [{ AttributeName: 'username', AttributeType: 'S' }],
   ProvisionedThroughput: {
     ReadCapacityUnits: 10,
     WriteCapacityUnits: 10,

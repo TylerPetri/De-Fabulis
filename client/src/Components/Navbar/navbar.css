@@ -82,7 +82,8 @@
 }
 
 .login-nav,
-.register-nav {
+.register-nav,
+.compose-nav {
   height: 50px;
   border: none;
   font-size: 25px;
@@ -90,12 +91,27 @@
   font-family: 'Amatic SC';
 }
 
+.compose-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 7px;
+  padding-left: 15px;
+}
+
+.compose-img {
+  height: 30px;
+  width: 50px;
+}
+
 .login-nav {
   color: orange;
   background-color: rgb(75, 75, 75);
 }
 
-.register-nav {
+.register-nav,
+.compose-nav {
   color: rgb(75, 75, 75);
   background-color: orange;
 }
@@ -105,7 +121,8 @@
   color: rgb(250, 189, 75);
   background-color: rgb(100, 100, 100);
 }
-.register-nav:hover {
+.register-nav:hover,
+.compose-nav:hover {
   cursor: pointer;
   color: rgb(100, 100, 100);
   background-color: rgb(250, 189, 75);
@@ -161,4 +178,58 @@
 .alert-btn:hover {
   cursor: pointer;
   background-color: rgb(20, 20, 20);
+}
+
+/* Sidenav */
+/* Sidenav */
+/* Sidenav */
+
+.main-sidenav {
+  height: 100%;
+  width: max-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  z-index: 999;
+  transition: 0.8s;
+}
+
+.main-sidenav li {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 10px;
+}
+
+.sidenav-close-btn {
+  height: max-content;
+  width: max-content;
+  color: rgb(146, 146, 146);
+  font-size: 3em;
+  transform: translateY(-60%);
+  border-radius: 55px;
+}
+
+.sidenav-close-btn:hover {
+  cursor: pointer;
+  color: #11cb5f;
+  background-color: #651fff;
+}
+
+@media (max-width: 800px) {
+  .search-taskbar-input {
+    width: 100px;
+  }
+  .nav-link {
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .nav-title {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }

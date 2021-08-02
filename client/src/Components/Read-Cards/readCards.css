@@ -2,7 +2,7 @@
   height: 315px;
   width: 250px;
   border-radius: 5px;
-  margin: 10px;
+  margin: 20px 10px;
   display: grid;
   grid-template-rows: 85% 15%;
   position: relative;
@@ -20,6 +20,7 @@
   position: absolute;
   font-family: 'Source Sans Pro';
   font-size: 18px;
+  overflow: hidden;
 }
 
 .cover:hover {
@@ -39,6 +40,7 @@
   font-family: 'Source Sans Pro';
   font-size: 18px;
   resize: none;
+  overflow: hidden;
 }
 
 .story:hover {

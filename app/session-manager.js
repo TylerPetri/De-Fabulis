@@ -17,19 +17,17 @@ const generateId = (userId) => {
 };
 
 const createSession = (user) => {
-  console.log(user);
   const sessionId = generateId(user.username);
   const currentTime = Date.now();
 
   const sessionInfo = {
-    sessionId: sessionId, // Primary Key
-    userId: user.username,
+    sessionId: sessionId,
+    username: user.username,
     sessionStartTimestamp: currentTime,
     isActive: true,
     expires: currentTime + 1000 * 60 * 60 * 24 * 14,
     userInfo: { id: user.id, username: user.username },
   };
-  console.log(sessionInfo);
   dynamodb.put(
     {
       TableName: TABLE_NAME,
@@ -47,12 +45,12 @@ const createSession = (user) => {
   return sessionInfo;
 };
 
-const deactivateSession = async (sessionId) => {
-  const session = await dynamodb.updateItem(
+const deactivateSession = (username) => {
+  dynamodb.update(
     {
       TableName: TABLE_NAME,
       Key: {
-        sessionId: sessionId,
+        username: username,
       },
       UpdateExpression: 'SET isActive = :isActive',
       ExpressionAttributeValues: {
@@ -63,49 +61,78 @@ const deactivateSession = async (sessionId) => {
     (err, data) => {
       if (err) {
         console.error('Unable to update. Error:', JSON.stringify(err, null, 2));
-        res.status(500).json(err);
       } else {
         console.log('Update succeeded.');
-        res.json(data.Items);
       }
     }
   );
-
-  return session.Attributes;
 };
 
-const getSession = async (sessionId) => {
+const getSession = (user) => {
   const currentTime = Date.now();
-  const key = { sessionId: sessionId };
+  const key = { username: user };
 
-  const response = await dynamodb.query(
-    {
-      TableName: TABLE_NAME,
-      Key: key,
+  const params = {
+    TableName: TABLE_NAME,
+    ProjectionExpression: '#un, #id, #ex, #ia',
+    KeyConditionExpression: '#un = :un',
+    ExpressionAttributeNames: {
+      '#un': 'username',
+      '#id': 'sessionId',
+      '#ex': 'expires',
+      '#ia': 'isActive',
     },
-    (err, data) => {
-      if (err) {
-        console.error('Unable to query. Error:', JSON.stringify(err, null, 2));
-        res.status(500).json(err);
-      } else {
-        console.log('Query succeeded.');
-        res.json(data.Items);
+    ExpressionAttributeValues: {
+      ':un': user,
+    },
+    ScanIndexForward: false,
+  };
+
+  dynamodb.query(params, (err, data) => {
+    if (err) {
+      console.error('Unable to query. Error:', JSON.stringify(err, null, 2));
+    } else {
+      console.log('Query succeeded.');
+
+      let session = data.Items[0];
+
+      if (currentTime >= session.expires) {
+        if (session.isActive) {
+          // invalidate session if session is active and it is expired
+          dynamodb.update(
+            {
+              TableName: TABLE_NAME,
+              Key: key,
+              UpdateExpression: 'SET isActive = :isActive',
+              ExpressionAttributeValues: {
+                isActive: false,
+              },
+            },
+            (err, data) => {
+              if (err) {
+                console.error(
+                  'Unable to update. Error:',
+                  JSON.stringify(err, null, 2)
+                );
+              } else {
+                console.log('Update succeeded.');
+              }
+            }
+          );
+
+          return { ...session, isActive: false };
+        }
+        return session;
       }
-    }
-  );
 
-  let session = response.Item;
-
-  if (currentTime >= session.expires) {
-    if (session.isActive) {
-      // invalidate session if session is active and it is expired
+      const newExpires = currentTime + 1000 * 60 * 60 * 24 * 14;
       dynamodb.update(
         {
           TableName: TABLE_NAME,
           Key: key,
-          UpdateExpression: 'SET isActive = :isActive',
+          UpdateExpression: 'SET expires = :expires',
           ExpressionAttributeValues: {
-            isActive: false,
+            ':expires': newExpires,
           },
         },
         (err, data) => {
@@ -114,45 +141,16 @@ const getSession = async (sessionId) => {
               'Unable to update. Error:',
               JSON.stringify(err, null, 2)
             );
-            res.status(500).json(err);
           } else {
-            console.log('Update succeeded.');
-            res.json(data.Items);
+            console.log('Update extend session succeeded.');
           }
         }
       );
 
-      // return update session info
-      return { ...session, isActive: false };
+      // return session info with new expiry date
+      return { ...session, expires: newExpires };
     }
-
-    return session;
-  }
-
-  const newExpires = currentTime + 1000 * 60 * 60 * 24 * 14; // 14 days from now
-  // extend session
-  dynamodb.update(
-    {
-      TableName: TABLE_NAME,
-      Key: key,
-      UpdateExpression: 'SET expires = :expires',
-      ExpressionAttributeValues: {
-        ':expires': newExpires,
-      },
-    },
-    (err, data) => {
-      if (err) {
-        console.error('Unable to update. Error:', JSON.stringify(err, null, 2));
-        res.status(500).json(err);
-      } else {
-        console.log('Update succeeded.');
-        res.json(data.Items);
-      }
-    }
-  );
-
-  // return session info with new expiry date
-  return { ...session, expires: newExpires };
+  });
 };
 
 module.exports = { createSession, deactivateSession, getSession };

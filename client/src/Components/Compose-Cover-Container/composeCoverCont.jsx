@@ -47,10 +47,10 @@ export default function CoverContainer(props) {
             textFileInputCover={props.textFileInputCover}
             handleFileChosen={props.handleFileChosen}
           />
-          <ImageCover
+          {/* <ImageCover
             imgFileInput={props.imgFileInput}
             handleFileChosen={props.handleFileChosen}
-          />
+          /> */}
         </div>
       </div>
       <div className='cover-edit'>

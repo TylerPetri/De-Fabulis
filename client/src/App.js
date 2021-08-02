@@ -13,7 +13,7 @@ import fetchJSON from './utils/API';
 import { useStoreContext } from './utils/GlobalStore';
 
 function App() {
-  const [_, dispatch] = useStoreContext();
+  const [{ submitted }, dispatch] = useStoreContext();
 
   useEffect(() => {
     async function fetchData() {
@@ -21,6 +21,28 @@ function App() {
       dispatch({ type: 'SET', data: { data: res } });
     }
     fetchData();
+  }, [submitted]);
+
+  useEffect(() => {
+    async function handleAuth() {
+      let username = sessionStorage.libraryOfStories_user;
+      let session = sessionStorage.libraryOfStories_session;
+      if (username) {
+        await fetchJSON('/api/authentication', 'POST', {
+          username: username,
+          session: session,
+          type: 'checkAuth',
+        });
+        const res = await fetchJSON(`/api/authentication/${username}`);
+        if (res.message === true) {
+          dispatch({
+            type: 'SET',
+            data: { userLoggedIn: true, user: username },
+          });
+        }
+      }
+    }
+    handleAuth();
   }, []);
 
   useEffect(() => {
@@ -46,7 +68,7 @@ function App() {
       <Route exact path='/' component={Welcome} />
       <Route exact path='/compose' component={Compose} />
       <Route path='/browse' component={Read} />
-      <Route exact path='/tags' component={Tags} />
+      {/* <Route exact path='/tags' component={Tags} /> */}
       <Route exact path='/authors' component={Authors} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/register' component={Register} />

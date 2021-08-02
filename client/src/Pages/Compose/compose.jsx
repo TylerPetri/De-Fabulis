@@ -1,31 +1,59 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/navbar';
 import CoverContainer from '../../Components/Compose-Cover-Container/composeCoverCont';
 import StoryContainer from '../../Components/Compose-Story-Container/composeStoryContainer';
 import AddTags from '../../Components/Compose-Tags/composeTags';
 import UploadButtons from '../../Components/UploadButtons/uploadButtons';
+import fetchJSON from '../../utils/API';
 
 import { useStoreContext } from '../../utils/GlobalStore';
 
 import './compose.css';
 
 export default function Compose() {
-  const [{ currentStorySettings, currentCoverSettings }, dispatch] =
-    useStoreContext();
+  const [
+    { currentStorySettings, currentCoverSettings, userLoggedIn },
+    dispatch,
+  ] = useStoreContext();
   const [storySettings, setStorySettings] = useState(currentStorySettings);
   const [coverSettings, setCoverSettings] = useState(currentCoverSettings);
 
   const textFileInput = useRef();
-  const imgFileInput = useRef();
+  // const imgFileInput = useRef();
   const textFileInputCover = useRef();
+  const history = useHistory();
 
   useEffect(() => {
+    async function handleAuth() {
+      let username = sessionStorage.libraryOfStories_user;
+      let session = sessionStorage.libraryOfStories_session;
+      if (username) {
+        await fetchJSON('/api/authentication', 'POST', {
+          username: username,
+          session: session,
+          type: 'checkAuth',
+        });
+        const res = await fetchJSON(`/api/authentication/${username}`);
+        if (res.message === true) {
+          dispatch({
+            type: 'SET',
+            data: { userLoggedIn: true, user: username },
+          });
+        } else {
+          history.push('/login');
+        }
+      } else {
+        history.push('/login');
+      }
+    }
+    handleAuth();
     textFileInput.current.value = '';
     textFileInputCover.current.value = '';
-    imgFileInput.current.value = '';
+    // imgFileInput.current.value = '';
     dispatch({ type: 'RESET_DEFAULT_SETTINGS' });
     dispatch({ type: 'CLEAR_CURRENT_STORY' });
-  }, []);
+  }, [userLoggedIn]);
 
   //--------------//
   //  File upload //
@@ -122,7 +150,7 @@ export default function Compose() {
           },
         });
         textFileInputCover.current.value = '';
-        imgFileInput.current.value = '';
+        // imgFileInput.current.value = '';
       }, 650);
     }
   }
@@ -145,7 +173,7 @@ export default function Compose() {
             setStorySettings={setStorySettings}
             coverSettings={coverSettings}
             setCoverSettings={setCoverSettings}
-            imgFileInput={imgFileInput}
+            // imgFileInput={imgFileInput}
             textFileInputCover={textFileInputCover}
             handleFileChosen={handleFileChosen}
             clearFileChosen={clearFileChosen}
@@ -154,7 +182,12 @@ export default function Compose() {
         <div>
           <AddTags />
         </div>
-        <UploadButtons />
+        <UploadButtons
+          storySettings={storySettings}
+          coverSettings={coverSettings}
+          textFileInput={textFileInput}
+          textFileInputCover={textFileInputCover}
+        />
       </div>
     </>
   );

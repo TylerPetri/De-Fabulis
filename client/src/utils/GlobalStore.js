@@ -5,6 +5,8 @@ const initialData = {
     width: undefined,
     height: undefined,
   },
+  userLoggedIn: false,
+  user: '',
   data: [],
   filteredList: [],
   currentStorySettings: [
@@ -68,6 +70,8 @@ const initialData = {
   openStoryPreview: false,
   openStoryColors: false,
   openStory: false,
+  submitted: false,
+  mainSidenav: false,
 };
 
 const dataReducer = (state, action) => {

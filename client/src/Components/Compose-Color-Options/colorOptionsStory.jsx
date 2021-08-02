@@ -1,4 +1,8 @@
-import { switchCase, setColor, toggleDropdown } from './colorOptionsFunctions';
+import {
+  switchCase,
+  setColor,
+  toggleDropdown,
+} from './colorOptionsFunctions.js';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 import './colorOptions.css';

@@ -8,9 +8,20 @@
 }
 
 .welcome-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: 'Festive';
   color: orange;
-  font-size: 7rem;
+}
+
+.welcome-to-span {
+  font-size: 3em;
+}
+
+.library-of-stories-span {
+  font-size: 7em;
 }
 
 .welcome-card {
@@ -32,6 +43,7 @@
   width: 155px;
   margin: 0 30px;
   transition: 1s;
+  opacity: 0;
 }
 .welcome-img:hover {
   height: 165px;
@@ -43,6 +55,7 @@
   width: 175px;
   margin: 30px;
   transition: 1s;
+  opacity: 0;
 }
 
 .welcome-img-books:hover {

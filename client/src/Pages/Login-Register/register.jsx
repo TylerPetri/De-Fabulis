@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import UsernamePassword from '../../Components/Username-Password/usernamePassword';
 import SecurityQuestion from '../../Components/Security-Question/securityQuestion';
@@ -37,6 +38,8 @@ const useOutlinedInputStyles = makeStyles((theme) => ({
 export default function Register() {
   const classes = useStyles();
   const outlinedInputClasses = useOutlinedInputStyles();
+  const [allFieldsRequired, setAllFieldsRequired] = useState(false);
+  const [usernameTaken, setUsernameTaken] = useState(false);
   const [values, setValues] = useState({
     username: '',
     securityQuestion: '',
@@ -48,19 +51,36 @@ export default function Register() {
     showPassword: false,
     showSecurityAnswer: false,
   });
+  const history = useHistory();
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  function handleRegister() {
-    const data = {
-      username: values.username.toLowerCase().trim(),
-      password: values.password,
-      securityQuestion: values.securityQuestion,
-      securityAnswer: values.securityAnswer,
-    };
-    fetchJSON('/api/users', 'POST', data);
+  async function handleRegister() {
+    if (
+      values.username.length > 0 &&
+      values.password.length > 0 &&
+      values.securityQuestion.length > 0 &&
+      values.securityAnswer.length > 0
+    ) {
+      const data = {
+        username: values.username.toLowerCase().trim(),
+        password: values.password,
+        securityQuestion: values.securityQuestion,
+        securityAnswer: values.securityAnswer,
+      };
+      const res = await fetchJSON('/api/register', 'POST', data);
+      if (res.message === 'Added item') {
+        history.push('/login');
+      } else {
+        setUsernameTaken(true);
+        setTimeout(() => setUsernameTaken(false), 4500);
+      }
+    } else {
+      setAllFieldsRequired(true);
+      setTimeout(() => setAllFieldsRequired(false), 4500);
+    }
   }
 
   return (
@@ -73,6 +93,21 @@ export default function Register() {
           <span>Library of Stories</span>
         </div>
         <div className='login-register-box'>
+          <h3
+            style={{
+              opacity: allFieldsRequired || usernameTaken ? '1' : '0',
+              animation:
+                allFieldsRequired || usernameTaken
+                  ? 'animate 1.5s linear infinite'
+                  : 'none',
+            }}
+          >
+            {allFieldsRequired
+              ? 'All fields required'
+              : usernameTaken
+              ? 'Username taken'
+              : ''}
+          </h3>
           <UsernamePassword
             classes={classes}
             outlinedInputClasses={outlinedInputClasses}

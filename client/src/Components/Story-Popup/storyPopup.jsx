@@ -18,6 +18,7 @@ export default function StoryPopup() {
       <div
         className='fill-background-color'
         style={{
+          minHeight: window.innerHeight,
           height: scrollHeight,
           opacity: openStory ? '1' : '0',
           zIndex: openStory ? '10' : '-1',

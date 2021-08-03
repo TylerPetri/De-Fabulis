@@ -15,19 +15,19 @@ export default function ColorOptions(props) {
     const color = ele.target.id;
 
     if (mode === 'Font') {
-      setColor(0, switchCase(mode, color), props);
+      setColor(0, switchCase(mode, color), props.settings, props.setSettings);
       toggleDropdown(0, props.settings, props.setSettings);
     }
     if (mode === 'Cover-Background') {
-      setColor(1, switchCase(mode, color), props);
+      setColor(1, switchCase(mode, color), props.settings, props.setSettings);
       toggleDropdown(1, props.settings, props.setSettings);
     }
     if (mode === 'Title-Font') {
-      setColor(2, switchCase(mode, color), props);
+      setColor(2, switchCase(mode, color), props.settings, props.setSettings);
       toggleDropdown(2, props.settings, props.setSettings);
     }
     if (mode === 'Title-Background') {
-      setColor(3, switchCase(mode, color), props);
+      setColor(3, switchCase(mode, color), props.settings, props.setSettings);
       toggleDropdown(3, props.settings, props.setSettings);
     }
   }
@@ -41,7 +41,9 @@ export default function ColorOptions(props) {
             <button
               className='edit-color-button'
               style={{ backgroundColor: a.color }}
-              onClick={() => toggleDropdown(idx, props)}
+              onClick={() =>
+                toggleDropdown(idx, props.settings, props.setSettings)
+              }
             ></button>
             <div
               className='color-dropdown-cover'

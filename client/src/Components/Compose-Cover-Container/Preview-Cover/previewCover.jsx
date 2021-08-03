@@ -3,18 +3,9 @@ import { useStoreContext } from '../../../utils/GlobalStore';
 
 import './previewCover.css';
 
-export default function PreviewCover() {
+export default function PreviewCover(props) {
   const [
-    {
-      openCoverPreview,
-      title,
-      story,
-      imageCover,
-      textCover,
-      currentCoverSettings,
-      currentStorySettings,
-      scrollHeight,
-    },
+    { openCoverPreview, title, story, imageCover, textCover, scrollHeight },
     dispatch,
   ] = useStoreContext();
 
@@ -27,6 +18,7 @@ export default function PreviewCover() {
       <div
         className='fill-background-color'
         style={{
+          minHeight: window.innerHeight,
           height: scrollHeight,
           opacity: openCoverPreview ? '1' : '0',
           zIndex: openCoverPreview ? '10' : '-1',
@@ -36,6 +28,8 @@ export default function PreviewCover() {
       <div
         className='edit-compose-container'
         style={{
+          transform:
+            window.innerWidth < 600 ? 'translateY(30%)' : 'translateY(0%)',
           opacity: openCoverPreview ? '1' : '0',
           zIndex: openCoverPreview ? '10' : '-1',
         }}
@@ -46,8 +40,8 @@ export default function PreviewCover() {
             className='story'
             readOnly={true}
             style={{
-              color: currentStorySettings[0].color,
-              backgroundColor: currentStorySettings[1].color,
+              color: props.storySettings[0].color,
+              backgroundColor: props.storySettings[1].color,
             }}
             value={story}
           />
@@ -56,8 +50,8 @@ export default function PreviewCover() {
             placeholder='Cover here'
             className='cover'
             style={{
-              color: currentCoverSettings[0].color,
-              backgroundColor: currentCoverSettings[1].color,
+              color: props.coverSettings[0].color,
+              backgroundColor: props.coverSettings[1].color,
             }}
             readOnly={true}
             value={
@@ -73,8 +67,8 @@ export default function PreviewCover() {
             value={title}
             readOnly={true}
             style={{
-              color: currentCoverSettings[2].color,
-              backgroundColor: currentCoverSettings[3].color,
+              color: props.coverSettings[2].color,
+              backgroundColor: props.coverSettings[3].color,
             }}
           />
         </div>

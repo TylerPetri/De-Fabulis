@@ -15,6 +15,7 @@ export default function PreviewStory(props) {
       <div
         className='fill-background-color'
         style={{
+          minHeight: window.innerHeight,
           height: scrollHeight,
           opacity: openStoryPreview ? '1' : '0',
           zIndex: openStoryPreview ? '10' : '-1',

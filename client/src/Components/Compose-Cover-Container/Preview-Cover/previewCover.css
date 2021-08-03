@@ -8,3 +8,9 @@
   cursor: pointer;
   color: rgb(189, 189, 189);
 }
+
+@media (max-width: 600px) {
+  .cover-preview-close-btn {
+    transform: translateY(-1600%);
+  }
+}

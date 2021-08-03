@@ -37,6 +37,7 @@ export default function CompTextArea(props) {
       <div
         className='fill-background-color'
         style={{
+          minHeight: window.innerHeight,
           height: scrollHeight,
           opacity: openStoryEdit ? '1' : '0',
           zIndex: openStoryEdit ? '10' : '-1',

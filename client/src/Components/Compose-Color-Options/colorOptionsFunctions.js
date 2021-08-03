@@ -35,10 +35,10 @@ const switchCase = (mode, color) => {
     case 'black':
       selectedColor = `RGBA(0, 0, 0, ${bg})`;
       break;
-    case 'grey':
+    case 'rgb(128,128,128)':
       selectedColor = `RGBA(128, 128, 128, ${bg})`;
       break;
-    case 'white':
+    case 'rgb(255,255,255)':
       selectedColor = `RGBA(255, 255, 255, ${bg})`;
       break;
     default:

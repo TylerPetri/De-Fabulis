@@ -35,7 +35,7 @@ export default function CoverContainer(props) {
           zIndex: openStoryColors ? '1' : '-1',
           transform: openStoryColors
             ? windowSize.width > 1160
-              ? 'translateX(0%)'
+              ? 'translate(0%, -30%)'
               : windowSize.width < 1161 && windowSize.width > 600
               ? 'translate(20%, -30%)'
               : windowSize.width < 600

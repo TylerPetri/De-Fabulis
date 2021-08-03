@@ -65,7 +65,10 @@ export default function CoverContainer(props) {
           coverSettings={props.coverSettings}
           setCoverSettings={props.setCoverSettings}
         />
-        <CoverPreview />
+        <CoverPreview
+          storySettings={props.storySettings}
+          coverSettings={props.coverSettings}
+        />
         <div className='edit-icons-cover'>
           <EditIcons />
         </div>
@@ -77,8 +80,8 @@ export default function CoverContainer(props) {
             transform: openCoverColors
               ? windowSize.width < 600
                 ? 'translateY(-115%)'
-                : 'translateX(-50%)'
-              : 'translateX(0%)',
+                : 'translate(-50%, -50%)'
+              : 'translate(0%, -50%)',
           }}
         >
           <ColorOptions

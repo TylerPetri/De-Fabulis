@@ -48,6 +48,13 @@
   overflow: hidden;
 }
 
+@media (max-width: 800px) {
+  .popup-authors {
+    width: 94%;
+    padding: 3%;
+  }
+}
+
 .story-popup-title {
   height: 98%;
   width: 98%;

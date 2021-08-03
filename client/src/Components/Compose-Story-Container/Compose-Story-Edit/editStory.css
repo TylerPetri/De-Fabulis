@@ -10,6 +10,12 @@
   transition: 1s;
 }
 
+@media (max-width: 600px) {
+  .edit-compose-container {
+    flex-direction: column;
+  }
+}
+
 .edit-compose-card {
   height: 75%;
   width: 75%;

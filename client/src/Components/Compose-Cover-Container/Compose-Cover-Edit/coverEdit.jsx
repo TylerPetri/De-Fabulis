@@ -8,7 +8,7 @@ import './coverEdit.css';
 
 export default function CompCoverEdit(props) {
   const [
-    { openCoverEdit, title, imageCover, textCover, scrollHeight },
+    { openCoverEdit, title, imageCover, textCover, scrollHeight, windowSize },
     dispatch,
   ] = useStoreContext();
 
@@ -36,6 +36,7 @@ export default function CompCoverEdit(props) {
       <div
         className='fill-background-color'
         style={{
+          minHeight: windowSize.height,
           height: scrollHeight,
           opacity: openCoverEdit ? '1' : '0',
           zIndex: openCoverEdit ? '10' : '-1',

@@ -21,6 +21,7 @@ export default function Cards(props) {
         openStory: true,
       },
     });
+    window.scrollTo(0, 0);
   }
 
   return (

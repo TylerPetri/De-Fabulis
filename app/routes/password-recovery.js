@@ -54,6 +54,7 @@ router.put('/newpassword', (req, res) => {
             'Unable to add item. Error JSON:',
             JSON.stringify(err, null, 2)
           );
+          res.status(500).json({ message: 'Hacker boy or need not logout' });
         } else {
           console.log('Updated item password:', JSON.stringify(data, null, 2));
           res.status(200).json({ message: 'New password updated' });

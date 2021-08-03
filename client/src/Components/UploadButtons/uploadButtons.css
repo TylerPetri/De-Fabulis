@@ -4,6 +4,10 @@
   margin: 25px 0;
 }
 
+.upload-button-container h2 {
+  color: rgb(244, 67, 54);
+}
+
 .submit-cont {
   display: flex;
   justify-content: center;

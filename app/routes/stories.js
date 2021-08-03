@@ -42,10 +42,10 @@ router.post('/publish', (req, res) => {
         'Unable to add item. Error JSON:',
         JSON.stringify(err, null, 2)
       );
-      res.status(500).json(err);
+      res.status(500).json({ message: 'Error has occurred' });
     } else {
       console.log('Added item:', JSON.stringify(data, null, 2));
-      res.json({ Added: JSON.stringify(data, null, 2) });
+      res.json({ message: 'Added item', Added: JSON.stringify(data, null, 2) });
     }
   });
 });

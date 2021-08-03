@@ -9,7 +9,7 @@ import './read.css';
 import loadingSVG from '../../assets/Bean Eater-1s-200px.svg';
 
 export default function Read() {
-  const [{ data, scrollHeight }, dispatch] = useStoreContext();
+  const [{ data }, dispatch] = useStoreContext();
   const location = useLocation();
 
   useEffect(() => {

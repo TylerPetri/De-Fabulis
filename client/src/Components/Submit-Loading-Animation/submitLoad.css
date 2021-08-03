@@ -1,0 +1,14 @@
+.loadingRoll-submit-container {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingRoll-submit-container h2 {
+  color: rgb(244, 67, 54);
+}
+
+.loading-roll-animation {
+  width: 61px;
+}

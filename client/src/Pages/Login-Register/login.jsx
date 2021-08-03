@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import UsernamePassword from '../../Components/Username-Password/usernamePassword';
-import Button from '@material-ui/core/Button';
 import Navbar from '../../Components/Navbar/navbar';
+import SubmitAnimationButton from '../../Components/Submit-Loading-Animation/submitLoad';
 
 import { useStoreContext } from '../../utils/GlobalStore';
 import fetchJSON from '../../utils/API';
@@ -42,6 +42,8 @@ export default function Login() {
   const outlinedInputClasses = useOutlinedInputStyles();
   const [_, dispatch] = useStoreContext();
   const [wrongUsernameOrPassword, setWrongUsernameOrPassword] = useState(false);
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [errorHasOccurred, setErrorHasOccurred] = useState(false);
   const [values, setValues] = useState({
     username: '',
     amount: '',
@@ -62,7 +64,11 @@ export default function Login() {
       password: values.password,
       type: 'auth-password',
     };
+    setLoadingAnimation(true);
     const res = await fetchJSON('/api/login', 'POST', data);
+    if (res.message) {
+      setLoadingAnimation(false);
+    }
     if (res.message === 'Auth successful') {
       sessionStorage.libraryOfStories_user = res.username;
       sessionStorage.libraryOfStories_session = res.session;
@@ -71,6 +77,8 @@ export default function Login() {
         data: { userLoggedIn: true, user: res.username },
       });
       history.push('/browse');
+    } else if (res.message === 'Error has occurred') {
+      setErrorHasOccurred(true);
     } else {
       setWrongUsernameOrPassword(true);
       setTimeout(() => setWrongUsernameOrPassword(false), 4500);
@@ -109,10 +117,13 @@ export default function Login() {
             setValues={setValues}
             handleChange={handleChange}
           />
-
-          <Button variant='contained' color='secondary' onClick={handleLogin}>
-            <div className='login-btn-text'>ENTER</div>
-          </Button>
+          <SubmitAnimationButton
+            function={handleLogin}
+            loadingAnimation={loadingAnimation}
+            class={'login-btn-text'}
+            errorHasOccurred={errorHasOccurred}
+            setErrorHasOccurred={setErrorHasOccurred}
+          />
         </div>
       </div>{' '}
     </>

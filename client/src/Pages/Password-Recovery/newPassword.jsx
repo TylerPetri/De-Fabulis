@@ -7,9 +7,9 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
-import Button from '@material-ui/core/Button';
 
 import Navbar from '../../Components/Navbar/navbar';
+import SubmitAnimationButton from '../../Components/Submit-Loading-Animation/submitLoad';
 import fetchJSON from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalStore';
 
@@ -46,6 +46,8 @@ export default function NewPassword() {
   const [{ user }, dispatch] = useStoreContext();
   const [notMatching, setNotMatching] = useState(false);
   const [enterPassword, setEnterPassword] = useState(false);
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [errorHasOccurred, setErrorHasOccurred] = useState(false);
   const [values, setValues] = useState({
     password: '',
     reEnterPassword: '',
@@ -55,31 +57,28 @@ export default function NewPassword() {
 
   const history = useHistory();
 
-  useEffect(() => {
-    async function handleAuth() {
-      let username = sessionStorage.libraryOfStories_user;
-      let session = sessionStorage.libraryOfStories_session;
-      if (username) {
-        await fetchJSON('/api/authentication', 'POST', {
-          username: username,
-          session: session,
-          type: 'checkAuth',
+  async function handleAuth() {
+    let username = sessionStorage.libraryOfStories_user;
+    let session = sessionStorage.libraryOfStories_session;
+    if (username) {
+      await fetchJSON('/api/authentication', 'POST', {
+        username: username,
+        session: session,
+        type: 'checkAuth',
+      });
+      const res = await fetchJSON(`/api/authentication/${username}`);
+      if (res.message === true) {
+        dispatch({
+          type: 'SET',
+          data: { userLoggedIn: true, user: username },
         });
-        const res = await fetchJSON(`/api/authentication/${username}`);
-        if (res.message === true) {
-          dispatch({
-            type: 'SET',
-            data: { userLoggedIn: true, user: username },
-          });
-        } else {
-          history.push('/login');
-        }
       } else {
         history.push('/login');
       }
+    } else {
+      history.push('/login');
     }
-    handleAuth();
-  }, []);
+  }
 
   const handleClickShowPassword = (option) => {
     if (option === 'first') {
@@ -114,9 +113,14 @@ export default function NewPassword() {
         username: user,
         password: values.password,
       };
+      setLoadingAnimation(true);
+      await handleAuth();
       const res = await fetchJSON('/api/newpassword', 'PUT', data);
+      if (res.message) setLoadingAnimation(false);
       if (res.message === 'New password updated') {
         history.push('/browse');
+      } else if (res.message === 'Error has occurred') {
+        setErrorHasOccurred(true);
       }
     } else if (
       values.password.length < 1 ||
@@ -210,13 +214,13 @@ export default function NewPassword() {
             labelWidth={142}
           />{' '}
         </FormControl>
-        <Button
-          variant='contained'
-          color='secondary'
-          onClick={handleNewPassword}
-        >
-          <div className='login-btn-text'>ENTER</div>
-        </Button>
+        <SubmitAnimationButton
+          function={handleNewPassword}
+          loadingAnimation={loadingAnimation}
+          class={'login-btn-text'}
+          errorHasOccurred={errorHasOccurred}
+          setErrorHasOccurred={setErrorHasOccurred}
+        />
       </div>
     </>
   );

@@ -3,17 +3,18 @@ import { useHistory } from 'react-router-dom';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 
+import SubmitAnimationButton from '../../Components/Submit-Loading-Animation/submitLoad';
 import Navbar from '../../Components/Navbar/navbar';
 
-import './passwordRecovery.css';
 import fetchJSON from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalStore';
+
+import './passwordRecovery.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +52,8 @@ export default function PasswordRecovery() {
   const [enterUsername, setEnterUsername] = useState(false);
   const [enterAnswer, setEnterAnswer] = useState(false);
   const [wrongAnswer, setWrongAnswer] = useState(false);
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [errorHasOccurred, setErrorHasOccurred] = useState(false);
   const [values, setValues] = useState({
     username: '',
     securityQuestion: '',
@@ -77,11 +80,16 @@ export default function PasswordRecovery() {
 
   async function searchOne() {
     if (values.username.length > 0) {
+      setLoadingAnimation(true);
       const res = await fetchJSON(`/api/searchOne/${values.username}`);
-
+      if (res.message) {
+        setLoadingAnimation(false);
+      }
       if (res.message === 'No such being') {
         setNoSuchBeing(true);
         setTimeout(() => setNoSuchBeing(false), 4500);
+      } else if (res.message === 'Error has occurred') {
+        setErrorHasOccurred(true);
       } else if (res.message === 'Found one') {
         setValues({
           ...values,
@@ -102,8 +110,9 @@ export default function PasswordRecovery() {
         answer: values.securityAnswer,
         type: 'auth-answer',
       };
-
+      setLoadingAnimation(true);
       const res = await fetchJSON('/api/login', 'POST', data);
+      if (res.message) setLoadingAnimation(false);
       if (res.message === 'Auth successful') {
         sessionStorage.libraryOfStories_user = res.username;
         sessionStorage.libraryOfStories_session = res.session;
@@ -155,9 +164,13 @@ export default function PasswordRecovery() {
                 labelWidth={75}
               />{' '}
             </FormControl>
-            <Button variant='contained' color='secondary' onClick={searchOne}>
-              <div className='recovery-submit-btn'>ENTER</div>
-            </Button>
+            <SubmitAnimationButton
+              function={searchOne}
+              loadingAnimation={loadingAnimation}
+              class={'login-btn-text'}
+              errorHasOccurred={errorHasOccurred}
+              setErrorHasOccurred={setErrorHasOccurred}
+            />
           </div>
         ) : (
           <div className='question-recovery'>
@@ -206,13 +219,13 @@ export default function PasswordRecovery() {
                 labelWidth={54}
               />{' '}
             </FormControl>
-            <Button
-              variant='contained'
-              color='secondary'
-              onClick={authenticateAnswer}
-            >
-              <div className='recovery-submit-btn'>ENTER</div>
-            </Button>
+            <SubmitAnimationButton
+              function={authenticateAnswer}
+              loadingAnimation={loadingAnimation}
+              class={'login-btn-text'}
+              errorHasOccurred={errorHasOccurred}
+              setErrorHasOccurred={setErrorHasOccurred}
+            />
           </div>
         )}
       </div>

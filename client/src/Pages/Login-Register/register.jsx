@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import UsernamePassword from '../../Components/Username-Password/usernamePassword';
 import SecurityQuestion from '../../Components/Security-Question/securityQuestion';
-import Button from '@material-ui/core/Button';
 
 import Navbar from '../../Components/Navbar/navbar';
+import SubmitAnimationButton from '../../Components/Submit-Loading-Animation/submitLoad';
 import fetchJSON from '../../utils/API';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +40,8 @@ export default function Register() {
   const outlinedInputClasses = useOutlinedInputStyles();
   const [allFieldsRequired, setAllFieldsRequired] = useState(false);
   const [usernameTaken, setUsernameTaken] = useState(false);
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [errorHasOccurred, setErrorHasOccurred] = useState(false);
   const [values, setValues] = useState({
     username: '',
     securityQuestion: '',
@@ -70,9 +72,13 @@ export default function Register() {
         securityQuestion: values.securityQuestion,
         securityAnswer: values.securityAnswer,
       };
+      setLoadingAnimation(true);
       const res = await fetchJSON('/api/register', 'POST', data);
+      if (res.message) setLoadingAnimation(false);
       if (res.message === 'Added item') {
         history.push('/login');
+      } else if (res.message === 'Error has occurred') {
+        setErrorHasOccurred(true);
       } else {
         setUsernameTaken(true);
         setTimeout(() => setUsernameTaken(false), 4500);
@@ -122,14 +128,13 @@ export default function Register() {
             setValues={setValues}
             handleChange={handleChange}
           />
-
-          <Button
-            variant='contained'
-            color='secondary'
-            onClick={handleRegister}
-          >
-            <div className='login-btn-text'>ENTER</div>
-          </Button>
+          <SubmitAnimationButton
+            function={handleRegister}
+            loadingAnimation={loadingAnimation}
+            class={'login-btn-text'}
+            errorHasOccurred={errorHasOccurred}
+            setErrorHasOccurred={setErrorHasOccurred}
+          />
         </div>
       </div>{' '}
     </>

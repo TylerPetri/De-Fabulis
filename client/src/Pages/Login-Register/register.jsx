@@ -112,7 +112,7 @@ export default function Register() {
               ? 'All fields required'
               : usernameTaken
               ? 'Username taken'
-              : ''}
+              : 'Placeholder'}
           </h3>
           <UsernamePassword
             classes={classes}

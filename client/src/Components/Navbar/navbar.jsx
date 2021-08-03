@@ -32,7 +32,7 @@ export default function Taskbar() {
 
   function handleKeyPress(event) {
     if (event.charCode === 13) {
-      pushAlert();
+      pushAlert('search');
       dispatch({ type: 'SET', data: { mainSidenav: false } });
     }
   }

@@ -29,14 +29,14 @@ export default function StoryPopup() {
         className='fill-background'
         style={{
           opacity: openStory ? '1' : '0',
-          zIndex: openStory ? '10' : '-1',
+          zIndex: openStory ? '20' : '-1',
         }}
       ></div>
       <div
         className='story-popup-container'
         style={{
           opacity: openStory ? '1' : '0',
-          zIndex: openStory ? '10' : '-1',
+          zIndex: openStory ? '20' : '-1',
         }}
       >
         <div className='story-popup-card'>

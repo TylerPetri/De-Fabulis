@@ -123,7 +123,7 @@ export default function Taskbar() {
 
   return (
     <>
-      <div className='navbar'>
+      <div className='navbar' style={{ zIndex: '999999' }}>
         <div className='nav-cont'>
           <div className='nav-item'>
             {windowSize.width < 800 ? (

@@ -3,12 +3,13 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/navbar';
 import Cards from '../../Components/Read-Cards/readCards';
 import StoryPopup from '../../Components/Story-Popup/storyPopup';
-
-import './read.css';
 import { useStoreContext } from '../../utils/GlobalStore';
 
+import './read.css';
+import loadingSVG from '../../assets/Bean Eater-1s-200px.svg';
+
 export default function Read() {
-  const [{ data }, dispatch] = useStoreContext();
+  const [{ data, scrollHeight }, dispatch] = useStoreContext();
   const location = useLocation();
 
   useEffect(() => {
@@ -41,7 +42,10 @@ export default function Read() {
             <Cards key={item.createdAt} item={item} />
           ))
         ) : (
-          <h2>No stories in database</h2>
+          <div className='loading-svg-container'>
+            <div className='loading-stories'>Loading</div>
+            <img src={loadingSVG} alt='loading-animation' />
+          </div>
         )}
       </div>
     </>

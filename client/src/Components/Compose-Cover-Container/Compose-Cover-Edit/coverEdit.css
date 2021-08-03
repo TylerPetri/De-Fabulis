@@ -1,9 +1,5 @@
 .edit-cover-container {
-  display: grid;
-  grid-template-columns: max-content max-content;
-  grid-template-rows: max-content;
-  height: max-content;
-  width: max-content;
+  display: flex;
 }
 
 .cover-edit-colors-cont {
@@ -36,6 +32,7 @@
 
 @media (max-width: 580px) {
   .edit-cover-container {
+    display: grid;
     grid-template-columns: max-content;
     grid-template-rows: max-content max-content;
     transform: translateY(15%);

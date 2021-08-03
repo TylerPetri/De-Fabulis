@@ -8,7 +8,7 @@ import './coverEdit.css';
 
 export default function CompCoverEdit(props) {
   const [
-    { openCoverEdit, title, imageCover, textCover, scrollHeight, windowSize },
+    { openCoverEdit, title, imageCover, textCover, scrollHeight },
     dispatch,
   ] = useStoreContext();
 
@@ -36,8 +36,8 @@ export default function CompCoverEdit(props) {
       <div
         className='fill-background-color'
         style={{
-          minHeight: windowSize.height,
-          height: scrollHeight,
+          minHeight: window.innerHeight,
+          height: window.innerWidth < 600 ? props.height : scrollHeight,
           opacity: openCoverEdit ? '1' : '0',
           zIndex: openCoverEdit ? '10' : '-1',
           backgroundColor: 'rgb(0,0,0,0.9)',
@@ -51,6 +51,13 @@ export default function CompCoverEdit(props) {
         }}
       >
         <div className='edit-cover-container'>
+          <div className='cover-edit-colors-cont'>
+            <ColorOptions
+              settings={props.coverSettings}
+              setSettings={props.setCoverSettings}
+            />
+            <FcCheckmark className='fc-cover-edit' onClick={closeEdit} />
+          </div>
           <div className='card'>
             <textarea
               placeholder='Cover here'
@@ -78,13 +85,6 @@ export default function CompCoverEdit(props) {
               value={title}
               onChange={(e) => handleChange(e)}
             />
-          </div>
-          <div className='cover-edit-colors-cont'>
-            <ColorOptions
-              settings={props.coverSettings}
-              setSettings={props.setCoverSettings}
-            />
-            <FcCheckmark className='fc-cover-edit' onClick={closeEdit} />
           </div>
         </div>
       </div>

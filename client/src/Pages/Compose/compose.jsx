@@ -16,13 +16,15 @@ export default function Compose() {
       currentStorySettings,
       currentCoverSettings,
       userLoggedIn,
-      scrollHeight,
       mustBeLoggedIn,
+      scrollHeight,
     },
     dispatch,
   ] = useStoreContext();
   const [storySettings, setStorySettings] = useState(currentStorySettings);
   const [coverSettings, setCoverSettings] = useState(currentCoverSettings);
+  const [wrapperHeight, setWrapperHeight] = useState(0);
+  const [customHeight] = useState(wrapperHeight - 100);
 
   const textFileInput = useRef();
   // const imgFileInput = useRef();
@@ -64,6 +66,7 @@ export default function Compose() {
     // imgFileInput.current.value = '';
     dispatch({ type: 'RESET_DEFAULT_SETTINGS' });
     dispatch({ type: 'CLEAR_CURRENT_STORY' });
+    setWrapperHeight(composeWrapper.current.clientHeight + 50);
   }, [userLoggedIn]);
 
   //--------------//
@@ -174,7 +177,8 @@ export default function Compose() {
         <div
           className='must-be-logged-in'
           style={{
-            minHeight: scrollHeight,
+            minHeight: window.innerWidth < 600 ? wrapperHeight : customHeight,
+            height: window.innerHeight,
             zIndex: mustBeLoggedIn ? '10' : '-1',
             opacity: mustBeLoggedIn ? '1' : '0',
           }}
@@ -183,6 +187,7 @@ export default function Compose() {
         </div>
         <div className='compose-cover-story-container'>
           <StoryContainer
+            height={wrapperHeight + 50}
             settings={storySettings}
             setSettings={setStorySettings}
             textFileInput={textFileInput}
@@ -190,6 +195,7 @@ export default function Compose() {
             clearFileChosen={clearFileChosen}
           />
           <CoverContainer
+            height={wrapperHeight + 50}
             storySettings={storySettings}
             setStorySettings={setStorySettings}
             coverSettings={coverSettings}

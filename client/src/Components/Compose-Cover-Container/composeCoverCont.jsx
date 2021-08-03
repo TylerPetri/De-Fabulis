@@ -17,7 +17,6 @@ export default function CoverContainer(props) {
       imgFileSelected,
       uploadCoverFileX,
       openCoverColors,
-      windowSize,
     },
   ] = useStoreContext();
 
@@ -60,12 +59,14 @@ export default function CoverContainer(props) {
           coverSettings={props.coverSettings}
         />
         <CoverEdit
+          height={props.height}
           storySettings={props.storySettings}
           setStorySettings={props.setStorySettings}
           coverSettings={props.coverSettings}
           setCoverSettings={props.setCoverSettings}
         />
         <CoverPreview
+          height={props.height}
           storySettings={props.storySettings}
           coverSettings={props.coverSettings}
         />
@@ -78,7 +79,7 @@ export default function CoverContainer(props) {
             opacity: openCoverColors ? '1' : '0',
             zIndex: openCoverColors ? '5' : '-1',
             transform: openCoverColors
-              ? windowSize.width < 600
+              ? window.innerWidth < 600
                 ? 'translateY(-115%)'
                 : 'translate(-50%, -50%)'
               : 'translate(0%, -50%)',

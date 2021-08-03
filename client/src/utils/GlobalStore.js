@@ -1,11 +1,7 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 const initialData = {
-  windowSize: {
-    width: undefined,
-    height: undefined,
-  },
-  scrollHeight: undefined,
+  scrollHeight: 0,
   userLoggedIn: false,
   user: '',
   data: [],
@@ -97,33 +93,33 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         currentStorySettings: [
-          { option: 'Font', color: 'white', dropdown: false },
+          { option: 'Font', color: 'rgb(255,255,255)', dropdown: false },
           {
             option: 'Text-background',
-            color: 'rgb(156,39,176)',
+            color: 'rgb(0,176,255)',
             dropdown: false,
           },
           {
             option: 'Background',
-            color: 'rgb(0, 0, 0, 0.6)',
+            color: 'rgb(128, 128, 128, 0.6)',
             dropdown: false,
           },
         ],
         currentCoverSettings: [
-          { option: 'Font', color: 'green', dropdown: false },
+          { option: 'Font', color: 'black', dropdown: false },
           {
             option: 'Cover-Background',
-            color: 'black',
+            color: 'rgb(0,230,118)',
             dropdown: false,
           },
           {
             option: 'Title-Font',
-            color: 'black',
+            color: 'rgb(216, 22, 138)',
             dropdown: false,
           },
           {
             option: 'Title-Background',
-            color: 'grey',
+            color: 'rgb(255,152,0)',
             dropdown: false,
           },
         ],

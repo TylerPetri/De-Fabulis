@@ -9,7 +9,7 @@ import './composeStoryContainer.css';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 export default function CoverContainer(props) {
-  const [{ openStoryColors, windowSize }] = useStoreContext();
+  const [{ openStoryColors }] = useStoreContext();
 
   return (
     <div className='compose-story-container'>
@@ -34,11 +34,11 @@ export default function CoverContainer(props) {
           opacity: openStoryColors ? '1' : '0',
           zIndex: openStoryColors ? '1' : '-1',
           transform: openStoryColors
-            ? windowSize.width > 1160
+            ? window.innerWidth > 1160
               ? 'translate(0%, -30%)'
-              : windowSize.width < 1161 && windowSize.width > 600
+              : window.innerWidth < 1161 && window.innerWidth > 600
               ? 'translate(20%, -30%)'
-              : windowSize.width < 600
+              : window.innerWidth < 600
               ? 'translate(30%, -30%)'
               : 'translat(30%, -30%)'
             : 'translate(70%, -30%)',

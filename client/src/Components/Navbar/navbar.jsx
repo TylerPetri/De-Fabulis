@@ -129,7 +129,7 @@ export default function Taskbar() {
       <div className='navbar' style={{ zIndex: '999999' }}>
         <div className='nav-cont'>
           <div className='nav-item'>
-            {windowSize.width < 800 ? (
+            {window.innerWidth < 800 ? (
               <>
                 <div className='nav-link' onClick={toggleSidenav}>
                   <GiHamburgerMenu />

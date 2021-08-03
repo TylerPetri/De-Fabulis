@@ -8,7 +8,7 @@ import { useStoreContext } from '../../../utils/GlobalStore';
 import './editStory.css';
 
 export default function CompTextArea(props) {
-  const [{ openStoryEdit, title, story, windowSize, scrollHeight }, dispatch] =
+  const [{ openStoryEdit, title, story, scrollHeight }, dispatch] =
     useStoreContext();
   const [sidenav, setSidenav] = useState(false);
 
@@ -52,7 +52,7 @@ export default function CompTextArea(props) {
         }}
       >
         <div className='edit-compose-card'>
-          {windowSize.width < 942 && (
+          {window.innerWidth < 942 && (
             <div
               className='color-options-sidenav'
               style={{
@@ -72,9 +72,9 @@ export default function CompTextArea(props) {
             className='edit-options-cont'
             style={{ backgroundColor: props.settings[1].color }}
           >
-            {windowSize.width > 942 && <div style={{ width: '30px' }}></div>}
+            {window.innerWidth > 942 && <div style={{ width: '30px' }}></div>}
             <div className='edit-options'>
-              {windowSize.width > 942 ? (
+              {window.innerWidth > 942 ? (
                 <ColorOptions
                   settings={props.settings}
                   setSettings={props.setSettings}

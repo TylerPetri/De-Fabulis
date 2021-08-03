@@ -13,17 +13,17 @@ import './compose.css';
 
 export default function Compose() {
   const [
-    { currentStorySettings, currentCoverSettings, userLoggedIn },
+    { currentStorySettings, currentCoverSettings, userLoggedIn, scrollHeight },
     dispatch,
   ] = useStoreContext();
   const [storySettings, setStorySettings] = useState(currentStorySettings);
   const [coverSettings, setCoverSettings] = useState(currentCoverSettings);
+  const [mustBeLoggedIn, setMustBeLoggedIn] = useState(false);
 
   const textFileInput = useRef();
   // const imgFileInput = useRef();
   const textFileInputCover = useRef();
   const composeWrapper = useRef();
-  const history = useHistory();
 
   useEffect(() => {
     async function handleAuth() {
@@ -42,10 +42,10 @@ export default function Compose() {
             data: { userLoggedIn: true, user: username },
           });
         } else {
-          history.push('/login');
+          setMustBeLoggedIn(true);
         }
       } else {
-        history.push('/login');
+        setMustBeLoggedIn(true);
       }
     }
     handleAuth();
@@ -161,6 +161,16 @@ export default function Compose() {
     <>
       <Navbar />
       <div className='compose-wrapper' ref={composeWrapper}>
+        <div
+          className='must-be-logged-in'
+          style={{
+            minHeight: scrollHeight,
+            zIndex: mustBeLoggedIn ? '10' : '-1',
+            opacity: mustBeLoggedIn ? '1' : '0',
+          }}
+        >
+          <h1>Must be logged in</h1>
+        </div>
         <div className='compose-cover-story-container'>
           <StoryContainer
             settings={storySettings}

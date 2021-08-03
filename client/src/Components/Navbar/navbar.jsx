@@ -12,8 +12,10 @@ import fetchJSON from '../../utils/API';
 import './navbar.css';
 
 export default function Taskbar() {
-  const [{ data, userLoggedIn, windowSize, mainSidenav }, dispatch] =
-    useStoreContext();
+  const [
+    { data, userLoggedIn, windowSize, mainSidenav, mustBeLoggedIn },
+    dispatch,
+  ] = useStoreContext();
   const [alert, setAlert] = useState(false);
   const [option, setOption] = useState('');
 
@@ -28,6 +30,7 @@ export default function Taskbar() {
     ) {
       dispatch({ type: 'SET', data: { userLoggedIn: false } });
     }
+    dispatch({ type: 'SET', data: { mustBeLoggedIn: false } });
   }, []);
 
   function handleKeyPress(event) {
@@ -42,7 +45,7 @@ export default function Taskbar() {
   }
 
   function pushAlert(option) {
-    if (location.pathname === '/compose') {
+    if (location.pathname === '/compose' && !mustBeLoggedIn) {
       setAlert(true);
       setOption(option);
     } else {

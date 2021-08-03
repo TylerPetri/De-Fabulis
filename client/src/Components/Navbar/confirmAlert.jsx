@@ -4,7 +4,7 @@ export default function Confirm(props) {
       className='alert-wrapper'
       style={{
         opacity: props.alert ? '1' : '0',
-        zIndex: props.alert ? '10' : '-1',
+        zIndex: props.alert ? '20' : '-1',
       }}
     >
       <div className='alert-container'>

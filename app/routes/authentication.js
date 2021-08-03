@@ -27,7 +27,7 @@ router.get('/authentication/:username', (req, res) => {
   };
   dynamodb.query(params, async (err, data) => {
     if (err) {
-      res.status(500).json(err);
+      res.status(500).json({ message: 'Not logged in' });
     } else {
       res.status(200).json({ message: data.Items[0].isActive });
     }

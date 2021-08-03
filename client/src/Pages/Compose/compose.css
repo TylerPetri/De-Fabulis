@@ -19,6 +19,7 @@
   background-color: rgb(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
+  transition: 0.5s;
 }
 
 .must-be-logged-in h1 {

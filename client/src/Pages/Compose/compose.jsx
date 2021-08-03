@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/navbar';
 import CoverContainer from '../../Components/Compose-Cover-Container/composeCoverCont';
 import StoryContainer from '../../Components/Compose-Story-Container/composeStoryContainer';
@@ -13,12 +12,17 @@ import './compose.css';
 
 export default function Compose() {
   const [
-    { currentStorySettings, currentCoverSettings, userLoggedIn, scrollHeight },
+    {
+      currentStorySettings,
+      currentCoverSettings,
+      userLoggedIn,
+      scrollHeight,
+      mustBeLoggedIn,
+    },
     dispatch,
   ] = useStoreContext();
   const [storySettings, setStorySettings] = useState(currentStorySettings);
   const [coverSettings, setCoverSettings] = useState(currentCoverSettings);
-  const [mustBeLoggedIn, setMustBeLoggedIn] = useState(false);
 
   const textFileInput = useRef();
   // const imgFileInput = useRef();
@@ -41,11 +45,17 @@ export default function Compose() {
             type: 'SET',
             data: { userLoggedIn: true, user: username },
           });
-        } else {
-          setMustBeLoggedIn(true);
+        } else if (res.message === 'Not logged in') {
+          dispatch({
+            type: 'SET',
+            data: { mustBeLoggedIn: true },
+          });
         }
       } else {
-        setMustBeLoggedIn(true);
+        dispatch({
+          type: 'SET',
+          data: { mustBeLoggedIn: true },
+        });
       }
     }
     handleAuth();

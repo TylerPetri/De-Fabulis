@@ -1,5 +1,5 @@
 ## Library of stories
 
-Live link: library-of-stories.herokuapp.com
+A short story hosting website built in react, using dynamodb as database and user session auth. Features being added daily.
 
-- Cleaning up code tomorrow and completing readme
+Live link: library-of-stories.herokuapp.com

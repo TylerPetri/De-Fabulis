@@ -1,15 +1,11 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import FormControl from '@material-ui/core/FormControl';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 
-import SubmitAnimationButton from '../../Components/Submit-Loading-Animation/submitLoad';
+import SubmitAnimationButton from '../../Components/Buttons/submitLoad';
 import Navbar from '../../Components/Navbar/navbar';
+import Username from '../../Components/Forms/username';
+import Answer from '../../Components/Forms/securityAnswer';
 
 import fetchJSON from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalStore';
@@ -67,24 +63,11 @@ export default function PasswordRecovery() {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showSecurityAnswer: !values.showSecurityAnswer,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   async function searchOne() {
     if (values.username.length > 0) {
       setLoadingAnimation(true);
       const res = await fetchJSON(`/api/searchOne/${values.username}`);
-      if (res.message) {
-        setLoadingAnimation(false);
-      }
+      if (res.message) setLoadingAnimation(false);
       if (res.message === 'No such being') {
         setNoSuchBeing(true);
         setTimeout(() => setNoSuchBeing(false), 4500);
@@ -148,22 +131,14 @@ export default function PasswordRecovery() {
             >
               {enterUsername ? 'Enter username' : 'No such being'}
             </h3>
-            <FormControl variant='outlined' className='username-recovery-form'>
-              <InputLabel
-                htmlFor='outlined-adornment-input-recovery'
-                className={classes.root}
-              >
-                Username
-              </InputLabel>
-              <OutlinedInput
-                color='secondary'
-                classes={outlinedInputClasses}
-                id='outlined-adornment-input-recovery'
-                value={values.username}
-                onChange={handleChange('username')}
-                labelWidth={75}
-              />{' '}
-            </FormControl>
+            <Username
+              classes={classes}
+              outlinedInputClasses={outlinedInputClasses}
+              values={values}
+              setValues={setValues}
+              handleChange={handleChange}
+              width={75}
+            />
             <SubmitAnimationButton
               function={searchOne}
               loadingAnimation={loadingAnimation}
@@ -186,39 +161,14 @@ export default function PasswordRecovery() {
               {enterAnswer ? 'Enter answer' : 'Wrong answer'}
             </h3>
             <div className='security-question'>{values.securityQuestion}</div>
-            <FormControl variant='outlined'>
-              <InputLabel
-                htmlFor='outlined-adornment-input'
-                className={classes.root}
-              >
-                Answer
-              </InputLabel>
-              <OutlinedInput
-                color='secondary'
-                classes={outlinedInputClasses}
-                id='outlined-adornment-input'
-                type={values.showSecurityAnswer ? 'text' : 'password'}
-                value={values.securityAnswer}
-                onChange={handleChange('securityAnswer')}
-                endAdornment={
-                  <InputAdornment position='end'>
-                    <IconButton
-                      aria-label='toggle securityAnswer visibility'
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge='end'
-                    >
-                      {values.showSecurityAnswer ? (
-                        <MdVisibility style={{ color: '#11cb5f' }} />
-                      ) : (
-                        <MdVisibilityOff style={{ color: '#11cb5f' }} />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                labelWidth={54}
-              />{' '}
-            </FormControl>
+            <Answer
+              classes={classes}
+              outlinedInputClasses={outlinedInputClasses}
+              values={values}
+              setValues={setValues}
+              handleChange={handleChange}
+              width={54}
+            />
             <SubmitAnimationButton
               function={authenticateAnswer}
               loadingAnimation={loadingAnimation}

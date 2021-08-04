@@ -1,8 +1,6 @@
 import Button from '@material-ui/core/Button';
 import loadingRoll from '../../assets/Rolling-1s-200px.svg';
 
-import './submitLoad.css';
-
 export default function LoadingRoll(props) {
   return (
     <>

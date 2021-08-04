@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import UsernamePassword from '../../Components/Username-Password/usernamePassword';
 import Navbar from '../../Components/Navbar/navbar';
-import SubmitAnimationButton from '../../Components/Submit-Loading-Animation/submitLoad';
+import Username from '../../Components/Forms/username';
+import Password from '../../Components/Forms/password';
+import SubmitAnimationButton from '../../Components/Buttons/submitLoad';
 
 import { useStoreContext } from '../../utils/GlobalStore';
 import fetchJSON from '../../utils/API';
@@ -50,13 +51,9 @@ export default function Login() {
     password: '',
     weight: '',
     weightRange: '',
-    showPassword: false,
+    showPassword1: false,
   });
   const history = useHistory();
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
 
   async function handleLogin() {
     const data = {
@@ -110,12 +107,25 @@ export default function Login() {
               Forgot password
             </Link>
           </div>
-          <UsernamePassword
+          <Username
             classes={classes}
+            label={'Username'}
             outlinedInputClasses={outlinedInputClasses}
             values={values}
             setValues={setValues}
-            handleChange={handleChange}
+            width={75}
+          />
+          <Password
+            classes={classes}
+            label={'Password'}
+            outlinedInputClasses={outlinedInputClasses}
+            values={values}
+            value={values.password}
+            setValues={setValues}
+            changeParam={'password'}
+            clickParam={'first'}
+            clickShow={values.showPassword1}
+            width={72}
           />
           <SubmitAnimationButton
             function={handleLogin}

@@ -1,15 +1,10 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import FormControl from '@material-ui/core/FormControl';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 
 import Navbar from '../../Components/Navbar/navbar';
-import SubmitAnimationButton from '../../Components/Submit-Loading-Animation/submitLoad';
+import Password from '../../Components/Forms/password';
+import SubmitAnimationButton from '../../Components/Buttons/submitLoad';
 import fetchJSON from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalStore';
 
@@ -80,29 +75,6 @@ export default function NewPassword() {
     }
   }
 
-  const handleClickShowPassword = (option) => {
-    if (option === 'first') {
-      setValues({
-        ...values,
-        showPassword1: !values.showPassword1,
-      });
-    }
-    if (option === 'second') {
-      setValues({
-        ...values,
-        showPassword2: !values.showPassword2,
-      });
-    }
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
   const handleNewPassword = async () => {
     if (
       values.password === values.reEnterPassword &&
@@ -148,72 +120,30 @@ export default function NewPassword() {
         >
           {enterPassword ? 'Enter password' : 'Passwords not identical'}
         </h3>
-        <FormControl variant='outlined' className='new-password-form'>
-          <InputLabel
-            htmlFor='outlined-adornment-input'
-            className={classes.root}
-          >
-            New Password
-          </InputLabel>
-          <OutlinedInput
-            color='secondary'
-            classes={outlinedInputClasses}
-            id='outlined-adornment-input'
-            type={values.showPassword1 ? 'text' : 'password'}
-            value={values.password}
-            onChange={handleChange('password')}
-            endAdornment={
-              <InputAdornment position='end'>
-                <IconButton
-                  aria-label='toggle password visibility'
-                  onClick={() => handleClickShowPassword('first')}
-                  onMouseDown={handleMouseDownPassword}
-                  edge='end'
-                >
-                  {values.showPassword1 ? (
-                    <MdVisibility style={{ color: '#11cb5f' }} />
-                  ) : (
-                    <MdVisibilityOff style={{ color: '#11cb5f' }} />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            }
-            labelWidth={112}
-          />{' '}
-        </FormControl>
-        <FormControl variant='outlined' className='new-password-form'>
-          <InputLabel
-            htmlFor='outlined-adornment-input'
-            className={classes.root}
-          >
-            Re-enter Password
-          </InputLabel>
-          <OutlinedInput
-            color='secondary'
-            classes={outlinedInputClasses}
-            id='outlined-adornment-input'
-            type={values.showPassword2 ? 'text' : 'password'}
-            value={values.reEnterPassword}
-            onChange={handleChange('reEnterPassword')}
-            endAdornment={
-              <InputAdornment position='end'>
-                <IconButton
-                  aria-label='toggle password visibility'
-                  onClick={() => handleClickShowPassword('second')}
-                  onMouseDown={handleMouseDownPassword}
-                  edge='end'
-                >
-                  {values.showPassword2 ? (
-                    <MdVisibility style={{ color: '#11cb5f' }} />
-                  ) : (
-                    <MdVisibilityOff style={{ color: '#11cb5f' }} />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            }
-            labelWidth={142}
-          />{' '}
-        </FormControl>
+        <Password
+          classes={classes}
+          label={'New Password'}
+          outlinedInputClasses={outlinedInputClasses}
+          values={values}
+          value={values.password}
+          setValues={setValues}
+          changeParam={'password'}
+          clickParam={'first'}
+          clickShow={values.showPassword1}
+          width={112}
+        />
+        <Password
+          classes={classes}
+          label={'Re-enter Password'}
+          outlinedInputClasses={outlinedInputClasses}
+          values={values}
+          value={values.reEnterPassword}
+          setValues={setValues}
+          changeParam={'reEnterPassword'}
+          clickParam={'second'}
+          clickShow={values.showPassword2}
+          width={142}
+        />
         <SubmitAnimationButton
           function={handleNewPassword}
           loadingAnimation={loadingAnimation}

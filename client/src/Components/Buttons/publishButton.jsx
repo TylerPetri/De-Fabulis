@@ -6,7 +6,7 @@ import fetchJSON from '../../utils/API';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 import loadingRoll from '../../assets/Rolling-1s-200px.svg';
-import './uploadButtons.css';
+import './buttons.css';
 
 export default function UploadButtons(props) {
   const [

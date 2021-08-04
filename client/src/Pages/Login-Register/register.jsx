@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import UsernamePassword from '../../Components/Username-Password/usernamePassword';
-import SecurityQuestion from '../../Components/Security-Question/securityQuestion';
+import Username from '../../Components/Forms/username';
+import Password from '../../Components/Forms/password';
+import Question from '../../Components/Forms/securityQuestion';
+import Answer from '../../Components/Forms/securityAnswer';
 
 import Navbar from '../../Components/Navbar/navbar';
-import SubmitAnimationButton from '../../Components/Submit-Loading-Animation/submitLoad';
+import SubmitAnimationButton from '../../Components/Buttons/submitLoad';
 import fetchJSON from '../../utils/API';
 
 const useStyles = makeStyles((theme) => ({
@@ -54,10 +56,6 @@ export default function Register() {
     showSecurityAnswer: false,
   });
   const history = useHistory();
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
 
   async function handleRegister() {
     if (
@@ -114,19 +112,37 @@ export default function Register() {
               ? 'Username taken'
               : 'Placeholder'}
           </h3>
-          <UsernamePassword
+          <Username
             classes={classes}
             outlinedInputClasses={outlinedInputClasses}
             values={values}
             setValues={setValues}
-            handleChange={handleChange}
+            width={75}
           />
-          <SecurityQuestion
+          <Password
+            classes={classes}
+            label={'Password'}
+            outlinedInputClasses={outlinedInputClasses}
+            values={values}
+            setValues={setValues}
+            changeParam={'password'}
+            clickParam={'first'}
+            clickShow={values.showPassword1}
+            width={72}
+          />
+          <Question
             classes={classes}
             outlinedInputClasses={outlinedInputClasses}
             values={values}
             setValues={setValues}
-            handleChange={handleChange}
+            width={130}
+          />
+          <Answer
+            classes={classes}
+            outlinedInputClasses={outlinedInputClasses}
+            values={values}
+            setValues={setValues}
+            width={54}
           />
           <SubmitAnimationButton
             function={handleRegister}

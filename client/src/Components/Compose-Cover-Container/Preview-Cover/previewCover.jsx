@@ -45,21 +45,22 @@ export default function PreviewCover(props) {
             }}
             value={story}
           />
-
-          <textarea
-            placeholder='Cover here'
-            className='cover'
-            style={{
-              color: props.coverSettings[0].color,
-              backgroundColor: props.coverSettings[1].color,
-            }}
-            readOnly={true}
-            value={
-              imageCover.length > 0
-                ? `${imageCover}`
-                : `${textCover.slice(0, 150)}`
-            }
-          />
+          {imageCover.length > 0 ? (
+            <div className='img-cover-settings'>
+              <img src={imageCover} alt='cover' className='cover-image' />
+            </div>
+          ) : (
+            <textarea
+              placeholder='Cover here'
+              className='cover'
+              style={{
+                color: props.coverSettings[0].color,
+                backgroundColor: props.coverSettings[1].color,
+              }}
+              readOnly={true}
+              value={`${textCover.slice(0, 150)}`}
+            />
+          )}
 
           <textarea
             placeholder='Title here'

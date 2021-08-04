@@ -47,10 +47,10 @@ export default function CoverContainer(props) {
             textFileInputCover={props.textFileInputCover}
             handleFileChosen={props.handleFileChosen}
           />
-          {/* <ImageCover
+          <ImageCover
             imgFileInput={props.imgFileInput}
             handleFileChosen={props.handleFileChosen}
-          /> */}
+          />
         </div>
       </div>
       <div className='cover-edit'>
@@ -77,7 +77,7 @@ export default function CoverContainer(props) {
           className='edit-color-story-cont'
           style={{
             opacity: openCoverColors ? '1' : '0',
-            zIndex: openCoverColors ? '5' : '-1',
+            zIndex: openCoverColors ? '10' : '-1',
             transform: openCoverColors
               ? window.innerWidth < 600
                 ? 'translateY(-115%)'

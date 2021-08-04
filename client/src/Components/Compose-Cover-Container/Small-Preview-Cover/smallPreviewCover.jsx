@@ -18,15 +18,17 @@ export default function CoverEdit(props) {
           {story}
         </div>
         <div
-          className='cover'
+          className={imageCover.length > 0 ? 'img-cover-settings' : 'cover'}
           style={{
-            color: props.coverSettings[0].color,
-            backgroundColor: props.coverSettings[1].color,
+            color: !imageCover && `${props.coverSettings[0].color}`,
+            backgroundColor: !imageCover && `${props.coverSettings[1].color}`,
           }}
         >
-          {imageCover.length > 0
-            ? `${imageCover}`
-            : textCover.length > 0 && `"${textCover.slice(0, 150)}"`}
+          {imageCover.length > 0 ? (
+            <img src={imageCover} alt='cover' className='small-cover-img' />
+          ) : (
+            textCover.length > 0 && `"${textCover.slice(0, 150)}"`
+          )}
         </div>
         <div
           className='title'

@@ -26,7 +26,6 @@ export default function Compose() {
   const [customHeight] = useState(wrapperHeight - 100);
 
   const textFileInput = useRef();
-  // const imgFileInput = useRef();
   const textFileInputCover = useRef();
   const composeWrapper = useRef();
 
@@ -81,13 +80,6 @@ export default function Compose() {
     });
   }
 
-  function handleImageFileRead() {
-    const content = fileReader.result;
-    dispatch({
-      type: 'SET',
-      data: { imageCover: content, imgFileSelected: true },
-    });
-  }
   function handleCoverFileRead() {
     const content = fileReader.result;
     dispatch({
@@ -106,14 +98,6 @@ export default function Compose() {
           data: { storyFile: e.target.value },
         });
         setTimeout(() => dispatch({ type: 'XS_ON' }), 500);
-      }
-      if (id === 'imgFile') {
-        fileReader.onloadend = handleImageFileRead;
-        dispatch({
-          type: 'SET',
-          // data: { imgFile: e.target.value },
-        });
-        setTimeout(() => dispatch({ type: 'X_ON' }), 500);
       }
       if (id === 'textFile') {
         fileReader.onloadend = handleCoverFileRead;
@@ -199,7 +183,6 @@ export default function Compose() {
             setStorySettings={setStorySettings}
             coverSettings={coverSettings}
             setCoverSettings={setCoverSettings}
-            // imgFileInput={imgFileInput}
             textFileInputCover={textFileInputCover}
             handleFileChosen={handleFileChosen}
             clearFileChosen={clearFileChosen}

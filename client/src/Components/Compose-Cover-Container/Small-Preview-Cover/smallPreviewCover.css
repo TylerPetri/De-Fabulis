@@ -16,6 +16,15 @@
   cursor: default;
 }
 
+.img-cover-settings {
+  border-radius: 5px 5px 0 0;
+}
+
+.small-cover-img {
+  width: 125px;
+  border-radius: 5px 5px 0 0;
+}
+
 @media (max-width: 580px) {
   .preview-card {
     height: 100px;

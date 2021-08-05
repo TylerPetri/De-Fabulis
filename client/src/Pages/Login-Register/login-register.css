@@ -57,6 +57,18 @@
   animation: animate 1.5s linear infinite;
 }
 
+@media (max-width: 430px) {
+  .login-register-box h3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 350px) {
+  .login-register-box h3 {
+    font-size: 10px;
+  }
+}
+
 @keyframes animate {
   0% {
     opacity: 0;
@@ -110,14 +122,9 @@
   .register-message {
     transform: translateY(-20%);
   }
-  @media (max-height: 700px) {
-    .register-message {
-      transform: translateY(-50%);
-      font-size: 2em;
-    }
-  }
-  @media (max-height: 500px) {
-    .register-message {
+  @media (max-height: 800px) {
+    .register-message,
+    .login-message {
       display: none;
     }
   }

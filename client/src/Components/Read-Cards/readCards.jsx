@@ -14,7 +14,7 @@ export default function Cards(props) {
         tags: props.item.tags,
         title: props.item.title,
         textCover: props.item.textCover,
-        imgCover: props.item.imgCover,
+        imageCover: props.item.imageCover,
         story: props.item.story,
         storySettings: props.item.storySettings,
         coverSettings: props.item.coverSettings,
@@ -38,20 +38,34 @@ export default function Cards(props) {
           value={props.item.story}
         />
 
-        <textarea
-          placeholder='Cover here'
-          className='cover'
-          style={{
-            color: `${props.item.coverSettings.font}`,
-            backgroundColor: `${props.item.coverSettings.background}`,
-          }}
-          readOnly={true}
-          value={props.item.textCover}
-        />
+        {props.item.imageCover ? (
+          <div className='img-cover-settings'>
+            <img
+              src={props.item.imageCover}
+              alt='cover'
+              className='cover-image'
+            />
+          </div>
+        ) : (
+          <textarea
+            placeholder='Cover here'
+            className='cover'
+            style={{
+              color: `${props.item.coverSettings.font}`,
+              backgroundColor: `${props.item.coverSettings.background}`,
+            }}
+            readOnly={true}
+            value={props.item.textCover}
+          />
+        )}
 
         <textarea
           placeholder='Title here'
           className='title'
+          style={{
+            color: `${props.item.coverSettings.titleFont}`,
+            backgroundColor: `${props.item.coverSettings.titleBackground}`,
+          }}
           value={props.item.title}
           readOnly={true}
         />

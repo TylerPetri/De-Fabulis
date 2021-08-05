@@ -34,6 +34,8 @@ export default function UploadButtons(props) {
       coverSettings: {
         font: props.coverSettings[0].color,
         background: props.coverSettings[1].color,
+        titleFont: props.coverSettings[2].color,
+        titleBackground: props.coverSettings[3].color,
       },
     };
     setLoadingAnimation(true);

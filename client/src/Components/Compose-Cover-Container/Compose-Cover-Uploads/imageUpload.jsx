@@ -1,15 +1,12 @@
 import { useRef } from 'react';
 import { BsImage } from 'react-icons/bs';
-import fetchJSON from '../../../utils/API';
 import { useStoreContext } from '../../../utils/GlobalStore';
 
 import './fileUploads.css';
 
 export default function CoverImage(props) {
-  const [
-    { textCoverFileSelected, imgFileSelected, imgFile, imageCover },
-    dispatch,
-  ] = useStoreContext();
+  const [{ textCoverFileSelected, imgFileSelected, imgFile }, dispatch] =
+    useStoreContext();
 
   const imgFileInput = useRef();
 
@@ -41,9 +38,6 @@ export default function CoverImage(props) {
       }
     }
     postImage();
-    // async function getImage(){
-    //   const res = await fetchJSON('')
-    // }
   }
 
   return (

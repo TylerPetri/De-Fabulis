@@ -28,7 +28,7 @@ router.post('/publish', (req, res) => {
       username: req.body.username,
       createdAt: Date.now(),
       textCover: req.body.textCover,
-      imgCover: req.body.imgCover,
+      imageCover: req.body.imageCover,
       title: req.body.title,
       story: req.body.story,
       tags: req.body.tags,

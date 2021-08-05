@@ -11,11 +11,12 @@
 }
 
 .authors-btn {
-  height: 25px;
+  height: max-content;
   width: 100px;
   border-radius: 5px;
   border: none;
   margin: 1px;
+  padding: 5px;
   color: white;
   background-color: rgb(73, 73, 73);
 }

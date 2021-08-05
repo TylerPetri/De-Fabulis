@@ -13,11 +13,13 @@ import loadingSVG from '../../assets/Bean Eater-1s-200px.svg';
 export default function Read() {
   const [{ data }, dispatch] = useStoreContext();
   const [weWaiting, setWeWaiting] = useState(false);
+  const [sorry, setSorry] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     dispatch({ type: 'CLEAR_SELECTED_FILES' });
-    setTimeout(() => setWeWaiting(true), 6000);
+    setTimeout(() => setWeWaiting(true), 4000);
+    setTimeout(() => setSorry(true), 13000);
   }, []);
 
   function filteredList(query) {
@@ -70,7 +72,9 @@ export default function Read() {
                 marginBottom: '20px',
               }}
             />
-            <div className='loading-stories'>Loading</div>
+            <div className='loading-stories'>
+              {!sorry ? 'Loading' : 'Sorry error... reload works sometimes'}{' '}
+            </div>
             <img src={loadingSVG} alt='loading-animation' />
           </div>
         )}

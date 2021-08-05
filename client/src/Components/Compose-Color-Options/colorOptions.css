@@ -30,6 +30,7 @@
   border-radius: 5px;
   padding: 5px;
   margin-top: 180px;
+  z-index: 30;
 }
 
 .color-dropdown-cover {

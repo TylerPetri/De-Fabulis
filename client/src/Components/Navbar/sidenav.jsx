@@ -10,6 +10,7 @@ export default function Sidenav(props) {
       <div
         className='main-sidenav'
         style={{
+          minHeight: window.innerHeight,
           height: scrollHeight + 100,
           transform: props.mainSidenav ? 'translateX(0%)' : 'translateX(-100%)',
         }}

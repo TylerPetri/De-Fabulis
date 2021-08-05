@@ -1,35 +1,55 @@
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import './alphabetical-pagenation.css';
 
-export default function AlphPage() {
+export default function AlphPage(props) {
+  const [letters] = useState([
+    '#',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ]);
+  const history = useHistory();
+
+  function filterList(page, option) {
+    if (option === '#') {
+      history.push(`${page}`);
+    } else {
+      history.push(`${page}?filter=${option}`);
+    }
+  }
+
   return (
     <ul className='alphabetical-pagenation'>
-      <li>#</li>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-      <li>D</li>
-      <li>E</li>
-      <li>F</li>
-      <li>G</li>
-      <li>H</li>
-      <li>I</li>
-      <li>J</li>
-      <li>K</li>
-      <li>L</li>
-      <li>M</li>
-      <li>N</li>
-      <li>O</li>
-      <li>P</li>
-      <li>Q</li>
-      <li>R</li>
-      <li>S</li>
-      <li>T</li>
-      <li>U</li>
-      <li>V</li>
-      <li>W</li>
-      <li>X</li>
-      <li>Y</li>
-      <li>Z</li>
+      {letters.map((letter) => (
+        <li key={letter} onClick={() => filterList(props.page, letter)}>
+          {letter}
+        </li>
+      ))}
     </ul>
   );
 }

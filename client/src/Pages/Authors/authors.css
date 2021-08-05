@@ -3,11 +3,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
 
 .authors-cont {
   display: flex;
   flex-direction: column;
+}
+
+.no-authors-img {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .authors-btn {

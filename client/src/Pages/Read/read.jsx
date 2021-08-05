@@ -4,6 +4,7 @@ import Navbar from '../../Components/Navbar/navbar';
 import Cards from '../../Components/Read-Cards/readCards';
 import StoryPopup from '../../Components/Story-Popup/storyPopup';
 import { useStoreContext } from '../../utils/GlobalStore';
+import { fetchJSON } from '../../utils/API';
 
 import './read.css';
 import loadingSVG from '../../assets/Bean Eater-1s-200px.svg';
@@ -26,10 +27,24 @@ export default function Read() {
       );
   }
 
+  function getData() {
+    async function fetchData() {
+      const res = await fetchJSON('/api/stories');
+      dispatch({ type: 'SET', data: { data: res } });
+    }
+    fetchData();
+  }
+
+  function logs() {
+    console.log(data);
+  }
+
   return (
     <>
       <Navbar />
       <StoryPopup />
+      <button onClick={getData}>getData</button>
+      <button onClick={logs}>logs</button>
       <div className='cards-container'>
         {data.length > 0 && location.search.length < 1 ? (
           data.map((item) => <Cards key={item.createdAt} item={item} />)

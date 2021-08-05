@@ -67,23 +67,9 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  function getData() {
-    async function fetchData() {
-      const res = await fetchJSON('/api/stories');
-      dispatch({ type: 'SET', data: { data: res } });
-    }
-    fetchData();
-  }
-
-  function logs() {
-    console.log(data);
-  }
-
   return (
     <div ref={scrollHeightDiv}>
       <Router>
-        <button onClick={getData}>getData</button>
-        <button onClick={logs}>logs</button>
         <Route exact path='/' component={Welcome} />
         <Route exact path='/compose' component={Compose} />
         <Route path='/browse' component={Read} />

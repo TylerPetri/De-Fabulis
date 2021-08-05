@@ -1,12 +1,14 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { BsImage } from 'react-icons/bs';
 import { useStoreContext } from '../../../utils/GlobalStore';
+import loadgif from '../../../assets/Rolling-1s-200px.svg';
 
 import './fileUploads.css';
 
 export default function CoverImage(props) {
   const [{ textCoverFileSelected, imgFileSelected, imgFile }, dispatch] =
     useStoreContext();
+  const [loading, setLoading] = useState(false);
 
   const imgFileInput = useRef();
 
@@ -15,6 +17,7 @@ export default function CoverImage(props) {
     const data = new FormData();
     data.append('image', imgFileInput.current.files[0]);
     async function postImage() {
+      setLoading(true);
       try {
         const res = await fetch('/api/image-upload', {
           mode: 'cors',
@@ -32,6 +35,7 @@ export default function CoverImage(props) {
           },
         });
         setTimeout(() => dispatch({ type: 'X_ON' }), 500);
+        setLoading(false);
         return postResponse.Location;
       } catch (error) {
         console.log(error);
@@ -63,10 +67,20 @@ export default function CoverImage(props) {
               : 'upload-label-hidden'
           }
         >
-          <h3>
-            Upload Image
-            <BsImage />
-          </h3>
+          {loading ? (
+            <div className='img-upload-loading-cont'>
+              <img
+                src={loadgif}
+                alt='loading animation'
+                className='img-upload-loading'
+              />
+            </div>
+          ) : (
+            <h3>
+              Upload Image
+              <BsImage />
+            </h3>
+          )}
         </label>{' '}
         <input
           type='file'

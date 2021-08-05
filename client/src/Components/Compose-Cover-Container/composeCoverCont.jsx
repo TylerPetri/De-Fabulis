@@ -44,6 +44,7 @@ export default function CoverContainer(props) {
           }}
         >
           <TextCover
+            alert={props.alert}
             textFileInputCover={props.textFileInputCover}
             handleFileChosen={props.handleFileChosen}
           />

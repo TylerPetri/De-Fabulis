@@ -36,6 +36,27 @@
 
 .upload-label {
   position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.img-upload-loading-cont {
+  width: 151px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(35%);
+}
+
+.img-upload-loading {
+  width: 30px;
+}
+
+.upload-label h4 {
+  color: rgb(244, 67, 54);
+  margin: 13px 0;
 }
 
 .upload-label:hover,

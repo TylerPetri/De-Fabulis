@@ -18,6 +18,7 @@
 
 .img-cover-settings {
   border-radius: 5px 5px 0 0;
+  overflow: hidden;
 }
 
 .small-cover-img {
@@ -28,6 +29,9 @@
 @media (max-width: 580px) {
   .preview-card {
     height: 100px;
+    width: 79px;
+  }
+  .small-cover-img {
     width: 79px;
   }
 }

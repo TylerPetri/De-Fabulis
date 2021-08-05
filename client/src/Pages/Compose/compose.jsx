@@ -23,6 +23,8 @@ export default function Compose() {
   const [storySettings, setStorySettings] = useState(currentStorySettings);
   const [coverSettings, setCoverSettings] = useState(currentCoverSettings);
   const [wrapperHeight, setWrapperHeight] = useState(0);
+  const [txtFileAlert, setTxtFileAlert] = useState(false);
+
   const [customHeight] = useState(wrapperHeight - 100);
 
   const textFileInput = useRef();
@@ -61,7 +63,6 @@ export default function Compose() {
     handleAuth();
     textFileInput.current.value = '';
     textFileInputCover.current.value = '';
-    // imgFileInput.current.value = '';
     dispatch({ type: 'RESET_DEFAULT_SETTINGS' });
     dispatch({ type: 'CLEAR_CURRENT_STORY' });
     setWrapperHeight(composeWrapper.current.clientHeight + 50);
@@ -91,23 +92,28 @@ export default function Compose() {
   function handleFileChosen(e, file, id) {
     fileReader = new FileReader();
     if (e.target.value) {
-      if (id === 'textFileStory') {
-        fileReader.onloadend = handleFileRead;
-        dispatch({
-          type: 'SET',
-          data: { storyFile: e.target.value },
-        });
-        setTimeout(() => dispatch({ type: 'XS_ON' }), 500);
+      if (e.target.value.substring(e.target.value.length - 4) === '.txt') {
+        if (id === 'textFileStory') {
+          fileReader.onloadend = handleFileRead;
+          dispatch({
+            type: 'SET',
+            data: { storyFile: e.target.value },
+          });
+          setTimeout(() => dispatch({ type: 'XS_ON' }), 500);
+        }
+        if (id === 'textFile') {
+          fileReader.onloadend = handleCoverFileRead;
+          dispatch({
+            type: 'SET',
+            data: { textCoverFile: e.target.value },
+          });
+          setTimeout(() => dispatch({ type: 'X_ON' }), 500);
+        }
+        fileReader.readAsText(file);
+      } else {
+        setTxtFileAlert(true);
+        setTimeout(() => setTxtFileAlert(false), 3000);
       }
-      if (id === 'textFile') {
-        fileReader.onloadend = handleCoverFileRead;
-        dispatch({
-          type: 'SET',
-          data: { textCoverFile: e.target.value },
-        });
-        setTimeout(() => dispatch({ type: 'X_ON' }), 500);
-      }
-      fileReader.readAsText(file);
     }
   }
 
@@ -170,6 +176,7 @@ export default function Compose() {
         </div>
         <div className='compose-cover-story-container'>
           <StoryContainer
+            alert={txtFileAlert}
             height={wrapperHeight + 50}
             settings={storySettings}
             setSettings={setStorySettings}
@@ -178,6 +185,7 @@ export default function Compose() {
             clearFileChosen={clearFileChosen}
           />
           <CoverContainer
+            alert={txtFileAlert}
             height={wrapperHeight + 50}
             storySettings={storySettings}
             setStorySettings={setStorySettings}

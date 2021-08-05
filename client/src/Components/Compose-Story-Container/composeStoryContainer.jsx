@@ -17,6 +17,7 @@ export default function CoverContainer(props) {
       <div className='choosefile-story-container'>
         {' '}
         <StoryUpload
+          alert={props.alert}
           textFileInput={props.textFileInput}
           handleFileChosen={props.handleFileChosen}
           clearFileChosen={props.clearFileChosen}

@@ -27,10 +27,12 @@ export default function AddCover(props) {
             : 'upload-label-hidden'
         }
       >
-        <h3>
-          Upload Text
-          <BsFileText />
-        </h3>
+        {props.alert ? (
+          <h4 style={{ color: 'rgb(244,67,54)' }}>Must be .txt file</h4>
+        ) : (
+          <h3>Upload Text</h3>
+        )}
+        <BsFileText />
       </label>{' '}
       <input
         type='file'

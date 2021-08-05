@@ -102,4 +102,7 @@
     grid-row-start: 2;
     grid-row-end: 3;
   }
+  .choosefile-container {
+    margin-top: 35px !important;
+  }
 }

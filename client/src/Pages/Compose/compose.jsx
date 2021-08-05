@@ -24,6 +24,7 @@ export default function Compose() {
   const [coverSettings, setCoverSettings] = useState(currentCoverSettings);
   const [wrapperHeight, setWrapperHeight] = useState(0);
   const [txtFileAlert, setTxtFileAlert] = useState(false);
+  const [txtFileStoryAlert, setTxtFileStoryAlert] = useState(false);
 
   const [customHeight] = useState(wrapperHeight - 100);
 
@@ -111,8 +112,14 @@ export default function Compose() {
         }
         fileReader.readAsText(file);
       } else {
-        setTxtFileAlert(true);
-        setTimeout(() => setTxtFileAlert(false), 3000);
+        if (id === 'textFileStory') {
+          setTxtFileStoryAlert(true);
+          setTimeout(() => setTxtFileStoryAlert(false), 3000);
+        }
+        if (id === 'textFile') {
+          setTxtFileAlert(true);
+          setTimeout(() => setTxtFileAlert(false), 3000);
+        }
       }
     }
   }
@@ -176,7 +183,7 @@ export default function Compose() {
         </div>
         <div className='compose-cover-story-container'>
           <StoryContainer
-            alert={txtFileAlert}
+            alert={txtFileStoryAlert}
             height={wrapperHeight + 50}
             settings={storySettings}
             setSettings={setStorySettings}

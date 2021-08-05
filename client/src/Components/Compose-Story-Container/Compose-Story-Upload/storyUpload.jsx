@@ -8,10 +8,14 @@ export default function StoryUpload(props) {
   return (
     <div className='upload-container-story'>
       <label htmlFor='textFileStory' className='upload-label-story'>
-        <h3>
-          Upload Story
-          <BsFileText />
-        </h3>
+        {props.alert ? (
+          <h4 style={{ color: 'rgb(244,67,54)' }}>Must be .txt file</h4>
+        ) : (
+          <h3>
+            Upload Story
+            <BsFileText />
+          </h3>
+        )}
       </label>
       <input
         type='file'

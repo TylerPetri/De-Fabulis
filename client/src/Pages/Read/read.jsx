@@ -27,25 +27,25 @@ export default function Read() {
       );
   }
 
-  function getData() {
-    async function fetchData() {
-      const res = await fetchJSON('/api/stories');
-      dispatch({ type: 'SET', data: { data: res } });
-      console.log('fetched');
-    }
-    fetchData();
-  }
+  // function getData() {
+  //   async function fetchData() {
+  //     const res = await fetchJSON('/api/stories');
+  //     dispatch({ type: 'SET', data: { data: res } });
+  //     console.log('fetched');
+  //   }
+  //   fetchData();
+  // }
 
-  function logs() {
-    console.log(data);
-  }
+  // function logs() {
+  //   console.log(data);
+  // }
 
   return (
     <>
       <Navbar />
       <StoryPopup />
-      <button onClick={getData}>getData</button>
-      <button onClick={logs}>logs</button>
+      {/* <button onClick={getData}>getData</button>
+      <button onClick={logs}>logs</button> */}
       <div className='cards-container'>
         {data.length > 0 && location.search.length < 1 ? (
           data.map((item) => <Cards key={item.createdAt} item={item} />)

@@ -16,9 +16,9 @@ export default function PreviewStory(props) {
         className='fill-background-color'
         style={{
           minHeight: window.innerHeight,
-          height: scrollHeight,
+          height: scrollHeight + 100,
           opacity: openStoryPreview ? '1' : '0',
-          zIndex: openStoryPreview ? '10' : '-1',
+          zIndex: openStoryPreview ? '50' : '-1',
           backgroundColor: props.settings[2].color,
         }}
       ></div>
@@ -26,7 +26,7 @@ export default function PreviewStory(props) {
         className='story-popup-container'
         style={{
           opacity: openStoryPreview ? '1' : '0',
-          zIndex: openStoryPreview ? '10' : '-1',
+          zIndex: openStoryPreview ? '50' : '-1',
         }}
       >
         <div className='story-popup-card'>

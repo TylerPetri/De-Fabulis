@@ -19,9 +19,9 @@ export default function PreviewCover(props) {
         className='fill-background-color'
         style={{
           minHeight: window.innerHeight,
-          height: scrollHeight,
+          height: scrollHeight + 100,
           opacity: openCoverPreview ? '1' : '0',
-          zIndex: openCoverPreview ? '10' : '-1',
+          zIndex: openCoverPreview ? '50' : '-1',
           backgroundColor: 'rgb(0,0,0,0.9)',
         }}
       ></div>
@@ -31,7 +31,7 @@ export default function PreviewCover(props) {
           transform:
             window.innerWidth < 600 ? 'translateY(30%)' : 'translateY(0%)',
           opacity: openCoverPreview ? '1' : '0',
-          zIndex: openCoverPreview ? '10' : '-1',
+          zIndex: openCoverPreview ? '50' : '-1',
         }}
       >
         <div className='card'>

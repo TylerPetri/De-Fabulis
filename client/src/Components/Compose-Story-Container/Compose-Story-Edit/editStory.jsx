@@ -38,9 +38,9 @@ export default function CompTextArea(props) {
         className='fill-background-color'
         style={{
           minHeight: window.innerHeight,
-          height: scrollHeight,
+          height: scrollHeight + 100,
           opacity: openStoryEdit ? '1' : '0',
-          zIndex: openStoryEdit ? '15' : '-1',
+          zIndex: openStoryEdit ? '50' : '-1',
           backgroundColor: props.settings[2].color,
         }}
       ></div>
@@ -48,7 +48,7 @@ export default function CompTextArea(props) {
         className='edit-compose-container'
         style={{
           opacity: openStoryEdit ? '1' : '0',
-          zIndex: openStoryEdit ? '15' : '-1',
+          zIndex: openStoryEdit ? '50' : '-1',
         }}
       >
         <div className='edit-compose-card'>

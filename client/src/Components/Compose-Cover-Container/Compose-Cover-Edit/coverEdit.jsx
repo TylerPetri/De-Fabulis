@@ -37,9 +37,9 @@ export default function CompCoverEdit(props) {
         className='fill-background-color'
         style={{
           minHeight: window.innerHeight,
-          height: window.innerWidth < 600 ? props.height : scrollHeight,
+          height: scrollHeight + 100,
           opacity: openCoverEdit ? '1' : '0',
-          zIndex: openCoverEdit ? '10' : '-1',
+          zIndex: openCoverEdit ? '50' : '-1',
           backgroundColor: 'rgb(0,0,0,0.9)',
         }}
       ></div>
@@ -47,7 +47,7 @@ export default function CompCoverEdit(props) {
         className='edit-compose-container'
         style={{
           opacity: openCoverEdit ? '1' : '0',
-          zIndex: openCoverEdit ? '10' : '-1',
+          zIndex: openCoverEdit ? '50' : '-1',
         }}
       >
         <div className='edit-cover-container'>

@@ -18,20 +18,17 @@ export default function Compose() {
       currentCoverSettings,
       userLoggedIn,
       mustBeLoggedIn,
+      scrollHeight,
     },
     dispatch,
   ] = useStoreContext();
   const [storySettings, setStorySettings] = useState(currentStorySettings);
   const [coverSettings, setCoverSettings] = useState(currentCoverSettings);
-  const [wrapperHeight, setWrapperHeight] = useState(0);
   const [txtFileAlert, setTxtFileAlert] = useState(false);
   const [txtFileStoryAlert, setTxtFileStoryAlert] = useState(false);
 
-  const [customHeight] = useState(wrapperHeight - 100);
-
   const textFileInput = useRef();
   const textFileInputCover = useRef();
-  const composeWrapper = useRef();
 
   useEffect(() => {
     async function authentication() {
@@ -66,7 +63,6 @@ export default function Compose() {
     textFileInputCover.current.value = '';
     dispatch({ type: 'RESET_DEFAULT_SETTINGS' });
     dispatch({ type: 'CLEAR_CURRENT_STORY' });
-    setWrapperHeight(composeWrapper.current.clientHeight + 50);
   }, [userLoggedIn]);
 
   //--------------//
@@ -160,7 +156,6 @@ export default function Compose() {
           },
         });
         textFileInputCover.current.value = '';
-        // imgFileInput.current.value = '';
       }, 650);
     }
   }
@@ -169,11 +164,11 @@ export default function Compose() {
   return (
     <>
       <Navbar />
-      <div className='compose-wrapper' ref={composeWrapper}>
+      <div className='compose-wrapper'>
         <div
           className='must-be-logged-in'
           style={{
-            minHeight: window.innerWidth < 600 ? wrapperHeight : customHeight,
+            minHeight: scrollHeight + 100,
             height: window.innerHeight,
             zIndex: mustBeLoggedIn ? '10' : '-1',
             opacity: mustBeLoggedIn ? '1' : '0',
@@ -184,7 +179,6 @@ export default function Compose() {
         <div className='compose-cover-story-container'>
           <StoryContainer
             alert={txtFileStoryAlert}
-            height={wrapperHeight + 50}
             settings={storySettings}
             setSettings={setStorySettings}
             textFileInput={textFileInput}
@@ -193,7 +187,6 @@ export default function Compose() {
           />
           <CoverContainer
             alert={txtFileAlert}
-            height={wrapperHeight + 50}
             storySettings={storySettings}
             setStorySettings={setStorySettings}
             coverSettings={coverSettings}

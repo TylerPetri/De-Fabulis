@@ -12,10 +12,8 @@ import fetchJSON from '../../utils/API';
 import './navbar.css';
 
 export default function Taskbar() {
-  const [
-    { data, userLoggedIn, windowSize, mainSidenav, mustBeLoggedIn },
-    dispatch,
-  ] = useStoreContext();
+  const [{ data, userLoggedIn, mainSidenav, mustBeLoggedIn }, dispatch] =
+    useStoreContext();
   const [alert, setAlert] = useState(false);
   const [option, setOption] = useState('');
 
@@ -126,7 +124,7 @@ export default function Taskbar() {
 
   return (
     <>
-      <div className='navbar' style={{ zIndex: '999999' }}>
+      <div className='navbar'>
         <div className='nav-cont'>
           <div className='nav-item'>
             {window.innerWidth < 800 ? (

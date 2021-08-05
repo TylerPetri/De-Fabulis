@@ -1,12 +1,16 @@
 import { BiSearchAlt } from 'react-icons/bi';
 import { FiChevronLeft } from 'react-icons/fi';
+import { useStoreContext } from '../../utils/GlobalStore';
 
 export default function Sidenav(props) {
+  const [{ scrollHeight }] = useStoreContext();
+
   return (
     <>
       <div
         className='main-sidenav'
         style={{
+          height: scrollHeight + 100,
           transform: props.mainSidenav ? 'translateX(0%)' : 'translateX(-100%)',
         }}
       >

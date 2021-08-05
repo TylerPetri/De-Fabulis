@@ -54,16 +54,23 @@ router.post('/authentication', (req, res) => {
     if (err) {
       res.status(500).json(err);
     } else {
-      if (data.Items[0].tempId === body.session) {
-        if (body.type === 'logout') {
-          deactivateSession(body.username);
-          res.status(200).json({ message: 'Session deactivated' });
-        } else if (body.type === 'checkAuth') {
-          getSession(body.username);
-          res.status(200).json({ message: 'Session authenticated' });
-        }
+      if (data.Items.length < 1) {
+        return res.status(401).json({
+          message: 'No such being!',
+        });
       } else {
-        res.status(401).json({ message: 'No auth' });
+        if (data.Items[0].tempId === body.session) {
+          if (body.type === 'logout') {
+            deactivateSession(body.username);
+            res.status(200).json({ message: 'Session deactivated' });
+          } else if (body.type === 'checkAuth') {
+            getSession(body.username);
+            res.status(200).json({ message: 'Session authenticated' });
+          }
+        } else {
+          deactivateSession(body.username);
+          res.status(401).json({ message: 'No auth' });
+        }
       }
     }
   });

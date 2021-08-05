@@ -12,6 +12,7 @@ import PasswordRecovery from './Pages/Password-Recovery/questionAuth';
 import NewPassword from './Pages/Password-Recovery/newPassword';
 
 import fetchJSON from './utils/API';
+import { handleAuth } from './utils/HandleAuth';
 import { useStoreContext } from './utils/GlobalStore';
 
 function App() {
@@ -27,25 +28,34 @@ function App() {
   }, [submitted]);
 
   useEffect(() => {
-    async function handleAuth() {
+    async function authentication() {
       let username = sessionStorage.libraryOfStories_user;
-      let session = sessionStorage.libraryOfStories_session;
-      if (username) {
-        await fetchJSON('/api/authentication', 'POST', {
-          username: username,
-          session: session,
-          type: 'checkAuth',
+      const res = await handleAuth();
+      if (res.userLoggedIn === false && res.user === '') {
+        dispatch({
+          type: 'SET',
+          data: { userLoggedIn: false, user: '' },
         });
-        const res = await fetchJSON(`/api/authentication/${username}`);
-        if (res.message === true) {
-          dispatch({
-            type: 'SET',
-            data: { userLoggedIn: true, user: username },
-          });
-        }
+      } else if (res.userLoggedIn === true && res.user === username) {
+        dispatch({
+          type: 'SET',
+          data: { userLoggedIn: true, user: username },
+        });
+      } else if (res.mustBeLoggedIn === true) {
+        dispatch({
+          type: 'SET',
+          data: { mustBeLoggedIn: true },
+        });
+      } else if (res === 'Authentication failed') {
+        dispatch({
+          type: 'SET',
+          data: { mustBeLoggedIn: true },
+        });
+      } else {
+        return 'Authentication failed';
       }
     }
-    handleAuth();
+    authentication();
   }, []);
 
   useEffect(() => {

@@ -4,8 +4,9 @@ import CoverContainer from '../../Components/Compose-Cover-Container/composeCove
 import StoryContainer from '../../Components/Compose-Story-Container/composeStoryContainer';
 import AddTags from '../../Components/Compose-Tags/composeTags';
 import UploadButtons from '../../Components/Buttons/publishButton';
-import fetchJSON from '../../utils/API';
 
+import fetchJSON from '../../utils/API';
+import { handleAuth } from '../../utils/HandleAuth';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 import './compose.css';
@@ -33,35 +34,34 @@ export default function Compose() {
   const composeWrapper = useRef();
 
   useEffect(() => {
-    async function handleAuth() {
+    async function authentication() {
       let username = sessionStorage.libraryOfStories_user;
-      let session = sessionStorage.libraryOfStories_session;
-      if (username) {
-        await fetchJSON('/api/authentication', 'POST', {
-          username: username,
-          session: session,
-          type: 'checkAuth',
+      const res = await handleAuth();
+      if (res.userLoggedIn === false && res.user === '') {
+        dispatch({
+          type: 'SET',
+          data: { userLoggedIn: false, user: '' },
         });
-        const res = await fetchJSON(`/api/authentication/${username}`);
-        if (res.message === true) {
-          dispatch({
-            type: 'SET',
-            data: { userLoggedIn: true, user: username },
-          });
-        } else if (res.message === 'Not logged in') {
-          dispatch({
-            type: 'SET',
-            data: { mustBeLoggedIn: true },
-          });
-        }
-      } else {
+      } else if (res.userLoggedIn === true && res.user === username) {
+        dispatch({
+          type: 'SET',
+          data: { userLoggedIn: true, user: username },
+        });
+      } else if (res.mustBeLoggedIn === true) {
         dispatch({
           type: 'SET',
           data: { mustBeLoggedIn: true },
         });
+      } else if (res === 'Authentication failed') {
+        dispatch({
+          type: 'SET',
+          data: { mustBeLoggedIn: true },
+        });
+      } else {
+        return 'Authentication failed';
       }
     }
-    handleAuth();
+    authentication();
     textFileInput.current.value = '';
     textFileInputCover.current.value = '';
     dispatch({ type: 'RESET_DEFAULT_SETTINGS' });

@@ -1,7 +1,7 @@
 {
   "name": "library-of-stories",
   "version": "1.0.0",
-  "description": "",
+  "description": "library of stories",
   "main": "server.js",
   "dependencies": {
     "aws-sdk": "^2.951.0",

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/navbar';
 import Cards from '../../Components/Read-Cards/readCards';
@@ -7,14 +7,17 @@ import { useStoreContext } from '../../utils/GlobalStore';
 import fetchJSON from '../../utils/API';
 
 import './read.css';
+import cameramanfast from '../../assets/cameramanfast.gif';
 import loadingSVG from '../../assets/Bean Eater-1s-200px.svg';
 
 export default function Read() {
   const [{ data }, dispatch] = useStoreContext();
+  const [weWaiting, setWeWaiting] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     dispatch({ type: 'CLEAR_SELECTED_FILES' });
+    setTimeout(() => setWeWaiting(true), 6000);
   }, []);
 
   function filteredList(query) {
@@ -59,6 +62,14 @@ export default function Read() {
           ))
         ) : (
           <div className='loading-svg-container'>
+            <img
+              src={cameramanfast}
+              alt='its been 84 years'
+              style={{
+                display: weWaiting ? 'block' : 'none',
+                marginBottom: '20px',
+              }}
+            />
             <div className='loading-stories'>Loading</div>
             <img src={loadingSVG} alt='loading-animation' />
           </div>

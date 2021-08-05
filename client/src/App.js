@@ -15,7 +15,7 @@ import fetchJSON from './utils/API';
 import { useStoreContext } from './utils/GlobalStore';
 
 function App() {
-  const [{ submitted, data }, dispatch] = useStoreContext();
+  const [{ submitted }, dispatch] = useStoreContext();
   const scrollHeightDiv = useRef();
 
   useEffect(() => {

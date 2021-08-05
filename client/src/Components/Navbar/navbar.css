@@ -189,7 +189,7 @@
 /* Sidenav */
 
 .main-sidenav {
-  width: max-content;
+  width: 175px;
   position: absolute;
   top: 0;
   left: 0;
@@ -208,7 +208,7 @@
   height: max-content;
   width: max-content;
   color: rgb(146, 146, 146);
-  font-size: 3em;
+  font-size: 35px;
   transform: translateY(-60%);
   border-radius: 55px;
 }

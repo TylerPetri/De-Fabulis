@@ -47,6 +47,7 @@ export default function Taskbar() {
       setAlert(true);
       setOption(option);
     } else {
+      toggleSidenav();
       if (option === 'search') {
         search();
       } else if (option === 'random') {

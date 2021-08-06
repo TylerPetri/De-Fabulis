@@ -30,7 +30,14 @@ export default function Read() {
       return data.filter((a) =>
         a.title.toLowerCase().includes(id.replace(/%20/g, ' '))
       );
+    if (query === '?tag=')
+      return data.filter((a) => a.tags.includes(id.replace(/%20/g, ' ')));
   }
+
+  // function logs() {
+  //   console.log('logs')
+
+  // }
 
   // function getData() {
   //   async function fetchData() {
@@ -41,16 +48,10 @@ export default function Read() {
   //   fetchData();
   // }
 
-  // function logs() {
-  //   console.log(data);
-  // }
-
   return (
     <>
       <Navbar />
       <StoryPopup />
-      {/* <button onClick={getData}>getData</button>
-      <button onClick={logs}>logs</button> */}
       <div className='cards-container'>
         {data.length > 0 && location.search.length < 1 ? (
           data.map((item) => <Cards key={item.createdAt} item={item} />)
@@ -60,6 +61,10 @@ export default function Read() {
           ))
         ) : location.search.includes('?search=') ? (
           filteredList('?search=').map((item) => (
+            <Cards key={item.createdAt} item={item} />
+          ))
+        ) : location.search.includes('?tag=') ? (
+          filteredList('?tag=').map((item) => (
             <Cards key={item.createdAt} item={item} />
           ))
         ) : (

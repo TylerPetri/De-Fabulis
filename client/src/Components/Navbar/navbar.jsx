@@ -28,7 +28,10 @@ export default function Taskbar() {
     ) {
       dispatch({ type: 'SET', data: { userLoggedIn: false } });
     }
-    dispatch({ type: 'SET', data: { mustBeLoggedIn: false } });
+    dispatch({
+      type: 'SET',
+      data: { mustBeLoggedIn: false, mainSidenav: false },
+    });
   }, []);
 
   function handleKeyPress(event) {
@@ -165,9 +168,9 @@ export default function Taskbar() {
                 <div className='nav-link' onClick={() => pushAlert('random')}>
                   Random
                 </div>
-                {/* <div className='nav-link' onClick={() => pushAlert('/tags')}>
-              Tags
-            </div> */}
+                <div className='nav-link' onClick={() => pushAlert('/tags')}>
+                  Tags
+                </div>
                 <div className='nav-link' onClick={() => pushAlert('/authors')}>
                   Authors
                 </div>

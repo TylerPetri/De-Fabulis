@@ -53,11 +53,11 @@ export default function Sidenav(props) {
               Random
             </div>
           </li>
-
-          {/* <li><div className='nav-link' onClick={() => pushAlert('/tags')}>
+          <li>
+            <div className='nav-link' onClick={() => props.pushAlert('/tags')}>
               Tags
-            </div></li> */}
-
+            </div>
+          </li>
           <li>
             <div
               className='nav-link'

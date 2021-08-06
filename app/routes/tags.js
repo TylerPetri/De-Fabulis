@@ -8,8 +8,20 @@ AWS.config.update(awsConfig);
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const TABLE_NAME = 'Library-of-Stories-Tags';
 
+router.get('/tags', (req, res) => {
+  const params = {
+    TableName: TABLE_NAME,
+  };
+  dynamodb.scan(params, (err, data) => {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.json(data.Items);
+    }
+  });
+});
+
 router.post('/tags', (req, res) => {
-  console.log(req.body.tags);
   req.body.tags.forEach((tags) => {
     const params = {
       TableName: TABLE_NAME,
@@ -25,7 +37,6 @@ router.post('/tags', (req, res) => {
       ScanIndexForward: false,
     };
     dynamodb.query(params, (err, data) => {
-      console.log(data);
       if (err) {
         res.status(500).json(err);
       } else if (data.Items.length > 0) {

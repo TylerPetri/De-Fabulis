@@ -83,7 +83,7 @@ function App() {
         <Route exact path='/' component={Welcome} />
         <Route exact path='/compose' component={Compose} />
         <Route path='/browse' component={Read} />
-        {/* <Route exact path='/tags' component={Tags} /> */}
+        <Route exact path='/tags' component={Tags} />
         <Route exact path='/authors' component={Authors} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />

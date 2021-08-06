@@ -51,7 +51,7 @@ export default function UploadButtons(props) {
     // const res = await handleAuth();
     // if (res.userLoggedIn === true && res.user === username) {
     //   const data = {
-    //     username: user.charAt(0).toUpperCase() + user.slice(1),
+    //     username: user,
     //     createdAt: Date.now(),
     //     tags: currentTags,
     //     title: title,
@@ -72,11 +72,11 @@ export default function UploadButtons(props) {
     //   };
     //   setLoadingAnimation(true);
     //   const res = await fetchJSON('/api/publish', 'POST', data);
-    // const resTags =
     if (currentTags.length > 0)
       await fetchJSON('/api/tags', 'POST', {
         tags: currentTags,
       });
+
     //   if (res.message) setLoadingAnimation(false);
     //   if (res.message === 'Error has occurred') {
     //     setErrorHasOccurred(true);

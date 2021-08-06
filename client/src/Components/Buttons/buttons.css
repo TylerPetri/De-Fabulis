@@ -4,8 +4,10 @@
   margin: 25px 0;
 }
 
-.upload-button-container h2 {
+.submit-error {
   color: rgb(244, 67, 54);
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .submit-cont {

@@ -2,13 +2,9 @@ const mongoose = require('mongoose');
 
 const StorySchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  createdAt: Date.now(),
-  tags: { type: String },
+  createdAt: { type: Number },
+  username: { type: String },
+  tags: [{ type: String }],
   title: { type: String },
   textCover: { type: String },
   imageCover: { type: String },
@@ -28,4 +24,4 @@ const StorySchema = mongoose.Schema({
 
 const Story = mongoose.model('Story', StorySchema);
 
-module.exports = User;
+module.exports = Story;

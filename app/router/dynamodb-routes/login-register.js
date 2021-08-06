@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 
-const { createSession } = require('../session-manager');
+const { createSession } = require('../../session-manager');
 
 const awsConfig = {
   region: 'us-east-2',

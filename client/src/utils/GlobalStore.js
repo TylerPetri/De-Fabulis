@@ -129,7 +129,7 @@ const dataReducer = (state, action) => {
         ...state,
         username: '',
         createdAt: 0,
-        tags: '',
+        currentTags: '',
         title: '',
         textCover: '',
         imageCover: '',

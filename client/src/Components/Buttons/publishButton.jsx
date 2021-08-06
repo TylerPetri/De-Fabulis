@@ -79,6 +79,7 @@ export default function UploadButtons(props) {
       if (res.message) setLoadingAnimation(false);
       if (res.message === 'Error has occurred') {
         setErrorHasOccurred(true);
+        setTimeout(() => setErrorHasOccurred(false), 3000);
       } else if (res.message === 'Added item') {
         dispatch({ type: 'SET', data: { submitted: !submitted } });
         history.push('/browse');
@@ -101,7 +102,7 @@ export default function UploadButtons(props) {
           className='loading-roll-animation'
         />
       ) : errorHasOccurred ? (
-        <h2>Error has occurred</h2>
+        <div className='submit-error'>Error on our side, try again later</div>
       ) : (
         <Button variant='contained' color='secondary' onClick={handleSubmit}>
           <div className='submit-compose-btn'>Publish</div>

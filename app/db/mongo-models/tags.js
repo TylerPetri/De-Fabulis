@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const TagSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   tag: { type: String },
-  count: { type: Number },
+  quantity: { type: Number },
 });
 const Tag = mongoose.model('Tag', TagSchema);
 

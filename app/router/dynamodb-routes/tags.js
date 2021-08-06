@@ -80,7 +80,6 @@ router.post('/tags', (req, res) => {
       }
     });
   });
-  // dynamodb.update()
 });
 
 module.exports = router;

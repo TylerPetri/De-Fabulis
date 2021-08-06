@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const AWS = require('aws-sdk');
 
-const { deactivateSession, getSession } = require('../session-manager');
+const { deactivateSession, getSession } = require('../../session-manager');
 
 const awsConfig = {
   region: 'us-east-2',

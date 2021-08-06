@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Sidenav from './Components/Navbar/sidenav';
 import Navbar from './Components/Navbar/navbar';
 import Welcome from './Pages/Welcome/welcome';
 import Compose from './Pages/Compose/compose';

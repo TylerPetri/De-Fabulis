@@ -32,7 +32,7 @@ export default function Taskbar() {
       type: 'SET',
       data: { mustBeLoggedIn: false },
     });
-  }, []);
+  }, [location]);
 
   function handleKeyPress(event) {
     if (event.charCode === 13) {

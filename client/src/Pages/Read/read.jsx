@@ -61,7 +61,9 @@ export default function Read() {
               }}
             />
             <div className='loading-stories'>
-              {!sorry ? 'Loading' : 'Sorry error... reload works sometimes'}{' '}
+              {!sorry
+                ? 'Loading'
+                : 'Sorry slow server... reload works sometimes'}{' '}
             </div>
             <img src={loadingSVG} alt='loading-animation' />
           </div>

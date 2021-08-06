@@ -30,7 +30,7 @@ export default function Taskbar() {
     }
     dispatch({
       type: 'SET',
-      data: { mustBeLoggedIn: false, mainSidenav: false },
+      data: { mustBeLoggedIn: false },
     });
   }, []);
 

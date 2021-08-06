@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Navbar from '../../Components/Navbar/navbar';
 import Password from '../../Components/Forms/password';
 import SubmitAnimationButton from '../../Components/Buttons/submitLoad';
 import fetchJSON from '../../utils/API';
@@ -107,7 +106,6 @@ export default function NewPassword() {
   };
   return (
     <>
-      <Navbar />
       <div className='new-password-wrapper'>
         <h3
           style={{

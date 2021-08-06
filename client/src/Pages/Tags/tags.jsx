@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import Navbar from '../../Components/Navbar/navbar';
 import { useStoreContext } from '../../utils/GlobalStore';
 import AlphabeticalPagenation from '../../Components/Alphabetical-Pagenation/alphabetical-pagenation';
 
@@ -39,7 +38,6 @@ export default function Tags() {
 
   return (
     <>
-      <Navbar />
       <div className='tags-wrapper'>
         <AlphabeticalPagenation page={'/tags'} />
         <div className='tags-cont'>

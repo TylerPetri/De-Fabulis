@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Navbar from '../../Components/Navbar/navbar';
 import Cards from '../../Components/Read-Cards/readCards';
 import StoryPopup from '../../Components/Story-Popup/storyPopup';
 import { useStoreContext } from '../../utils/GlobalStore';
-import fetchJSON from '../../utils/API';
 
 import './read.css';
 import cameramanfast from '../../assets/cameramanfast.gif';
@@ -34,23 +32,8 @@ export default function Read() {
       return data.filter((a) => a.tags.includes(id.replace(/%20/g, ' ')));
   }
 
-  // function logs() {
-  //   console.log('logs')
-
-  // }
-
-  // function getData() {
-  //   async function fetchData() {
-  //     const res = await fetchJSON('/api/stories');
-  //     dispatch({ type: 'SET', data: { data: res } });
-  //     console.log('fetched');
-  //   }
-  //   fetchData();
-  // }
-
   return (
     <>
-      <Navbar />
       <StoryPopup />
       <div className='cards-container'>
         {data.length > 0 && location.search.length < 1 ? (

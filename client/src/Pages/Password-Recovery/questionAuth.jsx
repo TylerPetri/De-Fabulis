@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import SubmitAnimationButton from '../../Components/Buttons/submitLoad';
-import Navbar from '../../Components/Navbar/navbar';
 import Username from '../../Components/Forms/username';
 import Answer from '../../Components/Forms/securityAnswer';
 
@@ -116,7 +115,6 @@ export default function PasswordRecovery() {
 
   return (
     <>
-      <Navbar />
       <div className='recovery-wrapper'>
         {!identified ? (
           <div className='username-recovery'>

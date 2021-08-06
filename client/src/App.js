@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import Sidenav from './Components/Navbar/sidenav';
+import Navbar from './Components/Navbar/navbar';
 import Welcome from './Pages/Welcome/welcome';
 import Compose from './Pages/Compose/compose';
 import Read from './Pages/Read/read';
@@ -80,6 +82,7 @@ function App() {
   return (
     <div ref={scrollHeightDiv}>
       <Router>
+        <Navbar />
         <Route exact path='/' component={Welcome} />
         <Route exact path='/compose' component={Compose} />
         <Route path='/browse' component={Read} />

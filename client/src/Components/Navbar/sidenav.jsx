@@ -3,16 +3,25 @@ import { FiChevronLeft } from 'react-icons/fi';
 import { useStoreContext } from '../../utils/GlobalStore';
 
 export default function Sidenav(props) {
-  const [{ scrollHeight }] = useStoreContext();
+  const [{ scrollHeight, mainSidenav }] = useStoreContext();
 
   return (
     <>
+      <div
+        className='sidenav-window-close'
+        style={{
+          minHeight: window.innerHeight,
+          height: scrollHeight + 100,
+          transform: mainSidenav ? 'translateX(0%)' : 'translateX(-100%)',
+        }}
+        onClick={props.toggleSidenav}
+      ></div>
       <div
         className='main-sidenav'
         style={{
           minHeight: window.innerHeight,
           height: scrollHeight + 100,
-          transform: props.mainSidenav ? 'translateX(0%)' : 'translateX(-100%)',
+          transform: mainSidenav ? 'translateX(0%)' : 'translateX(-100%)',
         }}
       >
         <ul>

@@ -6,7 +6,6 @@ import Password from '../../Components/Forms/password';
 import Question from '../../Components/Forms/securityQuestion';
 import Answer from '../../Components/Forms/securityAnswer';
 
-import Navbar from '../../Components/Navbar/navbar';
 import SubmitAnimationButton from '../../Components/Buttons/submitLoad';
 import fetchJSON from '../../utils/API';
 
@@ -90,7 +89,6 @@ export default function Register() {
   return (
     <>
       {' '}
-      <Navbar />
       <div className='login-wrapper'>
         <div className='register-message'>
           <span>Welcome to</span>

@@ -1,6 +1,5 @@
 import { useHistory, useLocation } from 'react-router-dom';
 import { useStoreContext } from '../../utils/GlobalStore';
-import Navbar from '../../Components/Navbar/navbar';
 import AlphabeticalPagenation from '../../Components/Alphabetical-Pagenation/alphabetical-pagenation';
 
 import noOneHere from '../../assets/where_is_everyone.gif';
@@ -26,7 +25,6 @@ export default function Authors() {
 
   return (
     <>
-      <Navbar />
       <div className='authors-wrapper'>
         <AlphabeticalPagenation page={'/authors'} />
         <div className='authors-cont'>

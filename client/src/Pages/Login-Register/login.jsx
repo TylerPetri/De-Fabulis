@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Navbar from '../../Components/Navbar/navbar';
 import Username from '../../Components/Forms/username';
 import Password from '../../Components/Forms/password';
 import SubmitAnimationButton from '../../Components/Buttons/submitLoad';
@@ -85,7 +84,6 @@ export default function Login() {
   return (
     <>
       {' '}
-      <Navbar />
       <div className='login-wrapper'>
         <div className='login-message'>
           <span>Welcome to</span>

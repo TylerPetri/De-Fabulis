@@ -3,14 +3,11 @@ require('dotenv').config();
 let mongoose = require('mongoose');
 let { Stories } = require('../mongo-models/index');
 
-mongoose.connect(
-  `mongodb+srv://trp53:wolfaboodie234@cluster0.u9uiy.mongodb.net/library-of-stories?retryWrites=true&w=majority`,
-  {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+});
 
 let seed = [
   {

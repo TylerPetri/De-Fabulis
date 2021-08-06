@@ -45,13 +45,11 @@ export default function AddTags() {
   }
 
   function addTag(tag, event) {
-    let result = tag.charAt(0).toUpperCase() + tag.slice(1);
-
-    if (!currentTags.includes(result)) {
+    if (!currentTags.includes(tag)) {
       dispatch({
         type: 'SET',
         data: {
-          currentTags: [...currentTags, result],
+          currentTags: [...currentTags, tag],
         },
       });
       event.target.value = '';
@@ -60,7 +58,7 @@ export default function AddTags() {
         event.target.parentNode.parentNode.parentNode.children[1].children;
 
       for (let i = 0; i < children.length; i++) {
-        if (children[i].outerText === result) children[i].id = 'alert';
+        if (children[i].outerText === tag) children[i].id = 'alert';
         setTimeout(() => (children[i].id = ''), 2000);
       }
     }
@@ -104,7 +102,7 @@ export default function AddTags() {
                 key={idx}
                 onClick={() => removeTag(idx)}
               >
-                {tag}
+                {tag.charAt(0).toUpperCase() + tag.slice(1)}
               </div>
             ))}
         </div>

@@ -17,7 +17,12 @@ export default function Tags() {
   useEffect(() => {
     async function fetchTags() {
       const res = await fetchJSON('/api/tags');
-      setTags(res);
+      const sorted = res.sort((a, b) => {
+        if (b.tag > a.tag) return -1;
+        if (a.tag > b.tag) return 1;
+        return 0;
+      });
+      setTags(sorted);
     }
     fetchTags();
     dispatch({ type: 'CLEAR_SELECTED_FILES' });

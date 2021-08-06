@@ -17,9 +17,19 @@ export default function Authors() {
   function filteredList() {
     if (location.search.includes('?filter=')) {
       const id = location.search.replace('?filter=', '');
-      return data.filter((a) => a.username[0] === id);
+      return data
+        .filter((a) => a.username[0] === id)
+        .sort((a, b) => {
+          if (b.username > a.username) return -1;
+          if (a.username > b.username) return 1;
+          return 0;
+        });
     } else {
-      return data;
+      return data.sort((a, b) => {
+        if (b.username > a.username) return -1;
+        if (a.username > b.username) return 1;
+        return 0;
+      });
     }
   }
 

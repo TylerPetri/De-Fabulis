@@ -52,9 +52,10 @@ router.post('/tags', (req, res) => {
           },
           (err, data) => {
             if (err) {
-              console.log(err);
+              res.json(500).json(err);
             } else {
               console.log('Updated quantity:', JSON.stringify(data, null, 2));
+              res.status(200).json({ message: 'Updated Item' });
             }
           }
         );
@@ -64,16 +65,15 @@ router.post('/tags', (req, res) => {
             TableName: TABLE_NAME,
             Item: {
               tag: tags,
-              quantity: 0,
+              quantity: 1,
             },
           },
           (err, data) => {
             if (err) {
-              console.log(err);
-              // res.json(500).json(err);
+              res.json(500).json(err);
             } else {
               console.log('Added Item:', JSON.stringify(data, null, 2));
-              //   res.status(200).json({ message: 'Added Item' });
+              res.status(200).json({ message: 'Added Item' });
             }
           }
         );

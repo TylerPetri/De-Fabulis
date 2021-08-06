@@ -46,11 +46,16 @@ export default function Taskbar() {
   }
 
   function pushAlert(option) {
-    if (location.pathname === '/compose' && !mustBeLoggedIn) {
+    if (location.pathname === '/compose' && !mustBeLoggedIn && !userLoggedIn) {
       setAlert(true);
       setOption(option);
     } else {
-      toggleSidenav();
+      if (
+        option !== '/login' &&
+        option !== '/register' &&
+        option !== '/compose'
+      )
+        toggleSidenav();
       if (option === 'search') {
         search();
       } else if (option === 'random') {

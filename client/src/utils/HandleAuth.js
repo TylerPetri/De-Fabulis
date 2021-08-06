@@ -9,7 +9,7 @@ async function handleAuth() {
       session: session,
       type: 'checkAuth',
     });
-    if (resAuth.message === 'No auth') {
+    if (resAuth.message === 'No auth' || resAuth.message === 'No such being!') {
       sessionStorage.removeItem('libraryOfStories_user');
       sessionStorage.removeItem('libraryOfStories_session');
       return { userLoggedIn: false, user: '' };

@@ -73,7 +73,7 @@ export default function UploadButtons(props) {
       setLoadingAnimation(true);
       const res = await fetchJSON('/api/publish', 'POST', data);
       if (currentTags.length > 0)
-        await fetchJSON('/api/tags', 'POST', {
+        fetchJSON('/api/tags', 'POST', {
           tags: currentTags,
         });
       if (res.message) setLoadingAnimation(false);

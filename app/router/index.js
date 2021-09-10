@@ -6,7 +6,6 @@ const tagsRoutes = require('./mongo-routes/tags');
 const usersRoutes = require('./dynamodb-routes/login-register');
 const authRoutes = require('./dynamodb-routes/authentication');
 const pwdRecoveryRoute = require('./dynamodb-routes/password-recovery');
-// const tagsRoutes = require('./tags');
 const imageRoutes = require('./dynamodb-routes/image-upload');
 
 module.exports = function (app) {
@@ -15,6 +14,5 @@ module.exports = function (app) {
   app.use('/api/', usersRoutes);
   app.use('/api/', authRoutes);
   app.use('/api/', pwdRecoveryRoute);
-  // app.use('/api/', tagsRoutes);
   app.use('/api/', imageRoutes);
 };

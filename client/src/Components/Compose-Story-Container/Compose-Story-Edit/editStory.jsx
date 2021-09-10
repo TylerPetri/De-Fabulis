@@ -23,7 +23,7 @@ export default function CompTextArea(props) {
   }
 
   function handleChange(e) {
-    e.target.className === 'edit-title-area'
+    e.target.className === 'edit-title-area focus-visible'
       ? dispatch({ type: 'SET', data: { title: titleInput.current.value } })
       : dispatch({ type: 'SET', data: { story: storyInput.current.value } });
   }

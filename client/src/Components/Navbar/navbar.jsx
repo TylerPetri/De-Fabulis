@@ -46,7 +46,7 @@ export default function Taskbar() {
   }
 
   function pushAlert(option) {
-    if (location.pathname === '/compose' && !mustBeLoggedIn && !userLoggedIn) {
+    if (location.pathname === '/compose' && !mustBeLoggedIn && userLoggedIn) {
       setAlert(true);
       setOption(option);
     } else {

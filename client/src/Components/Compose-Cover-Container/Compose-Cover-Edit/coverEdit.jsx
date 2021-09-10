@@ -23,7 +23,7 @@ export default function CompCoverEdit(props) {
   }
 
   function handleChange(e) {
-    e.target.className === 'edit-cover-title'
+    e.target.className === 'edit-cover-title focus-visible'
       ? dispatch({ type: 'SET', data: { title: titleInput.current.value } })
       : dispatch({
           type: 'SET',

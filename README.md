@@ -8,7 +8,6 @@ A short story hosting website built in react, using dynamodb as database and use
 
 ## Live application
 
-https://library-of-stories.herokuapp.com
 
 ![gif](https://media.giphy.com/media/xzLOp7sMSGMCOaNKWd/giphy.gif)
 
